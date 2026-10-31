@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Arrow } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
+import HeroSlider, { RotatingWord, type Slide } from "@/components/HeroSlider";
 import Testimonials from "@/components/Testimonials";
 import { CtaBand, Faq, Photo, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
@@ -11,6 +12,14 @@ export const metadata: Metadata = { alternates: { canonical: "/" } };
 const ticker = [
   "Physics, Chemistry & Biology labs", "Computer lab with Wi-Fi", "20,000+ library books", "Maulana Abul Kalam Hall", "School transport",
   "Playground", "Science & Commerce streams", "Four houses", "Foundation Day", "Annual Function",
+];
+
+const heroSlides: Slide[] = [
+  { src: "/images/campus-main-building.webp", alt: "The main building of Shatabdi Public School, Gaya", position: "60% 50%" },
+  { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", position: "60% 50%" },
+  { src: "/images/campus-main-gate.webp", alt: "The main gate and courtyard on Katari Hill Road", position: "55% 50%" },
+  { src: "/images/campus-garden-entrance.webp", alt: "The garden by the school entrance" },
+  { src: "/images/campus-name-facade.webp", alt: "Shatabdi Public School, Gaya, painted on the building", position: "70% 50%" },
 ];
 
 const stats = [
@@ -44,23 +53,18 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="wrap hero__grid">
-          <div className="reveal">
+        <HeroSlider slides={heroSlides}>
+          <div className="hero__text reveal">
             <span className="badge"><b>CBSE</b> Senior Secondary · Affiliation No. 330113</span>
             <h1>Rooted in values, <em>reaching</em> for the century ahead.</h1>
             <p>Since 2000, Shatabdi Public School has given the children of Gaya an English-medium education that pairs strong academics with togetherness, service to humanity and our shared Ganga-Jamuni heritage.</p>
+            <p className="hero__rotate">Every day we nurture <RotatingWord words={["character", "curiosity", "confidence", "togetherness", "discipline"]} /></p>
             <div className="hero__cta">
               <Link className="btn btn--gold" href="/admissions#enquiry">Start an admission enquiry <Arrow /></Link>
               <Link className="btn btn--ghost" href="/campus">See school life</Link>
             </div>
           </div>
-          <div className="hero__mosaic reveal">
-            <Photo src="/images/fd26-group-song.webp" label="Foundation Day, 26 October 2026" priority sizes="(max-width: 900px) 50vw, 300px" />
-            <Photo src="/images/kids-reading.webp" label="Reading corner" priority sizes="(max-width: 900px) 50vw, 300px" />
-            <Photo src="/images/campus-main-building.webp" label="Our campus on Katari Hill Road" sizes="(max-width: 900px) 50vw, 300px" className="ph--top" />
-            <Photo src="/images/independence-day-choir.webp" label="Independence Day celebrations" className="ph--top" />
-          </div>
-        </div>
+        </HeroSlider>
         <div className="ticker" aria-hidden="true">
           <div className="ticker__track">
             {[...ticker, ...ticker].map((t, i) => <span key={i}>{t}</span>)}
