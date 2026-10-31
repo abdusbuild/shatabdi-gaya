@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Book, Bus, Flask, Globe, Monitor, Music, Plus, Screen, Shield } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
 import Gallery from "@/components/Gallery";
-import { CampusArt } from "@/components/HeroArt";
 import { PageHero, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
@@ -54,7 +53,6 @@ const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day"
 const gallery: [string, string][] = [
   ["/images/fd26-banner.jpg", "Foundation Day, 26 October 2026"],
   ["/images/fd26-assembly.jpg", "Students gathered for Foundation Day"],
-  ["/images/fd26-ali-bhawan.jpg", "Assembly in front of Ali Bhawan"],
   ["/images/fd26-young-students.jpg", "Primary students at Foundation Day"],
   ["/images/fd26-welcome.jpg", "Welcome address, Foundation Day"],
   ["/images/fd26-guests.jpg", "Guests at Foundation Day"],
@@ -83,7 +81,7 @@ const gallery: [string, string][] = [
 export default function Campus() {
   return (
     <>
-      <PageHero crumb="Campus & Life" title="Campus & school life" art={<CampusArt />}>
+      <PageHero crumb="Campus & Life" title="Campus & school life" image={{ src: "/images/fd26-ali-bhawan.jpg", alt: "Students assembled in front of Ali Bhawan on Foundation Day 2026", position: "65% 50%" }}>
         A green, walled 2.58-acre campus on Katari Hill Road with five buildings, modern labs, a computerised library and a busy calendar of celebrations.
       </PageHero>
 
