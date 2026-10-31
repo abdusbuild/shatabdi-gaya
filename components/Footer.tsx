@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="footer__grid">
           <div className="footer__about">
             <Link className="brand" href="/">
-              <img src="/logo-orange-sm.png" alt="" width={53} height={58} loading="lazy" />
+              <img src="/logo-dark-sm.png" alt="" width={56} height={56} loading="lazy" />
               <span><span className="brand__name">Shatabdi Public School</span><span className="brand__tag">Gaya · Est. 2000</span></span>
             </Link>
             <p>An English-medium, co-educational senior secondary school affiliated to CBSE, New Delhi, run by the Shatabdi Foundation on a non-commercial basis since 2000.</p>
