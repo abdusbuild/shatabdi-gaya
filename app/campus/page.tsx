@@ -6,11 +6,12 @@ import { CampusArt } from "@/components/HeroArt";
 import { PageHero, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Campus & School Life",
   description: "Buildings, labs, library, houses, clubs and photo gallery of Shatabdi Public School's 2.58-acre campus on Katari Hill Road, Gaya.",
-  alternates: { canonical: "/campus" },
+  alternates: { canonical: "/campus" }, openGraph: { ...OPEN_GRAPH, url: "/campus", images: [ogImage("campus", "Campus and school life at Shatabdi Public School, Gaya")] },
 };
 
 const stats = [
@@ -84,7 +85,7 @@ const gallery: [string, string][] = [
 export default function Campus() {
   return (
     <>
-      <PageHero crumb="Campus & Life" title="Campus & school life" art={<CampusArt />}>
+      <PageHero crumb="Campus & Life" path="/campus" title="Campus & school life" art={<CampusArt />}>
         A green, walled 2.58-acre campus on Katari Hill Road with five buildings, modern labs, a computerised library and a busy calendar of celebrations.
       </PageHero>
 

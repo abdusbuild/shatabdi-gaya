@@ -2,6 +2,20 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import FaqArt from "./FaqArt";
 import { SkeletonImage } from "./Skeleton";
+import { SITE_URL } from "@/lib/site";
+
+// BreadcrumbList structured data (Home › Page) so search results can show the page's place in the site.
+export function BreadcrumbJsonLd({ name, path }: { name: string; path: string }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name, item: `${SITE_URL}${path}` },
+    ],
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
 
 // Page title whose words drop in from above, one after another, when the page opens.
 // Screen readers get the plain title from aria-label.
@@ -21,9 +35,10 @@ export function DropTitle({ text }: { text: string }) {
 
 // Title band for inner pages. With `image`, a real photo bleeds off the right edge;
 // with `art`, an illustration (components/HeroArt.tsx) sits beside the text.
-export function PageHero({ crumb, title, children, image, art }: { crumb: string; title: string; children: ReactNode; image?: { src: string; alt: string; position?: string }; art?: ReactNode }) {
+export function PageHero({ crumb, path, title, children, image, art }: { crumb: string; path: string; title: string; children: ReactNode; image?: { src: string; alt: string; position?: string }; art?: ReactNode }) {
   const text = (
     <div className="page-hero__text">
+      <BreadcrumbJsonLd name={crumb} path={path} />
       <div className="crumbs"><Link href="/">Home</Link> / {crumb}</div>
       <DropTitle text={title} />
       <p>{children}</p>

@@ -3,11 +3,12 @@ import EnquiryForm, { NameInput, PhoneInput } from "@/components/EnquiryForm";
 import { AdmissionsArt, MessageArt } from "@/components/HeroArt";
 import { Faq, PageHero, Photo, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Admissions",
   description: "Admission process, entrance test, required documents and enquiry form for Shatabdi Public School, Gaya.",
-  alternates: { canonical: "/admissions" },
+  alternates: { canonical: "/admissions" }, openGraph: { ...OPEN_GRAPH, url: "/admissions", images: [ogImage("admissions", "Admissions at Shatabdi Public School, Gaya")] },
 };
 
 const steps = [
@@ -33,7 +34,7 @@ const classes = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII
 export default function Admissions() {
   return (
     <>
-      <PageHero crumb="Admissions" title="Admissions" art={<AdmissionsArt />}>
+      <PageHero crumb="Admissions" path="/admissions" title="Admissions" art={<AdmissionsArt />}>
         Admission is open to every child, regardless of caste, creed or religion. Here is how to join Shatabdi.
       </PageHero>
 

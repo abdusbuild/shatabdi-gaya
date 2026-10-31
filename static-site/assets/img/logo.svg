@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Shatabdi Public School crest">
-  <path d="M60 4 108 20v38c0 30-21 50-48 58C33 108 12 88 12 58V20Z" fill="#0d2a5c" stroke="#c9a227" stroke-width="4"/>
-  <path d="M60 14 98 27v31c0 24-16 40-38 47-22-7-38-23-38-47V27Z" fill="none" stroke="#c9a227" stroke-width="1.5" opacity=".6"/>
-  <path d="M34 56c9-3 18-3 26 2 8-5 17-5 26-2v26c-9-3-18-3-26 2-8-5-17-5-26-2Z" fill="#fbf9f4"/>
-  <path d="M60 58v26" stroke="#0d2a5c" stroke-width="2"/>
-  <path d="M60 24l3 8h8l-6.5 5 2.5 8-7-5-7 5 2.5-8-6.5-5h8Z" fill="#c9a227"/>
-  <text x="60" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="#c9a227" letter-spacing="2">SPS</text>
-</svg>

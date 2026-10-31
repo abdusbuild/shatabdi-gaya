@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Chart, Flask, Leaf } from "@/components/Icons";
 import { AcademicsArt } from "@/components/HeroArt";
 import { CtaBand, PageHero, Photo, SectionHead } from "@/components/ui";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Academics",
   description: "CBSE curriculum from pre-primary to Class XII at Shatabdi Public School, Gaya. Science and Commerce streams in the senior secondary classes.",
-  alternates: { canonical: "/academics" },
+  alternates: { canonical: "/academics" }, openGraph: { ...OPEN_GRAPH, url: "/academics", images: [ogImage("academics", "Academics at Shatabdi Public School, Gaya")] },
 };
 
 const stages = [
@@ -26,7 +27,7 @@ const streams = [
 export default function Academics() {
   return (
     <>
-      <PageHero crumb="Academics" title="Academics" art={<AcademicsArt />}>
+      <PageHero crumb="Academics" path="/academics" title="Academics" art={<AcademicsArt />}>
         A complete CBSE pathway, from a child&rsquo;s first day in pre-primary to the Class XII board examinations.
       </PageHero>
 

@@ -3,16 +3,18 @@ import Link from "next/link";
 import { PrivacyArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Shatabdi Public School, Gaya collects, uses and protects information shared through this website.",
-  alternates: { canonical: "/privacy-policy" },
+  alternates: { canonical: "/privacy-policy" }, openGraph: { ...OPEN_GRAPH, url: "/privacy-policy", images: [ogImage("privacy-policy", "Privacy policy, Shatabdi Public School, Gaya")] },
 };
 
 export default function PrivacyPolicy() {
   return (
     <LegalPage
+      path="/privacy-policy"
       art={<PrivacyArt />}
       crumb="Privacy Policy"
       title="Privacy Policy"

@@ -24,4 +24,3 @@ Open http://localhost:3000.
 - `lib/` — site config and fonts
 - `public/` — optimized images and logos
 - `originals/` — original source photos
-- `static-site/` — earlier static HTML version of the site

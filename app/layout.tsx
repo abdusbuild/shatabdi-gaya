@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HelpWidget from "@/components/HelpWidget";
@@ -6,6 +6,7 @@ import Preloader from "@/components/Preloader";
 import EnquiryPopup from "@/components/EnquiryPopup";
 import { fontVariables } from "@/lib/fonts";
 import { SCHOOL, SITE_URL } from "@/lib/site";
+import { OPEN_GRAPH } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,29 +17,54 @@ export const metadata: Metadata = {
   },
   description:
     "Shatabdi Public School, Gaya — an English-medium, co-educational CBSE senior secondary school (Affiliation No. 330113) on Katari Hill Road, run by the Shatabdi Foundation since 2000.",
-  icons: { icon: "/logo-light.png", apple: "/logo-light.png" },
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    siteName: "Shatabdi Public School, Gaya",
-    images: [{ url: "/images/campus-main-building.webp", width: 1779, height: 884, alt: "The main building of Shatabdi Public School, Gaya" }],
-  },
+  openGraph: { ...OPEN_GRAPH, url: "/" },
   twitter: { card: "summary_large_image" },
+  applicationName: "Shatabdi Public School, Gaya",
+  authors: [{ name: "Shatabdi Public School, Gaya", url: SITE_URL }],
+  category: "education",
+  formatDetection: { telephone: false },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+};
+
+// Browser UI colour (address bar on phones) to match the site in each theme.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f1e1d" },
+  ],
 };
 
 // Structured data so search engines can show the school's address, phone and profiles.
 const schoolJsonLd = {
   "@context": "https://schema.org",
-  "@type": "School",
-  name: SCHOOL.name,
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo-light.png`,
-  image: `${SITE_URL}/images/campus-main-building.webp`,
-  telephone: SCHOOL.phone,
-  email: SCHOOL.email,
-  foundingDate: "2000-10-26",
-  address: { "@type": "PostalAddress", streetAddress: "Katari Hill Road, Aliganj", addressLocality: "Gaya", addressRegion: "Bihar", postalCode: "823001", addressCountry: "IN" },
-  sameAs: [SCHOOL.facebook, SCHOOL.instagram, SCHOOL.youtube],
+  "@graph": [
+    {
+      "@type": "School",
+      "@id": `${SITE_URL}/#school`,
+      name: SCHOOL.name,
+      alternateName: ["Shatabdi Public School Gaya", "SPS Gaya"],
+      description: "English-medium, co-educational CBSE senior secondary school (Affiliation No. 330113) on Katari Hill Road, Gaya, run by the Shatabdi Foundation since 2000.",
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo-light.png`,
+      image: `${SITE_URL}/og-image.jpg`,
+      telephone: SCHOOL.phone,
+      email: SCHOOL.email,
+      foundingDate: "2000-10-26",
+      address: { "@type": "PostalAddress", streetAddress: "Katari Hill Road, Aliganj", addressLocality: "Gaya", addressRegion: "Bihar", postalCode: "823001", addressCountry: "IN" },
+      areaServed: { "@type": "City", name: "Gaya" },
+      identifier: { "@type": "PropertyValue", propertyID: "CBSE Affiliation No.", value: "330113" },
+      parentOrganization: { "@type": "Organization", name: "Shatabdi Foundation, Gaya" },
+      sameAs: [SCHOOL.facebook, SCHOOL.instagram, SCHOOL.youtube],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Shatabdi Public School, Gaya",
+      inLanguage: "en-IN",
+      publisher: { "@id": `${SITE_URL}/#school` },
+    },
+  ],
 };
 
 // Applies the saved/system theme before paint to avoid a flash, and flags that JS is running.
@@ -48,7 +74,7 @@ const themeScript = `var d=document.documentElement;d.classList.add("js");try{va
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={fontVariables} suppressHydrationWarning>
+    <html lang="en-IN" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schoolJsonLd) }} />

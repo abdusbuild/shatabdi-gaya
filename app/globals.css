@@ -1,6 +1,5 @@
 /* Shatabdi Public School, Gaya — site styles */
 @import "tailwindcss";
-@source not "../static-site";
 
 /* Fonts come from next/font (lib/fonts.ts) as --font-display, --font-body, --font-hi-sans and
    --font-hi-serif. The theme tokens use different names so they never reference themselves.

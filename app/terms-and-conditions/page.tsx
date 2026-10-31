@@ -3,16 +3,18 @@ import Link from "next/link";
 import { TermsArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Terms of use for the Shatabdi Public School, Gaya website.",
-  alternates: { canonical: "/terms-and-conditions" },
+  alternates: { canonical: "/terms-and-conditions" }, openGraph: { ...OPEN_GRAPH, url: "/terms-and-conditions", images: [ogImage("terms-and-conditions", "Terms and conditions, Shatabdi Public School, Gaya")] },
 };
 
 export default function Terms() {
   return (
     <LegalPage
+      path="/terms-and-conditions"
       art={<TermsArt />}
       crumb="Terms & Conditions"
       title="Terms & Conditions"

@@ -5,17 +5,18 @@ import { ContactArt, MessageArt } from "@/components/HeroArt";
 import { PageHero } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Address, phone numbers, email and map for Shatabdi Public School, Katari Hill Road, Gaya, Bihar 823001.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact" }, openGraph: { ...OPEN_GRAPH, url: "/contact", images: [ogImage("contact", "Contact Shatabdi Public School, Gaya")] },
 };
 
 export default function Contact() {
   return (
     <>
-      <PageHero crumb="Contact" title="Contact us" art={<ContactArt />}>
+      <PageHero crumb="Contact" path="/contact" title="Contact us" art={<ContactArt />}>
         We would be glad to hear from you. Call, write, or visit us on Katari Hill Road.
       </PageHero>
 

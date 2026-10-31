@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { DisclosureArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Mandatory Public Disclosure",
   description: "CBSE mandatory public disclosure for Shatabdi Public School, Gaya (Affiliation No. 330113, School Code 65109).",
-  alternates: { canonical: "/public-disclosure" },
+  alternates: { canonical: "/public-disclosure" }, openGraph: { ...OPEN_GRAPH, url: "/public-disclosure", images: [ogImage("public-disclosure", "Mandatory public disclosure, Shatabdi Public School, Gaya")] },
 };
 
 // Values not published online are marked so the school office can fill them in.
@@ -27,6 +28,7 @@ function Table({ rows }: { rows: [string, React.ReactNode][] }) {
 export default function PublicDisclosure() {
   return (
     <LegalPage
+      path="/public-disclosure"
       art={<DisclosureArt />}
       crumb="Public Disclosure"
       title="Mandatory Public Disclosure"

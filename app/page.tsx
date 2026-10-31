@@ -7,8 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import { CtaBand, Faq } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import type { Metadata } from "next";
+import { OPEN_GRAPH } from "@/lib/seo";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { ...OPEN_GRAPH, url: "/" } };
 
 const heroSlides: Slide[] = [
   { src: "/images/campus-name-facade.webp", alt: "Shatabdi Public School, Gaya, painted on the building", position: "70% 50%" },
@@ -32,10 +33,10 @@ const promises = [
 ];
 
 const stages = [
-  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/kids-reading.webp", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
-  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-2017-dance.webp", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
-  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/independence-day-choir.webp", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
-  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-2017-anchor.webp", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
+  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/kids-reading.webp", alt: "Young pupils reading picture books in the primary section", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
+  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-2017-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
+  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/independence-day-choir.webp", alt: "Secondary students singing at the Independence Day celebration", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
+  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-2017-anchor.webp", alt: "A senior student anchoring the Annual Function", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
 ];
 
 const achievements = [
@@ -45,15 +46,27 @@ const achievements = [
 ];
 
 const photoColumns = [
-  ["/images/fd26-assembly-ali-bhawan.webp", "/images/kids-reading.webp", "/images/campus-main-gate.webp", "/images/fd26-dance-white.webp", "/images/independence-day-choir.webp"],
-  ["/images/campus-garden-entrance.webp", "/images/certificate-distribution.webp", "/images/fd26-group-song.webp", "/images/winter-celebration-band.webp", "/images/independence-day-fancy-dress.webp"],
+  [
+    ["/images/fd26-assembly-ali-bhawan.webp", "Students gathered in front of Ali Bhawan on Foundation Day"],
+    ["/images/kids-reading.webp", "Young pupils reading picture books"],
+    ["/images/campus-main-gate.webp", "The main gate and courtyard on Katari Hill Road"],
+    ["/images/fd26-dance-white.webp", "A Foundation Day dance by primary girls"],
+    ["/images/independence-day-choir.webp", "The school choir on Independence Day"],
+  ],
+  [
+    ["/images/campus-garden-entrance.webp", "The garden by the school entrance"],
+    ["/images/certificate-distribution.webp", "A pupil receiving a certificate of excellence"],
+    ["/images/fd26-group-song.webp", "Students performing a group song on Foundation Day"],
+    ["/images/winter-celebration-band.webp", "The student band at the Winter Annual Celebration"],
+    ["/images/independence-day-fancy-dress.webp", "Pupils in fancy dress on Independence Day"],
+  ],
 ];
 
 const moments = [
-  { src: "/images/fd26-dance-white.webp", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
-  { src: "/images/independence-day-song.webp", date: "15 August 2026", title: "80th Independence Day", text: "Patriotic songs, fancy dress and a salute from our youngest soldiers." },
-  { src: "/images/winter-celebration-band.webp", date: "Winter Annual Celebration", title: "The student band on stage", text: "A cultural, sports and awards evening for parents and guests." },
-  { src: "/images/certificate-distribution.webp", date: "Prize day", title: "Certificates of excellence", text: "Top performers honoured in front of the school." },
+  { src: "/images/fd26-dance-white.webp", alt: "Girls in white dresses dancing on stage on Foundation Day 2026", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
+  { src: "/images/independence-day-song.webp", alt: "Students singing a patriotic song on Independence Day", date: "15 August 2026", title: "80th Independence Day", text: "Patriotic songs, fancy dress and a salute from our youngest soldiers." },
+  { src: "/images/winter-celebration-band.webp", alt: "The student band performing at the Winter Annual Celebration", date: "Winter Annual Celebration", title: "The student band on stage", text: "A cultural, sports and awards evening for parents and guests." },
+  { src: "/images/certificate-distribution.webp", alt: "A teacher presenting a certificate of excellence to a pupil", date: "Prize day", title: "Certificates of excellence", text: "Top performers honoured in front of the school." },
 ];
 
 export default function Home() {
@@ -96,7 +109,7 @@ export default function Home() {
           <div className="stages reveal">
             {stages.map((st) => (
               <Link className="stage" href="/academics" key={st.title}>
-                <Image src={st.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" quality={85} />
+                <Image src={st.src} alt={st.alt} fill sizes="(max-width: 760px) 100vw, 50vw" quality={85} />
                 <span className="stage__body">
                   <span className="stage__title">{st.title}</span>
                   <span className="stage__classes">{st.classes}</span>
@@ -120,12 +133,13 @@ export default function Home() {
             <Link className="pill pill--dark" href="/about">Read our full story</Link>
           </div>
           {/* Columns of photos that drift up and down, the middle one against the others */}
-          <div className="photo-columns" aria-hidden="true">
+          <div className="photo-columns">
             {photoColumns.map((col, c) => (
               <div className={`photo-columns__col${c === 1 ? " photo-columns__col--down" : ""}`} key={c}>
                 <div className="photo-columns__track">
-                  {[...col, ...col].map((src, i) => (
-                    <span className="photo-columns__img" key={i}><Image src={src} alt="" fill sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
+                  {/* The photos repeat once so the drift can loop; only the first copy is described */}
+                  {[...col, ...col].map(([src, alt], i) => (
+                    <span className="photo-columns__img" key={i} aria-hidden={i >= col.length || undefined}><Image src={src} alt={i < col.length ? alt : ""} fill sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
                   ))}
                 </div>
               </div>
@@ -199,7 +213,7 @@ export default function Home() {
           </div>
           <div className="news">
             <Link className="news__lead reveal" href="/campus#gallery">
-              <span className="news__img"><Image src={moments[0].src} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" quality={85} /></span>
+              <span className="news__img"><Image src={moments[0].src} alt={moments[0].alt} fill sizes="(max-width: 900px) 100vw, 60vw" quality={85} /></span>
               <span className="news__date">{moments[0].date}</span>
               <span className="news__title">{moments[0].title}</span>
               <span className="news__text">{moments[0].text}</span>
@@ -209,7 +223,7 @@ export default function Home() {
               {moments.slice(1).map((m) => (
                 <li key={m.src} className="reveal">
                   <Link className="news__item" href="/campus#gallery">
-                    <span className="news__thumb"><Image src={m.src} alt="" fill sizes="180px" quality={85} /></span>
+                    <span className="news__thumb"><Image src={m.src} alt={m.alt} fill sizes="180px" quality={85} /></span>
                     <span>
                       <span className="news__date">{m.date}</span>
                       <span className="news__title news__title--sm">{m.title}</span>

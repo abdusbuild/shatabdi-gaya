@@ -3,11 +3,12 @@ import Link from "next/link";
 import { AboutArt } from "@/components/HeroArt";
 import { CtaBand, PageHero, Photo } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
+import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: "History, mission, Principal's message and the Shatabdi Foundation behind Shatabdi Public School, Gaya, established in 2000.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about" }, openGraph: { ...OPEN_GRAPH, url: "/about", images: [ogImage("about", "About Shatabdi Public School, Gaya")] },
 };
 
 const pillars = [
@@ -48,7 +49,7 @@ const supported = [
 export default function About() {
   return (
     <>
-      <PageHero crumb="About" title="About the school" art={<AboutArt />}>
+      <PageHero crumb="About" path="/about" title="About the school" art={<AboutArt />}>
         Twenty-six years of English-medium CBSE education on Katari Hill Road, built on togetherness and service.
       </PageHero>
 

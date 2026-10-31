@@ -1,18 +1,19 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import LegalToc from "./LegalToc";
-import { DropTitle } from "./ui";
+import { BreadcrumbJsonLd, DropTitle } from "./ui";
 
 export type LegalSection = { id: string; title: string; body: ReactNode };
 
 // Shared layout for policy pages: title band, sticky contents list, numbered sections.
 // `art` is an illustration from components/HeroArt.tsx shown beside the title.
-export default function LegalPage({ crumb, title, updated, intro, sections, art }: { crumb: string; title: string; updated: string; intro: ReactNode; sections: LegalSection[]; art?: ReactNode }) {
+export default function LegalPage({ crumb, path, title, updated, intro, sections, art }: { crumb: string; path: string; title: string; updated: string; intro: ReactNode; sections: LegalSection[]; art?: ReactNode }) {
   return (
     <>
       <section className={`page-hero page-hero--compact${art ? " page-hero--art" : ""}`}>
         <div className={`wrap${art ? " page-hero__grid" : ""}`}>
           <div className="page-hero__text">
+            <BreadcrumbJsonLd name={crumb} path={path} />
             <div className="crumbs"><Link href="/">Home</Link> / {crumb}</div>
             <DropTitle text={title} />
             <p>Last updated {updated}</p>
