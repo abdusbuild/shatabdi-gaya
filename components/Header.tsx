@@ -74,7 +74,8 @@ export default function Header() {
       <header className={`nav${stuck ? " is-stuck" : ""}${open ? " is-open" : ""}`}>
         <div className="wrap nav__in">
           <Link className="brand" href="/">
-            <img src="/logo-orange-sm.png" alt="" width={53} height={58} />
+            <img className="brand__logo brand__logo--light" src="/logo-light-sm.png" alt="" width={56} height={56} />
+            <img className="brand__logo brand__logo--dark" src="/logo-dark-sm.png" alt="" width={56} height={56} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
               <span className="brand__tag">Gaya · CBSE 330113</span>
