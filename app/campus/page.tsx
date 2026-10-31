@@ -52,6 +52,14 @@ const activities = ["Speeches", "Songs", "Antakshari (Baitbazi)", "Drawing & pai
 const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day", "Gandhi Jayanti", "Teachers' Day", "Children's Day", "Annual Function", "Sports Day"];
 
 const gallery: [string, string][] = [
+  ["/images/fd26-banner.jpg", "Foundation Day, 26 October 2026"],
+  ["/images/fd26-assembly.jpg", "Students gathered for Foundation Day"],
+  ["/images/fd26-ali-bhawan.jpg", "Assembly in front of Ali Bhawan"],
+  ["/images/fd26-young-students.jpg", "Primary students at Foundation Day"],
+  ["/images/fd26-welcome.jpg", "Welcome address, Foundation Day"],
+  ["/images/fd26-guests.jpg", "Guests at Foundation Day"],
+  ["/images/fd26-girls-guests.jpg", "Students and guests at the celebration"],
+  ["/images/fd26-anchors.jpg", "Student anchors on stage"],
   ["/images/foundation-day-dance.jpg", "Foundation Day 2026"],
   ["/images/independence-day-choir.jpg", "Independence Day choir"],
   ["/images/annual-function-band.jpg", "Annual Function"],
