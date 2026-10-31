@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Arrow } from "./Icons";
 import { SkeletonImage } from "./Skeleton";
 import { Photo } from "./ui";
@@ -15,6 +15,18 @@ export default function Gallery({ items }: { items: Item[] }) {
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
+
+  // Product-page style zoom: the photo scales up around the cursor and follows it.
+  const follow = (e: MouseEvent<HTMLElement>) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--zx", `${((e.clientX - r.left) / r.width) * 100}%`);
+    el.style.setProperty("--zy", `${((e.clientY - r.top) / r.height) * 100}%`);
+  };
+
+  // Leave zoom when moving to another photo or closing the viewer
+  useEffect(() => setZoomed(false), [index, open]);
 
   const show = (i: number) => {
     setIndex(i);
@@ -54,7 +66,7 @@ export default function Gallery({ items }: { items: Item[] }) {
     <>
       <div className="gallery">
         {items.map(([src, label], i) => (
-          <button type="button" key={src} className="gallery__item reveal" onClick={() => show(i)} aria-label={`Open photo: ${label}`}>
+          <button type="button" key={src} className="gallery__item reveal" onClick={() => show(i)} onMouseMove={follow} aria-label={`Open photo: ${label}`}>
             <Photo src={src} label={label} sizes={i % 7 === 0 ? "(max-width: 760px) 100vw, 800px" : "(max-width: 760px) 50vw, 400px"} />
           </button>
         ))}
@@ -64,7 +76,11 @@ export default function Gallery({ items }: { items: Item[] }) {
         <div className="lightbox__track" ref={track}>
           {items.map(([src, label], i) => (
             <figure className="lightbox__slide" key={src} aria-hidden={i !== index}>
-              <div className="lightbox__frame">
+              <div
+                className={`lightbox__frame${zoomed && i === index ? " is-zoomed" : ""}`}
+                onClick={(e) => { if (i === index) { follow(e); setZoomed((z) => !z); } }}
+                onMouseMove={zoomed && i === index ? follow : undefined}
+              >
                 {/* Only the open photo and its neighbours are fetched */}
                 {open && Math.abs(i - index) <= 1 && <SkeletonImage src={src} alt={label} fill sizes="100vw" />}
               </div>
@@ -72,7 +88,7 @@ export default function Gallery({ items }: { items: Item[] }) {
           ))}
         </div>
         <div className="lightbox__bar">
-          <p className="lightbox__caption">{items[index]?.[1]}</p>
+          <p className="lightbox__caption">{items[index]?.[1]}<span className="lightbox__hint">{zoomed ? "Click to zoom out" : "Click the photo to zoom"}</span></p>
           <span className="lightbox__count">{index + 1} / {items.length}</span>
         </div>
         <button type="button" className="lightbox__btn lightbox__btn--prev" onClick={() => go(-1)} disabled={index === 0} aria-label="Previous photo">

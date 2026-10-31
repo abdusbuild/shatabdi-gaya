@@ -73,8 +73,9 @@ export function PhoneInput(props: FieldProps) {
   );
 }
 
-// Opens the visitor's email app with the form contents addressed to the school office.
-export default function EnquiryForm({ subject, children, submitLabel }: { subject: string; children: ReactNode; submitLabel: string }) {
+// Sends the form contents to the school office: through the visitor's email app by default,
+// or as a ready-to-send WhatsApp message to the office mobile with via="whatsapp".
+export default function EnquiryForm({ subject, children, submitLabel, via = "email", className = "card form reveal" }: { subject: string; children: ReactNode; submitLabel: string; via?: "email" | "whatsapp"; className?: string }) {
   const onInput = (e: FormEvent<HTMLFormElement>) => {
     const el = e.target as HTMLInputElement;
     const filter = el.dataset.filter as keyof typeof FILTERS | undefined;
@@ -103,17 +104,38 @@ export default function EnquiryForm({ subject, children, submitLabel }: { subjec
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const lines = [...new FormData(e.currentTarget).entries()].map(([k, v]) => `${k}: ${String(v).trim()}`).join("\n");
+    const lines = [...new FormData(e.currentTarget).entries()]
+      .map(([k, v]) => [k, String(v).trim()] as const)
+      .filter(([, v]) => v)
+      .map(([k, v]) => (via === "whatsapp" ? `*${k}:* ${v}` : `${k}: ${v}`))
+      .join("\n");
+    if (via === "whatsapp") {
+      const text = `*${subject}*\n\n${lines}`;
+      const url = `https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(text)}`;
+      // A new tab keeps the site open on desktop; phones hand the link straight to the WhatsApp app
+      const win = window.open(url, "_blank");
+      if (win) win.opener = null;
+      else window.location.href = url;
+      setSent(text);
+      return;
+    }
     window.location.href = `mailto:${SCHOOL.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
     setSent(`${subject}\n\n${lines}`);
   };
 
   return (
-    <form className="card form reveal" onInput={onInput} onBlur={onBlur} onSubmit={onSubmit}>
+    <form className={className} onInput={onInput} onBlur={onBlur} onSubmit={onSubmit}>
       {children}
       <button className="btn btn--gold btn-start" type="submit">{submitLabel}</button>
       <div className="form-status" role="status">
-        {sent && (
+        {sent && via === "whatsapp" && (
+          <>
+            <strong>WhatsApp should now be open with your enquiry.</strong> Press send there to deliver it. If it did not open,{" "}
+            <a href={`https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">try again</a>{" "}
+            or call the office on <a href={`tel:+${SCHOOL.mobile}`}>{SCHOOL.mobileLabel}</a>.
+          </>
+        )}
+        {sent && via === "email" && (
           <>
             <strong>Your email app should now be open with this message.</strong> Press send there to deliver it. If no app opened,{" "}
             <a href={`https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">send it on WhatsApp</a>{" "}

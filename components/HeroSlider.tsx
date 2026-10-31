@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import HeroSound from "./HeroSound";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 export type Slide = { src: string; alt: string; position?: string };
 
@@ -9,10 +10,11 @@ const INTERVAL = 6000;
 
 // Full-bleed photo slideshow behind the home page hero text. Crossfades every few seconds with a
 // slow zoom, pauses while hovered or focused, and stays on the first photo for reduced-motion users.
-export default function HeroSlider({ slides, children }: { slides: Slide[]; children: ReactNode }) {
+export default function HeroSlider({ slides, sound, children }: { slides: Slide[]; sound?: string; children: ReactNode }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [still, setStill] = useState(false);
+  const touchX = useRef<number | null>(null);
   const go = useCallback((i: number) => setIndex((i + slides.length) % slides.length), [slides.length]);
 
   useEffect(() => {
@@ -38,6 +40,13 @@ export default function HeroSlider({ slides, children }: { slides: Slide[]; chil
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
+      onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+      onTouchEnd={(e) => {
+        if (touchX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        touchX.current = null;
+        if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+      }}
     >
       <div className="hero-slider__slides">
         {slides.map((s, i) => (
@@ -54,11 +63,7 @@ export default function HeroSlider({ slides, children }: { slides: Slide[]; chil
       <button type="button" className="hero-slider__arrow hero-slider__arrow--next" onClick={() => go(index + 1)} aria-label="Next photo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
       </button>
-      <div className="hero-slider__dots">
-        {slides.map((s, i) => (
-          <button key={s.src} type="button" className={i === index ? "is-active" : ""} onClick={() => go(i)} aria-label={`Show photo ${i + 1}: ${s.alt}`} aria-current={i === index} />
-        ))}
-      </div>
+      {sound && <HeroSound src={sound} />}
     </div>
   );
 }

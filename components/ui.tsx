@@ -1,7 +1,23 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import FaqArt from "./FaqArt";
 import { SkeletonImage } from "./Skeleton";
+
+// Page title whose words drop in from above, one after another, when the page opens.
+// Screen readers get the plain title from aria-label.
+export function DropTitle({ text }: { text: string }) {
+  const words = text.split(" ");
+  return (
+    <h1 className="drop-title" aria-label={text}>
+      {words.map((w, i) => (
+        <span key={i} aria-hidden="true">
+          <span className="drop-title__word" style={{ "--i": i } as CSSProperties}>{w}</span>
+          {i < words.length - 1 ? " " : ""}
+        </span>
+      ))}
+    </h1>
+  );
+}
 
 // Title band for inner pages. With `image`, a real photo bleeds off the right edge;
 // with `art`, an illustration (components/HeroArt.tsx) sits beside the text.
@@ -9,7 +25,7 @@ export function PageHero({ crumb, title, children, image, art }: { crumb: string
   const text = (
     <div className="page-hero__text">
       <div className="crumbs"><Link href="/">Home</Link> / {crumb}</div>
-      <h1>{title}</h1>
+      <DropTitle text={title} />
       <p>{children}</p>
     </div>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import EnquiryForm, { NameInput, PhoneInput } from "@/components/EnquiryForm";
-import { AdmissionsArt } from "@/components/HeroArt";
+import { AdmissionsArt, MessageArt } from "@/components/HeroArt";
 import { Faq, PageHero, Photo, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 
@@ -80,9 +80,10 @@ export default function Admissions() {
         <div className="wrap split split--top">
           <div className="reveal">
             <h2 className="h2-md">Start an admission enquiry</h2>
-            <p className="muted">Fill in the details and press Send. Your email app will open with a message to <strong>{SCHOOL.email}</strong>, ready to send. You can also visit the school office on Katari Hill Road.</p>
+            <p className="muted">Fill in the details and press Send. WhatsApp will open with your enquiry addressed to the school office on <strong>{SCHOOL.mobileLabel}</strong>, ready to send. You can also visit the school office on Katari Hill Road.</p>
+            <div className="contact-art art-still"><MessageArt /></div>
           </div>
-          <EnquiryForm subject="Admission enquiry from website" submitLabel="Send enquiry">
+          <EnquiryForm subject="Admission enquiry from website" submitLabel="Send on WhatsApp" via="whatsapp">
             <div className="form-row">
               <label>Parent&rsquo;s name<NameInput name="Parent name" required /></label>
               <label>Phone<PhoneInput name="Phone" required /></label>
@@ -96,7 +97,6 @@ export default function Admissions() {
                 </select>
               </label>
             </div>
-            <label>Email<input name="Email" type="email" autoComplete="email" /></label>
             <label>Message<textarea name="Message" rows={4} placeholder="Any questions about admission, transport or fees" /></label>
           </EnquiryForm>
         </div>

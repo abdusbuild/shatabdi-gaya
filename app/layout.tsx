@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HelpWidget from "@/components/HelpWidget";
 import Preloader from "@/components/Preloader";
+import EnquiryPopup from "@/components/EnquiryPopup";
 import { fontVariables } from "@/lib/fonts";
 import { SCHOOL, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <HelpWidget />
+        <EnquiryPopup />
       </body>
     </html>
   );

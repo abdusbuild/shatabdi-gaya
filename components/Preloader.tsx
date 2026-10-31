@@ -17,7 +17,7 @@ export default function Preloader() {
           <div className="preloader__mark">
             <span className="preloader__ring" />
             <span className="preloader__ring preloader__ring--inner" />
-            <span className="preloader__logo"><img src="/logo-dark-md.webp" alt="" width={132} height={132} /></span>
+            <span className="preloader__logo"><img src="/logo-dark-lg.webp" alt="" width={196} height={196} /></span>
           </div>
           <div className="preloader__name">Shatabdi</div>
           <div className="preloader__sub">Public School &middot; Gaya</div>

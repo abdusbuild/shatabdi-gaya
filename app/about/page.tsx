@@ -79,8 +79,8 @@ export default function About() {
 
       <section id="principal">
         <div className="wrap split split--top">
-          <div className="reveal">
-            <Photo src="/images/principal-address-portrait.webp" label="Principal's address, Foundation Day 2026" className="ph--tall" />
+          <div className="reveal principal-photo">
+            <Photo src="/images/principal-address-portrait.webp" label="Principal's address, Foundation Day 2026" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
           </div>
           <div className="reveal message">
             <h2 className="h2-md">Educating the mind and soul</h2>

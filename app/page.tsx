@@ -1,25 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Arrow } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
 import HeroSlider, { RotatingWord, type Slide } from "@/components/HeroSlider";
 import Testimonials from "@/components/Testimonials";
-import { CtaBand, Faq, Photo, SectionHead } from "@/components/ui";
+import { CtaBand, Faq } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-const ticker = [
-  "Physics, Chemistry & Biology labs", "Computer lab with Wi-Fi", "20,000+ library books", "Maulana Abul Kalam Hall", "School transport",
-  "Playground", "Science & Commerce streams", "Four houses", "Foundation Day", "Annual Function",
-];
-
 const heroSlides: Slide[] = [
-  { src: "/images/campus-main-building.webp", alt: "The main building of Shatabdi Public School, Gaya", position: "60% 50%" },
-  { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", position: "60% 50%" },
-  { src: "/images/campus-main-gate.webp", alt: "The main gate and courtyard on Katari Hill Road", position: "55% 50%" },
-  { src: "/images/campus-garden-entrance.webp", alt: "The garden by the school entrance" },
   { src: "/images/campus-name-facade.webp", alt: "Shatabdi Public School, Gaya, painted on the building", position: "70% 50%" },
+  { src: "/images/campus-main-gate.webp", alt: "The main gate and courtyard on Katari Hill Road", position: "55% 50%" },
+  { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", position: "60% 50%" },
+  { src: "/images/campus-garden-entrance.webp", alt: "The garden by the school entrance" },
 ];
 
 const stats = [
@@ -36,101 +31,147 @@ const promises = [
   ["Open to every child", "Admission is open to all without discrimination of caste, creed or religion. About 40% of our students are girls."],
 ];
 
+const stages = [
+  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/kids-reading.webp", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
+  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-2017-dance.webp", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
+  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/independence-day-choir.webp", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
+  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-2017-anchor.webp", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
+];
+
 const achievements = [
   ["181", "Alumni", "BPSC Rank 181", "Divya Abhishek, of the 2014 batch, secured the 181st rank in the 70th Bihar Public Service Commission examination."],
   ["26", "Class X, 2017", "Students with 10 CGPA", "In the 2017 board examinations, 26 of our Class X students achieved a perfect 10 CGPA."],
   ["90%", "Class XII, 2017", "Stream toppers", "Sahma Anwar topped the Science stream with 90% and Surbhi led Commerce with 73% in the 2017 Class XII examinations."],
 ];
 
+const photoColumns = [
+  ["/images/fd26-assembly-ali-bhawan.webp", "/images/kids-reading.webp", "/images/campus-main-gate.webp", "/images/fd26-dance-white.webp", "/images/independence-day-choir.webp"],
+  ["/images/campus-garden-entrance.webp", "/images/certificate-distribution.webp", "/images/fd26-group-song.webp", "/images/winter-celebration-band.webp", "/images/independence-day-fancy-dress.webp"],
+];
+
 const moments = [
-  ["/images/fd26-dance-white.webp", "Foundation Day 2026"],
-  ["/images/independence-day-song.webp", "Independence Day 2026"],
-  ["/images/winter-celebration-band.webp", "Winter Annual Celebration"],
-  ["/images/certificate-distribution.webp", "Certificates of excellence"],
+  { src: "/images/fd26-dance-white.webp", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
+  { src: "/images/independence-day-song.webp", date: "15 August 2026", title: "80th Independence Day", text: "Patriotic songs, fancy dress and a salute from our youngest soldiers." },
+  { src: "/images/winter-celebration-band.webp", date: "Winter Annual Celebration", title: "The student band on stage", text: "A cultural, sports and awards evening for parents and guests." },
+  { src: "/images/certificate-distribution.webp", date: "Prize day", title: "Certificates of excellence", text: "Top performers honoured in front of the school." },
 ];
 
 export default function Home() {
   return (
     <>
       <section className="hero">
-        <HeroSlider slides={heroSlides}>
-          <div className="hero__text reveal">
-            <span className="badge"><b>CBSE</b> Senior Secondary · Affiliation No. 330113</span>
-            <h1>Rooted in values, <em>reaching</em> for the century ahead.</h1>
-            <p>Since 2000, Shatabdi Public School has given the children of Gaya an English-medium education that pairs strong academics with togetherness, service to humanity and our shared Ganga-Jamuni heritage.</p>
-            <p className="hero__rotate">Every day we nurture <RotatingWord words={["character", "curiosity", "confidence", "togetherness", "discipline"]} /></p>
-            <div className="hero__cta">
-              <Link className="btn btn--gold" href="/admissions#enquiry">Start an admission enquiry <Arrow /></Link>
-              <Link className="btn btn--ghost" href="/campus">See school life</Link>
-            </div>
+        <HeroSlider slides={heroSlides} sound="/audio/hero.mp3">
+          <div className="hero__text">
+            <h1 className="hero__title">Shatabdi Public School <span>Gaya</span></h1>
+            <span className="rule rule--hero" />
+            <p className="hero__tag">Rooted in values, reaching for the century ahead.</p>
           </div>
         </HeroSlider>
-        <div className="ticker" aria-hidden="true">
-          <div className="ticker__track">
-            {[...ticker, ...ticker].map((t, i) => <span key={i}>{t}</span>)}
-          </div>
-        </div>
       </section>
 
-      <section className="stats-section">
+      <section className="band intro">
         <div className="wrap">
-          <div className="stats reveal">
+          <p className="intro__lead reveal">Welcome to <strong>Shatabdi Public School, Gaya</strong> &mdash; an English-medium, co-educational CBSE school on Katari Hill Road that has paired modern academics with lasting values since 2000, from Prep to Class XII.</p>
+          <div className="intro__foot">
+            <span className="rule rule--grow" />
+            <Link className="pill" href="/about">Our story</Link>
+          </div>
+          <div className="figures">
             {stats.map((s) => (
-              <div className="stat" key={s.label}>
-                <CountUp className="stat__num" value={s.count} suffix={s.suffix} />
-                <div className="stat__label">{s.label}</div>
+              <div className="figure reveal" key={s.label}>
+                <CountUp className="figure__num" value={s.count} suffix={s.suffix} />
+                <div className="figure__label">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section--alt">
+      <section>
         <div className="wrap">
-          <SectionHead title={<>A school built on <em>four promises</em></>}>
-            For a quarter of a century, parents across Gaya have trusted us with these four things.
-          </SectionHead>
-          <div className="cols cols--4">
-            {promises.map(([title, text], i) => (
-              <article className="col reveal" key={title}>
-                <span className="col__tag">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
+          <div className="title-row">
+            <h2 className="slide-title">Learning at <em>Shatabdi</em></h2>
+            <p className="muted reveal">A full CBSE journey under one roof, from a child&rsquo;s first day in Prep to the Class XII board examinations.</p>
+          </div>
+          <div className="stages reveal">
+            {stages.map((st) => (
+              <Link className="stage" href="/academics" key={st.title}>
+                <Image src={st.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" quality={85} />
+                <span className="stage__body">
+                  <span className="stage__title">{st.title}</span>
+                  <span className="stage__classes">{st.classes}</span>
+                  <span className="stage__text">{st.text}</span>
+                  <span className="stage__more">Know more <Arrow /></span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section--alt">
+        <div className="wrap split story">
+          <div>
+            <p className="eyebrow reveal">Born with the new century</p>
+            <h2 className="h2-md slide-title">Nurturing <RotatingWord words={["character", "curiosity", "confidence", "togetherness"]} /> since 2000</h2>
+            <span className="rule" />
+            <p className="lead reveal">Shatabdi means &ldquo;century.&rdquo; The school was formally inaugurated on 26 October 2000 by Janab Saiyid Hamid, former Vice-Chancellor of Aligarh Muslim University and then Chancellor of Jamia Hamdard.</p>
+            <p className="muted reveal">It was the first venture of the Shatabdi Foundation, Gaya. The school began with Classes I to VII, gained CBSE affiliation for the secondary classes in 2005 and was upgraded to Class XII in 2007. Today about 1,400 students study here, many of them the first in their families to receive a formal education.</p>
+            <Link className="pill pill--dark" href="/about">Read our full story</Link>
+          </div>
+          {/* Columns of photos that drift up and down, the middle one against the others */}
+          <div className="photo-columns" aria-hidden="true">
+            {photoColumns.map((col, c) => (
+              <div className={`photo-columns__col${c === 1 ? " photo-columns__col--down" : ""}`} key={c}>
+                <div className="photo-columns__track">
+                  {[...col, ...col].map((src, i) => (
+                    <span className="photo-columns__img" key={i}><Image src={src} alt="" fill sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       <section>
-        <div className="wrap split">
-          <Photo src="/images/fd26-assembly-ali-bhawan.webp" label="Students gathered in front of Ali Bhawan" className="reveal ph--tall" />
-          <div className="reveal">
-            <h2 className="h2-md">Born with the <em>new century</em></h2>
-            <p className="lead">Shatabdi means &ldquo;century.&rdquo; The school was formally inaugurated on 26 October 2000 by Janab Saiyid Hamid, former Vice-Chancellor of Aligarh Muslim University and then Chancellor of Jamia Hamdard.</p>
-            <p className="muted">It was the first venture of the Shatabdi Foundation, Gaya. The school began with Classes I to VII, gained CBSE affiliation for the secondary classes in 2005 and was upgraded to Class XII in 2007. Today about 1,400 students study here, many of them the first in their families to receive a formal education.</p>
-            <Link className="btn btn--navy" href="/about">Read our full story</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section--alt">
-        <div className="wrap split">
-          <div className="reveal message">
-            <h2 className="h2-md">A message from our <em>Principal</em></h2>
-            <blockquote>&ldquo;Education is helping the mind of the educated to realize about the absolute moral and intellectual values.&rdquo;</blockquote>
-            <p>We are working for all round development of a child; our 100 percent focus is to achieve 100 percent. It is possible only due to our dedication, hard work, discipline, enthusiasm, punctuality and above all our motivation.</p>
-            <Link href="/about#principal" className="link-gold">Read the full message →</Link>
-          </div>
-          <Photo src="/images/principal-address-portrait.webp" label="Principal's address, Foundation Day 2026" className="reveal ph--tall" />
-        </div>
-      </section>
-
-      <section className="section--navy">
         <div className="wrap">
-          <SectionHead title={<>Achievements &amp; <em>alumni</em></>}>
-            Our students&rsquo; results and later careers speak for the school.
-          </SectionHead>
+          <div className="title-row">
+            <h2 className="slide-title">Why parents <em>choose us</em></h2>
+            <p className="muted reveal">For a quarter of a century, families across Gaya have trusted us with these four things.</p>
+          </div>
+          <ol className="promises">
+            {promises.map(([title, text], i) => (
+              <li className="promise reveal" key={title}>
+                <span className="promise__num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="wrap leader">
+          <div className="leader__photo img-reveal">
+            <Image src="/images/principal-address-portrait.webp" alt="The Principal addressing the school on Foundation Day 2026" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
+            <span className="leader__cap"><strong>Mr. Saquib Zarar</strong>Principal, Shatabdi Public School</span>
+          </div>
+          <div>
+            <h2 className="h2-md slide-title">A message from our <em>Principal</em></h2>
+            <span className="rule" />
+            <blockquote className="leader__quote reveal">&ldquo;Education is helping the mind of the educated to realize about the absolute moral and intellectual values.&rdquo;</blockquote>
+            <p className="reveal">We are working for all round development of a child; our 100 percent focus is to achieve 100 percent. It is possible only due to our dedication, hard work, discipline, enthusiasm, punctuality and above all our motivation.</p>
+            <Link className="pill" href="/about#principal">Read the full message</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="band band--deep">
+        <div className="wrap">
+          <h2 className="slide-title band__title">Achievements &amp; <em>alumni</em></h2>
+          <p className="band__sub reveal">Our students&rsquo; results and later careers speak for the school.</p>
           <div className="feats">
             {achievements.map(([fig, tag, title, text]) => (
               <article className="feat reveal" key={title}>
@@ -152,15 +193,44 @@ export default function Home() {
 
       <section className="section--alt">
         <div className="wrap">
-          <SectionHead title={<>Recent <em>moments</em></>}>
-            Celebrations, performances and prize days from this year. Watch more on our <a href={SCHOOL.youtube} target="_blank" rel="noopener" className="link-gold">YouTube channel</a>.
-          </SectionHead>
-          <div className="grid grid-4">
-            {moments.map(([src, label]) => (
-              <Photo key={src} src={src} label={label} sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 300px" className="reveal ph--gallery" />
-            ))}
+          <div className="title-row">
+            <h2 className="slide-title">Life at <em>Shatabdi</em></h2>
+            <p className="muted reveal">Celebrations, performances and prize days from this year. Watch more on our <a href={SCHOOL.youtube} target="_blank" rel="noopener" className="link-gold">YouTube channel</a>.</p>
           </div>
-          <p className="mt-14"><Link href="/campus#gallery" className="link-gold">See the full gallery →</Link></p>
+          <div className="news">
+            <Link className="news__lead reveal" href="/campus#gallery">
+              <span className="news__img"><Image src={moments[0].src} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" quality={85} /></span>
+              <span className="news__date">{moments[0].date}</span>
+              <span className="news__title">{moments[0].title}</span>
+              <span className="news__text">{moments[0].text}</span>
+              <span className="news__more">See the photos <Arrow /></span>
+            </Link>
+            <ul className="news__list">
+              {moments.slice(1).map((m) => (
+                <li key={m.src} className="reveal">
+                  <Link className="news__item" href="/campus#gallery">
+                    <span className="news__thumb"><Image src={m.src} alt="" fill sizes="180px" quality={85} /></span>
+                    <span>
+                      <span className="news__date">{m.date}</span>
+                      <span className="news__title news__title--sm">{m.title}</span>
+                      <span className="news__text">{m.text}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="campus-band">
+        <div className="campus-band__img">
+          <Image src="/images/campus-courtyard-school-bus.webp" alt="The courtyard and school buses on Katari Hill Road" fill sizes="100vw" quality={85} />
+        </div>
+        <div className="wrap campus-band__text">
+          <h2 className="slide-title">Our <em>campus</em></h2>
+          <p className="reveal">A green, walled 2.58-acre campus with five buildings, science and computer labs, a library of more than 20,000 books and the Maulana Abul Kalam Hall.</p>
+          <Link className="pill" href="/campus">Explore the campus</Link>
         </div>
       </section>
 

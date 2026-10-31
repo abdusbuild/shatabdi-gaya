@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import LegalToc from "./LegalToc";
+import { DropTitle } from "./ui";
 
 export type LegalSection = { id: string; title: string; body: ReactNode };
 
@@ -13,7 +14,7 @@ export default function LegalPage({ crumb, title, updated, intro, sections, art 
         <div className={`wrap${art ? " page-hero__grid" : ""}`}>
           <div className="page-hero__text">
             <div className="crumbs"><Link href="/">Home</Link> / {crumb}</div>
-            <h1>{title}</h1>
+            <DropTitle text={title} />
             <p>Last updated {updated}</p>
           </div>
           {art && <div className="page-hero__art">{art}</div>}
