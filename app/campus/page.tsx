@@ -51,37 +51,39 @@ const activities = ["Speeches", "Songs", "Antakshari (Baitbazi)", "Drawing & pai
 const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day", "Gandhi Jayanti", "Teachers' Day", "Children's Day", "Annual Function", "Sports Day"];
 
 const gallery: [string, string][] = [
-  ["/images/fd26-banner.jpg", "Foundation Day, 26 October 2026"],
-  ["/images/fd26-assembly.jpg", "Students gathered for Foundation Day"],
-  ["/images/fd26-young-students.jpg", "Primary students at Foundation Day"],
-  ["/images/fd26-welcome.jpg", "Welcome address, Foundation Day"],
-  ["/images/fd26-guests.jpg", "Guests at Foundation Day"],
-  ["/images/fd26-girls-guests.jpg", "Students and guests at the celebration"],
-  ["/images/fd26-anchors.jpg", "Student anchors on stage"],
-  ["/images/foundation-day-dance.jpg", "Foundation Day 2026"],
-  ["/images/independence-day-choir.jpg", "Independence Day choir"],
-  ["/images/annual-function-band.jpg", "Annual Function"],
-  ["/images/foundation-day-kids.jpg", "Foundation Day performance"],
-  ["/images/fancy-dress.jpg", "Independence Day fancy dress"],
-  ["/images/prize-distribution.jpg", "Morning prayer & prize distribution"],
-  ["/images/independence-day-group.jpg", "Patriotic song, Independence Day"],
-  ["/images/foundation-day-performance.jpg", "Foundation Day dance"],
-  ["/images/girls-placards.jpg", "Annual Function presentation"],
-  ["/images/kids-action-song.jpg", "Action song by Class II"],
-  ["/images/independence-day-song.jpg", "Senior students' song"],
-  ["/images/foundation-day-song.jpg", "Primary students on stage"],
-  ["/images/student-speakers.jpg", "Student performers"],
-  ["/images/morning-prize.jpg", "Prize winners"],
-  ["/images/parents-audience.jpg", "Parents at the Annual Function"],
-  ["/images/guests-audience.jpg", "Guests and parents"],
-  ["/images/independence-day-stage.jpg", "Independence Day stage"],
-  ["/images/assembly.jpg", "Students at a celebration"],
+  ["/images/fd26-young-students.webp", "Primary students at Foundation Day"],
+  ["/images/fd26-welcome-address.webp", "Welcome address, Foundation Day"],
+  ["/images/fd26-dance-white.webp", "Foundation Day dance"],
+  ["/images/fd26-anchors.webp", "Student anchors on stage"],
+  ["/images/fd26-dance.webp", "Foundation Day 2026"],
+  ["/images/fd26-group-song.webp", "Group song, Foundation Day"],
+  ["/images/fd26-student-speakers.webp", "Student speakers, Foundation Day"],
+  ["/images/principal-address.webp", "Principal's address, Foundation Day"],
+  ["/images/campus-main-building.webp", "The main school building"],
+  ["/images/campus-main-gate.webp", "The main gate and courtyard"],
+  ["/images/campus-garden-entrance.webp", "Garden by the entrance"],
+  ["/images/campus-name-facade.webp", "Shatabdi Public School, Gaya"],
+  ["/images/independence-day-song.webp", "Patriotic song, Independence Day"],
+  ["/images/independence-day-choir.webp", "Independence Day choir"],
+  ["/images/independence-day-fancy-dress.webp", "Independence Day fancy dress"],
+  ["/images/independence-day-army-act.webp", "Young soldiers, Independence Day"],
+  ["/images/independence-day-assembly.webp", "Students with the tricolour"],
+  ["/images/winter-celebration-band.webp", "Student band, Winter Annual Celebration"],
+  ["/images/winter-celebration-skit.webp", "Skit on values, Winter Annual Celebration"],
+  ["/images/winter-celebration-audience.webp", "Parents at the Winter Annual Celebration"],
+  ["/images/winter-celebration-guests.webp", "Guests and parents"],
+  ["/images/certificate-distribution.webp", "Certificates of excellence"],
+  ["/images/annual-function-2017-dance.webp", "Annual Function dance"],
+  ["/images/annual-function-2017-girls-group.webp", "Annual Function presentation"],
+  ["/images/annual-function-2017-speech.webp", "Student speech, Annual Function"],
+  ["/images/annual-function-2017-anchor.webp", "Student anchor, Annual Function"],
+  ["/images/kids-reading.webp", "Young readers"],
 ];
 
 export default function Campus() {
   return (
     <>
-      <PageHero crumb="Campus & Life" title="Campus & school life" image={{ src: "/images/fd26-ali-bhawan.jpg", alt: "Students assembled in front of Ali Bhawan on Foundation Day 2026", position: "65% 50%" }}>
+      <PageHero crumb="Campus & Life" title="Campus & school life" image={{ src: "/images/fd26-assembly-wide.webp", alt: "Students assembled in front of Ali Bhawan on Foundation Day 2026", position: "65% 50%" }}>
         A green, walled 2.58-acre campus on Katari Hill Road with five buildings, modern labs, a computerised library and a busy calendar of celebrations.
       </PageHero>
 

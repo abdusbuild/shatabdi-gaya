@@ -34,10 +34,10 @@ const achievements = [
 ];
 
 const moments = [
-  ["/images/foundation-day-dance.jpg", "Foundation Day 2026"],
-  ["/images/independence-day-group.jpg", "Independence Day 2026"],
-  ["/images/annual-function-band.jpg", "Annual Function"],
-  ["/images/prize-distribution.jpg", "Morning prayer & prizes"],
+  ["/images/fd26-dance-white.webp", "Foundation Day 2026"],
+  ["/images/independence-day-song.webp", "Independence Day 2026"],
+  ["/images/winter-celebration-band.webp", "Winter Annual Celebration"],
+  ["/images/certificate-distribution.webp", "Certificates of excellence"],
 ];
 
 export default function Home() {
@@ -55,10 +55,10 @@ export default function Home() {
             </div>
           </div>
           <div className="hero__mosaic reveal">
-            <Photo src="/images/foundation-day-stage.jpg" label="Foundation Day, 26 October 2026" priority sizes="(max-width: 900px) 50vw, 300px" />
-            <Photo src="/images/kids-reading.jpg" label="Reading corner" priority sizes="(max-width: 900px) 50vw, 300px" />
-            <Photo src="/images/computer-lab.jpg" label="Computer lab" sizes="(max-width: 900px) 50vw, 300px" className="ph--top" />
-            <Photo src="/images/independence-day-choir.jpg" label="Independence Day celebrations" className="ph--top" />
+            <Photo src="/images/fd26-group-song.webp" label="Foundation Day, 26 October 2026" priority sizes="(max-width: 900px) 50vw, 300px" />
+            <Photo src="/images/kids-reading.webp" label="Reading corner" priority sizes="(max-width: 900px) 50vw, 300px" />
+            <Photo src="/images/campus-main-building.webp" label="Our campus on Katari Hill Road" sizes="(max-width: 900px) 50vw, 300px" className="ph--top" />
+            <Photo src="/images/independence-day-choir.webp" label="Independence Day celebrations" className="ph--top" />
           </div>
         </div>
         <div className="ticker" aria-hidden="true">
@@ -100,7 +100,7 @@ export default function Home() {
 
       <section>
         <div className="wrap split">
-          <Photo src="/images/assembly.jpg" label="Students at a school celebration" className="reveal ph--tall" />
+          <Photo src="/images/fd26-assembly-ali-bhawan.webp" label="Students gathered in front of Ali Bhawan" className="reveal ph--tall" />
           <div className="reveal">
             <h2 className="h2-md">Born with the <em>new century</em></h2>
             <p className="lead">Shatabdi means &ldquo;century.&rdquo; The school was formally inaugurated on 26 October 2000 by Janab Saiyid Hamid, former Vice-Chancellor of Aligarh Muslim University and then Chancellor of Jamia Hamdard.</p>
@@ -118,7 +118,7 @@ export default function Home() {
             <p>We are working for all round development of a child; our 100 percent focus is to achieve 100 percent. It is possible only due to our dedication, hard work, discipline, enthusiasm, punctuality and above all our motivation.</p>
             <Link href="/about#principal" className="link-gold">Read the full message →</Link>
           </div>
-          <Photo src="/images/principal-address.jpg" label="Principal's address, Foundation Day 2026" className="reveal ph--tall" />
+          <Photo src="/images/principal-address-portrait.webp" label="Principal's address, Foundation Day 2026" className="reveal ph--tall" />
         </div>
       </section>
 

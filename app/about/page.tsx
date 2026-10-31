@@ -60,7 +60,7 @@ export default function About() {
             <p className="muted">The school lies in a peaceful part of the city, about 3 km west of Gaya Railway Junction. Five buildings with well-ventilated classrooms, modern laboratories, a well-furnished library and a computer lab make it an ideal place for learning. Trees along the boundary wall and a garden keep the campus green.</p>
             <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,400 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas.</p>
           </div>
-          <Photo src="/images/foundation-day-stage.jpg" label="Foundation Day on campus" className="reveal ph--tall" />
+          <Photo src="/images/campus-courtyard-school-bus.webp" label="The campus on Katari Hill Road" className="reveal ph--tall" />
         </div>
       </section>
 
@@ -80,7 +80,7 @@ export default function About() {
       <section id="principal">
         <div className="wrap split split--top">
           <div className="reveal">
-            <Photo src="/images/principal-address.jpg" label="Principal's address, Foundation Day 2026" className="ph--tall" />
+            <Photo src="/images/principal-address-portrait.webp" label="Principal's address, Foundation Day 2026" className="ph--tall" />
           </div>
           <div className="reveal message">
             <h2 className="h2-md">Educating the mind and soul</h2>

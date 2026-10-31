@@ -62,7 +62,7 @@ export default function Admissions() {
           </div>
         </div>
         <div className="wrap mt-lg">
-          <Photo src="/images/student-speakers.jpg" label="Students presenting at a school programme" className="reveal ph--tall ph--top" />
+          <Photo src="/images/fd26-student-speakers.webp" label="Students presenting at a school programme" className="reveal ph--tall ph--top" />
         </div>
       </section>
 

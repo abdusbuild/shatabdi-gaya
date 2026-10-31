@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Shatabdi Public School, Gaya",
-    images: [{ url: "/images/foundation-day-stage.jpg", width: 1280, height: 720, alt: "Foundation Day at Shatabdi Public School, Gaya" }],
+    images: [{ url: "/images/campus-main-building.webp", width: 1779, height: 884, alt: "The main building of Shatabdi Public School, Gaya" }],
   },
   twitter: { card: "summary_large_image" },
 };
@@ -32,7 +32,7 @@ const schoolJsonLd = {
   name: SCHOOL.name,
   url: SITE_URL,
   logo: `${SITE_URL}/logo-light.png`,
-  image: `${SITE_URL}/images/foundation-day-stage.jpg`,
+  image: `${SITE_URL}/images/campus-main-building.webp`,
   telephone: SCHOOL.phone,
   email: SCHOOL.email,
   foundingDate: "2000-10-26",
