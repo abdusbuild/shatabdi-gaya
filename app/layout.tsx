@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     "Shatabdi Public School, Gaya — an English-medium, co-educational CBSE senior secondary school (Affiliation No. 330113) on Katari Hill Road, run by the Shatabdi Foundation since 2000.",
-  icons: { icon: "/logo-orange.png", apple: "/logo-orange.png" },
+  icons: { icon: "/logo-light.png", apple: "/logo-light.png" },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -31,7 +31,7 @@ const schoolJsonLd = {
   "@type": "School",
   name: SCHOOL.name,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo-orange.png`,
+  logo: `${SITE_URL}/logo-light.png`,
   image: `${SITE_URL}/images/foundation-day-stage.jpg`,
   telephone: SCHOOL.phone,
   email: SCHOOL.email,
