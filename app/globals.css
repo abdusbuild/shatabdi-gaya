@@ -634,7 +634,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 .stars { color: var(--gold-text); letter-spacing: 2px; font-size: 18px; }
 .reviews-head + .grid { margin-top: 40px; }
 .reviews-head + .reviews-scroll { margin-top: 40px; }
-.reviews-scroll__track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 44px) / 3); gap: 22px; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding: 4px 4px 18px; margin: -4px -4px 0; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.reviews-scroll__track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 44px) / 3); gap: 22px; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding: 4px 4px 10px; margin: -4px -4px 0; scrollbar-width: none; -ms-overflow-style: none; }
+.reviews-scroll__track::-webkit-scrollbar { display: none; }
 .reviews-scroll__track > * { scroll-snap-align: start; }
 .reviews-scroll__track:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 4px; border-radius: var(--radius); }
 .reviews-scroll__nav { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }

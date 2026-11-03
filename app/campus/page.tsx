@@ -188,6 +188,7 @@ export default function Campus() {
               src="https://www.youtube-nocookie.com/embed/e3YOWHp25E8"
               title="Principal's Address during Foundation Day Celebration 2026"
               loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
