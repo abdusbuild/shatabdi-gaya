@@ -78,7 +78,7 @@ export default function Academics() {
               <li>A vocational or skill subject, such as Information Technology</li>
             </ul>
           </div>
-          <Photo src="/images/certificate-distribution.webp" label="Certificates of excellence for top performers" className="reveal ph--tall ph--top" />
+          <Photo src="/images/science-museum-visit.webp" label="Students on a science museum visit" className="reveal ph--tall ph--top" />
         </div>
       </section>
 
@@ -95,7 +95,7 @@ export default function Academics() {
 
       <section>
         <div className="wrap split">
-          <Photo src="/images/kids-reading.webp" label="Young readers in the primary section" className="reveal ph--tall" />
+          <Photo src="/images/study-tour-girls.webp" label="Senior students on a study tour" className="reveal ph--tall" />
           <div className="reveal">
             <h2 className="h2-md">More than 20,000 books</h2>
             <p className="lead">Our computerised library is enriched every year with books and journals for students and teachers alike.</p>

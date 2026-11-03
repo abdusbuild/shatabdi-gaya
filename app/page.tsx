@@ -13,7 +13,7 @@ export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: {
 
 const heroSlides: Slide[] = [
   { src: "/images/campus-name-facade.webp", alt: "Shatabdi Public School, Gaya, painted on the building", position: "70% 50%" },
-  { src: "/images/campus-main-gate.webp", alt: "The main gate and courtyard on Katari Hill Road", position: "55% 50%" },
+  { src: "/images/campus-main-building.webp", alt: "The main building and courtyard on Katari Hill Road", position: "55% 50%" },
   { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", position: "60% 50%" },
   { src: "/images/campus-garden-entrance.webp", alt: "The garden by the school entrance" },
 ];
@@ -33,10 +33,10 @@ const promises = [
 ];
 
 const stages = [
-  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/kids-reading.webp", alt: "Young pupils reading picture books in the primary section", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
-  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-2017-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
-  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/independence-day-choir.webp", alt: "Secondary students singing at the Independence Day celebration", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
-  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-2017-anchor.webp", alt: "A senior student anchoring the Annual Function", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
+  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/annual-function-dance-yellow.webp", alt: "Young pupils in yellow costumes dancing at the Annual Function", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
+  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
+  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/excursion-girls-gate.webp", alt: "Secondary students on an educational excursion", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
+  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-speech.webp", alt: "A senior student speaking at the Annual Function", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
 ];
 
 const achievements = [
@@ -48,25 +48,25 @@ const achievements = [
 const photoColumns = [
   [
     ["/images/fd26-assembly-ali-bhawan.webp", "Students gathered in front of Ali Bhawan on Foundation Day"],
-    ["/images/kids-reading.webp", "Young pupils reading picture books"],
-    ["/images/campus-main-gate.webp", "The main gate and courtyard on Katari Hill Road"],
-    ["/images/fd26-dance-white.webp", "A Foundation Day dance by primary girls"],
-    ["/images/independence-day-choir.webp", "The school choir on Independence Day"],
+    ["/images/annual-function-dance-yellow.webp", "Young pupils dancing at the Annual Function"],
+    ["/images/campus-courtyard-school-bus.webp", "The courtyard and school buses on Katari Hill Road"],
+    ["/images/excursion-group-gate.webp", "Students and teachers on an educational excursion"],
+    ["/images/annual-function-girls-group.webp", "A group presentation at the Annual Function"],
   ],
   [
     ["/images/campus-garden-entrance.webp", "The garden by the school entrance"],
-    ["/images/certificate-distribution.webp", "A pupil receiving a certificate of excellence"],
-    ["/images/fd26-group-song.webp", "Students performing a group song on Foundation Day"],
-    ["/images/winter-celebration-band.webp", "The student band at the Winter Annual Celebration"],
-    ["/images/independence-day-fancy-dress.webp", "Pupils in fancy dress on Independence Day"],
+    ["/images/fd26-welcome-address.webp", "The welcome address on Foundation Day"],
+    ["/images/science-museum-visit.webp", "Students on a science museum visit"],
+    ["/images/campus-arched-windows.webp", "Arched windows of the school building"],
+    ["/images/annual-function-audience.webp", "Parents and guests at the Annual Function"],
   ],
 ];
 
 const moments = [
-  { src: "/images/fd26-dance-white.webp", alt: "Girls in white dresses dancing on stage on Foundation Day 2026", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
-  { src: "/images/independence-day-song.webp", alt: "Students singing a patriotic song on Independence Day", date: "15 August 2026", title: "80th Independence Day", text: "Patriotic songs, fancy dress and a salute from our youngest soldiers." },
-  { src: "/images/winter-celebration-band.webp", alt: "The student band performing at the Winter Annual Celebration", date: "Winter Annual Celebration", title: "The student band on stage", text: "A cultural, sports and awards evening for parents and guests." },
-  { src: "/images/certificate-distribution.webp", alt: "A teacher presenting a certificate of excellence to a pupil", date: "Prize day", title: "Certificates of excellence", text: "Top performers honoured in front of the school." },
+  { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
+  { src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", date: "Annual Function", title: "On stage at the Annual Function", text: "Dances, speeches and group presentations in front of parents and guests." },
+  { src: "/images/excursion-group-gate.webp", alt: "Students and teachers on an educational excursion", date: "Educational excursion", title: "Learning outside the classroom", text: "Senior students and teachers on a day out to explore and learn together." },
+  { src: "/images/science-museum-visit.webp", alt: "Students on a science museum visit", date: "Study tour", title: "A visit to the science museum", text: "Exhibits on space and science bring classroom lessons to life." },
 ];
 
 export default function Home() {
@@ -169,7 +169,7 @@ export default function Home() {
       <section className="band">
         <div className="wrap leader">
           <div className="leader__photo img-reveal">
-            <Image src="/images/principal-address-portrait.webp" alt="The Principal addressing the school on Foundation Day 2026" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
+            <Image src="/images/campus-stair-tower.webp" alt="The school building on Katari Hill Road" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
             <span className="leader__cap"><strong>Mr. Saquib Zarar</strong>Principal, Shatabdi Public School</span>
           </div>
           <div>
