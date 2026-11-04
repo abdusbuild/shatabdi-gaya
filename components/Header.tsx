@@ -111,8 +111,7 @@ export default function Header() {
       <header className={`nav${stuck ? " is-stuck" : ""}${open ? " is-open" : ""}${hidden && !open ? " is-hidden" : ""}${pathname === "/" && !stuck && !open ? " nav--over" : ""}`} onFocus={() => setHidden(false)}>
         <div className="wrap nav__in">
           <Link className="brand" href="/">
-            <img className="brand__logo brand__logo--light" src="/logo-light-nav.webp" alt="" width={78} height={78} />
-            <img className="brand__logo brand__logo--dark" src="/logo-dark-nav.webp" alt="" width={78} height={78} />
+            <img className="brand__logo" src="/logo-nav.webp" alt="" width={66} height={78} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
               <span className="brand__tag">Gaya · CBSE 330113</span>
@@ -150,7 +149,7 @@ export default function Header() {
       <div className={`mobile-menu${open ? " is-open" : ""}`} id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden={!open} inert={!open} onClick={(e) => { if ((e.target as HTMLElement).closest("a")) setOpen(false); }}>
         <div className="mobile-menu__top">
           <Link className="brand mobile-menu__brand" href="/">
-            <img src="/logo-dark-nav.webp" alt="" width={64} height={64} />
+            <img src="/logo-nav.webp" alt="" width={54} height={64} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
               <span className="brand__tag">Gaya · CBSE 330113</span>
