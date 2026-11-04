@@ -6,8 +6,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Academics",
-  description: "CBSE curriculum from pre-primary to Class XII at Shatabdi Public School, Gaya. Science and Commerce streams in the senior secondary classes.",
-  alternates: { canonical: "/academics" }, openGraph: { ...OPEN_GRAPH, url: "/academics", images: [ogImage("academics", "Academics at Shatabdi Public School, Gaya")] },
+  description: "CBSE curriculum from pre-primary to Class XII at Shatabdi Public School, Gaya Ji. Science and Commerce streams in the senior secondary classes.",
+  alternates: { canonical: "/academics" }, openGraph: { ...OPEN_GRAPH, url: "/academics", images: [ogImage("academics", "Academics at Shatabdi Public School, Gaya Ji")] },
 };
 
 const stages = [

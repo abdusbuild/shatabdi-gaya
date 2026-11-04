@@ -6,8 +6,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Admissions",
-  description: "Admission process, entrance test, required documents and enquiry form for Shatabdi Public School, Gaya.",
-  alternates: { canonical: "/admissions" }, openGraph: { ...OPEN_GRAPH, url: "/admissions", images: [ogImage("admissions", "Admissions at Shatabdi Public School, Gaya")] },
+  description: "Admission process, entrance test, required documents and enquiry form for Shatabdi Public School, Gaya Ji.",
+  alternates: { canonical: "/admissions" }, openGraph: { ...OPEN_GRAPH, url: "/admissions", images: [ogImage("admissions", "Admissions at Shatabdi Public School, Gaya Ji")] },
 };
 
 const steps = [
