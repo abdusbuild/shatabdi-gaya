@@ -280,9 +280,12 @@ section.hero { position: relative; overflow: clip; padding: 0; }
 .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* Ticker */
-.ticker { background: var(--gold-500); color: #1f1e1d; overflow: clip; padding: 16px 0; }
-.ticker__track { display: flex; gap: 40px; width: max-content; animation: scroll 40s linear infinite; }
-.ticker:hover .ticker__track { animation-play-state: paused; }
+:root { --ticker-h: 60px; }
+.ticker { display: flex; align-items: center; height: var(--ticker-h); background: linear-gradient(90deg, #b8bfcc, #e6e9ef 50%, #b8bfcc); color: #16204d; overflow: clip; text-decoration: none; }
+.ticker:focus-visible { outline-offset: -4px; border-radius: 0; }
+/* The end padding matches the gap, so -50% lands exactly on the second half and the loop has no jump. */
+.ticker__track { display: flex; flex: none; gap: 40px; padding-right: 40px; width: max-content; animation: scroll 80s linear infinite; }
+.ticker:hover .ticker__track, .ticker:focus-visible .ticker__track { animation-play-state: paused; }
 .ticker__track span { white-space: nowrap; font-family: var(--font-sans); font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 40px; }
 .ticker__track span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 @keyframes scroll { to { transform: translateX(-50%); } }
@@ -704,9 +707,9 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .hero h1 { font-size: clamp(36px, 11vw, 48px); }
   .hero p, .lead { font-size: 16px; }
   .hero__cta .btn, .cta-actions .btn { width: 100%; justify-content: center; }
-  .ticker { margin-top: 40px; padding: 12px 0; }
+  :root { --ticker-h: 50px; }
   .ticker__track span { font-size: 16px; gap: 28px; }
-  .ticker__track { gap: 28px; }
+  .ticker__track { gap: 28px; padding-right: 28px; }
   .stat { padding: 22px 12px; }
   .stat__num { font-size: 30px; }
   .stat__label { font-size: 13px; }

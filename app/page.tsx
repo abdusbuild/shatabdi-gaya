@@ -5,6 +5,7 @@ import CountUp from "@/components/CountUp";
 import HeroSlider, { RotatingWord, type Slide } from "@/components/HeroSlider";
 import Testimonials from "@/components/Testimonials";
 import { CtaBand, Faq } from "@/components/ui";
+import VideoGrid from "@/components/VideoGrid";
 import { SCHOOL } from "@/lib/site";
 import type { Metadata } from "next";
 import { OPEN_GRAPH } from "@/lib/seo";
@@ -72,6 +73,9 @@ const moments = [
   { src: "/images/science-museum-visit.webp", alt: "Students on a science museum visit", date: "Study tour", title: "A visit to the science museum", text: "Exhibits on space and science bring classroom lessons to life." },
 ];
 
+// Six copies: the track slides by half its width, and each half must be wider than any screen.
+const jubileeTicker = Array.from({ length: 6 }, () => ["Silver Jubilee 2025", "Twenty-five years of Shatabdi", "Inaugurated 26 October 2000", "See the celebration"]).flat();
+
 export default function Home() {
   return (
     <>
@@ -84,6 +88,12 @@ export default function Home() {
           </div>
         </HeroSlider>
       </section>
+
+      <Link className="ticker" href="/campus#silver-jubilee" aria-label="Silver Jubilee 2025: twenty-five years of Shatabdi. See the celebration">
+        <span className="ticker__track" aria-hidden="true">
+          {jubileeTicker.map((text, i) => <span key={i}>{text}</span>)}
+        </span>
+      </Link>
 
       <section className="band intro">
         <div className="wrap">
@@ -100,6 +110,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section--alt jubilee">
+        <div className="wrap split">
+          <div>
+            <span className="jubilee__num" aria-hidden="true">25</span>
+            <p className="eyebrow reveal">Silver Jubilee 2025</p>
+            <h2 className="h2-md slide-title">Twenty-five years of <em>Shatabdi</em></h2>
+            <span className="rule" />
+            <p className="lead reveal">We celebrated our Silver Jubilee in 2025, twenty-five years after the school was inaugurated on 26 October 2000.</p>
+            <p className="muted reveal">Dr. Syed Abuzar Kamaluddin joined us as Chief Guest. The programme opened with tilawat-e-Kalam Pak, and students filled the stage with the Tarana-e-Shatabdi, dances, dramas, an Urdu mushaira and the dohas of Kabir.</p>
+            <Link className="pill pill--dark" href="/campus#silver-jubilee">See the celebration</Link>
+          </div>
+          <VideoGrid videos={[{ id: "Gmsu2LEyp4o", title: "Tarana-e-Shatabdi, sung by students at the Silver Jubilee" }]} />
         </div>
       </section>
 
