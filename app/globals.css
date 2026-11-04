@@ -343,9 +343,9 @@ section.hero { position: relative; overflow: clip; padding: 0; }
 .pathway { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; position: relative; }
 .pathway::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px; background: var(--line); }
 .pathway li { position: relative; padding-top: 40px; }
-.pathway li::before { content: ""; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--gold-500); }
-.pathway li:last-child::before { background: var(--gold-500); }
-.pathway__tag { display: block; font-size: 13px; font-weight: 600; color: var(--gold-text); margin-bottom: 6px; }
+.pathway li::before { content: ""; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+.pathway li:last-child::before { background: var(--accent); }
+.pathway__tag { display: block; font-size: 13px; font-weight: 600; color: var(--accent-text); margin-bottom: 6px; }
 .pathway h3 { font-size: 24px; margin-bottom: 8px; }
 .pathway p { color: var(--muted); margin: 0; }
 @media (max-width: 860px) {
@@ -915,28 +915,30 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .band .band__sub { margin: 0 0 40px; font-size: 17px; }
 
 /* School stages: photo panels that widen on hover */
-.stages { display: flex; gap: 6px; height: clamp(420px, 46vw, 540px); border-radius: var(--radius); border-top-left-radius: var(--leaf); overflow: hidden; box-shadow: 0 30px 60px -36px rgba(31, 30, 29, .6); }
-.stage { position: relative; flex: 1; min-width: 0; overflow: hidden; color: #fff; text-decoration: none; transition: flex-grow .7s var(--ease); }
-.stage img { object-fit: cover; transition: transform 1.2s var(--ease); }
-.stage::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 19, 18, 0) 35%, rgba(20, 19, 18, .88) 100%); transition: background .6s var(--ease); }
-.stage__body { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: clamp(18px, 2.4vw, 32px); display: grid; gap: 6px; }
-.stage__title { font-family: var(--font-heading); font-size: clamp(19px, 1.8vw, 26px); font-weight: 600; line-height: 1.15; }
-.stage__classes { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-400); }
-.stage__text, .stage__more { max-height: 0; opacity: 0; overflow: hidden; transform: translateY(12px); transition: max-height .6s var(--ease), opacity .45s ease, transform .6s var(--ease); }
-.stage__text { font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .86); max-width: 420px; }
-.stage__more { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
-.stage__more svg { width: 15px; height: 15px; }
-.stage:is(:hover, :focus-visible), .stages:not(:hover):not(:focus-within) .stage:first-child { flex-grow: 2.6; }
-.stage:is(:hover, :focus-visible) img, .stages:not(:hover):not(:focus-within) .stage:first-child img { transform: scale(1.05); }
-.stage:is(:hover, :focus-visible)::after, .stages:not(:hover):not(:focus-within) .stage:first-child::after { background: linear-gradient(180deg, rgba(20, 19, 18, .05) 20%, rgba(20, 19, 18, .92) 100%); }
-.stage:is(:hover, :focus-visible) :is(.stage__text, .stage__more),
-.stages:not(:hover):not(:focus-within) .stage:first-child :is(.stage__text, .stage__more) { max-height: 140px; opacity: 1; transform: none; transition-delay: .15s; }
-.stage:focus-visible { outline: 3px solid var(--gold-500); outline-offset: -3px; border-radius: 0; }
-@media (max-width: 760px) {
-  .stages { flex-direction: column; height: auto; }
-  .stage { flex: none; height: 260px; }
-  .stage :is(.stage__text, .stage__more) { max-height: none; opacity: 1; transform: none; }
-  .stage::after { background: linear-gradient(180deg, rgba(20, 19, 18, .1) 20%, rgba(20, 19, 18, .9) 100%); }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); }
+.stage { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; }
+.stage__img { position: relative; display: block; aspect-ratio: 4 / 5; margin-bottom: 18px; border-radius: var(--radius); overflow: hidden; background: var(--skel); box-shadow: var(--shadow); }
+.stages li:first-child .stage__img { border-top-left-radius: var(--leaf); }
+.stages li:last-child .stage__img { border-bottom-right-radius: var(--leaf); }
+.stage__img img { object-fit: cover; object-position: 50% 30%; transition: transform 1.2s var(--ease); }
+.stage__classes { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); }
+.stage__title { font-family: var(--font-heading); font-size: clamp(20px, 1.9vw, 25px); font-weight: 600; line-height: 1.2; margin: 6px 0 8px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.stage__text { color: var(--muted); font-size: 15px; line-height: 1.6; }
+.stage__more { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 14px; font-weight: 600; font-size: 14px; color: var(--accent-text); }
+.stage__more svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+.stage:is(:hover, :focus-visible) .stage__img img { transform: scale(1.06); }
+.stage:is(:hover, :focus-visible) .stage__more svg { transform: translateX(4px); }
+.stage:is(:hover, :focus-visible) .stage__title { color: var(--accent-text); }
+.stage:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; border-radius: var(--radius); }
+@media (max-width: 980px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; } }
+@media (max-width: 560px) {
+  /* Two narrow cards per row on phones, so the text steps down to fit */
+  .stages { column-gap: 14px; row-gap: 28px; }
+  .stage__img { margin-bottom: 12px; }
+  .stage__classes { font-size: 11px; letter-spacing: .08em; }
+  .stage__title { font-size: 18px; margin: 4px 0 6px; padding-bottom: 8px; }
+  .stage__text { font-size: 13.5px; line-height: 1.5; }
+  .stage__more { font-size: 13px; padding-top: 10px; }
 }
 
 /* Story */

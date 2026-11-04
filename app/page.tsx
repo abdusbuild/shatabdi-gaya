@@ -37,10 +37,10 @@ const promises = [
 ];
 
 const stages = [
-  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/annual-function-dance-yellow.webp", alt: "Young pupils in yellow costumes dancing at the Annual Function", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
-  { title: "Primary", classes: "Classes I to V", src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
-  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/excursion-girls-gate.webp", alt: "Secondary students on an educational excursion", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
-  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/annual-function-speech.webp", alt: "A senior student speaking at the Annual Function", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
+  { title: "Pre-primary", classes: "Prep-I & Prep-II", src: "/images/stage-preprimary.webp", alt: "The youngest pupils, dressed in white, performing on stage on Foundation Day", text: "A gentle start in English, with stories, songs, colours and the habit of reading." },
+  { title: "Primary", classes: "Classes I to V", src: "/images/stage-primary.webp", alt: "Primary pupils performing a skit on stage on Foundation Day", text: "Strong foundations in languages, mathematics and environmental studies, with music, art and time on stage." },
+  { title: "Middle & Secondary", classes: "Classes VI to X", src: "/images/stage-secondary.webp", alt: "Secondary students in school uniform on a study tour", text: "Lab-based science, computer education and continuous evaluation through to the Class X board examinations." },
+  { title: "Senior Secondary", classes: "Classes XI & XII", src: "/images/stage-senior.webp", alt: "Senior students at a science museum", text: "Science (with or without Mathematics) and Commerce streams, preparing students for college and careers." },
 ];
 
 const achievements = [
@@ -134,19 +134,21 @@ export default function Home() {
             <h2 className="slide-title">Learning at <em>Shatabdi</em></h2>
             <p className="muted reveal">A full CBSE journey under one roof, from a child&rsquo;s first day in Prep to the Class XII board examinations.</p>
           </div>
-          <div className="stages reveal">
+          <ol className="stages">
             {stages.map((st) => (
-              <Link className="stage" href="/academics" key={st.title}>
-                <Image src={st.src} alt={st.alt} fill sizes="(max-width: 760px) 100vw, 50vw" quality={85} />
-                <span className="stage__body">
-                  <span className="stage__title">{st.title}</span>
+              <li className="reveal" key={st.title}>
+                <Link className="stage" href="/academics">
+                  <span className="stage__img">
+                    <Image src={st.src} alt={st.alt} fill sizes="(max-width: 980px) 50vw, 300px" quality={85} />
+                  </span>
                   <span className="stage__classes">{st.classes}</span>
+                  <span className="stage__title">{st.title}</span>
                   <span className="stage__text">{st.text}</span>
                   <span className="stage__more">Know more <Arrow /></span>
-                </span>
-              </Link>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
