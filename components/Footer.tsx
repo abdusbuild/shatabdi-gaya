@@ -65,7 +65,7 @@ export default function Footer() {
               <a href={SCHOOL.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Facebook /></a>
               <a href={SCHOOL.instagram} target="_blank" rel="noopener" aria-label="Instagram"><Instagram /></a>
               <a href={SCHOOL.youtube} target="_blank" rel="noopener" aria-label="YouTube"><YouTube /></a>
-              <a href={`https://wa.me/${SCHOOL.mobile}`} target="_blank" rel="noopener" aria-label="WhatsApp"><WhatsApp /></a>
+              <a href={`https://wa.me/${SCHOOL.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp"><WhatsApp /></a>
               <a href={`mailto:${SCHOOL.email}`} aria-label="Email"><Mail /></a>
             </div>
           </div>
@@ -95,6 +95,7 @@ export default function Footer() {
               <li><Pin />{SCHOOL.address}</li>
               <li><Phone /><span>Principal&rsquo;s office: <a href={`tel:${SCHOOL.phone}`}>{SCHOOL.phoneLabel}</a></span></li>
               <li><Phone /><span>Reception: <a href={`tel:+${SCHOOL.mobile}`}>{SCHOOL.mobileLabel}</a></span></li>
+              <li><Phone /><span>WhatsApp &amp; call: <a href={`tel:+${SCHOOL.whatsapp}`}>{SCHOOL.whatsappLabel}</a></span></li>
               <li><Mail /><a href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a></li>
             </ul>
           </div>

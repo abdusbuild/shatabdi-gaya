@@ -192,7 +192,7 @@ export default function Header() {
               <a href={SCHOOL.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Facebook /></a>
               <a href={SCHOOL.instagram} target="_blank" rel="noopener" aria-label="Instagram"><Instagram /></a>
               <a href={SCHOOL.youtube} target="_blank" rel="noopener" aria-label="YouTube"><YouTube /></a>
-              <a href={`https://wa.me/${SCHOOL.mobile}`} target="_blank" rel="noopener" aria-label="WhatsApp"><WhatsApp /></a>
+              <a href={`https://wa.me/${SCHOOL.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp"><WhatsApp /></a>
             </div>
           </div>
         </div>

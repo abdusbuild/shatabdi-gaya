@@ -111,7 +111,7 @@ export default function EnquiryForm({ subject, children, submitLabel, via = "ema
       .join("\n");
     if (via === "whatsapp") {
       const text = `*${subject}*\n\n${lines}`;
-      const url = `https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(text)}`;
+      const url = `https://wa.me/${SCHOOL.whatsapp}?text=${encodeURIComponent(text)}`;
       // A new tab keeps the site open on desktop; phones hand the link straight to the WhatsApp app
       const win = window.open(url, "_blank");
       if (win) win.opener = null;
@@ -131,14 +131,14 @@ export default function EnquiryForm({ subject, children, submitLabel, via = "ema
         {sent && via === "whatsapp" && (
           <>
             <strong>WhatsApp should now be open with your enquiry.</strong> Press send there to deliver it. If it did not open,{" "}
-            <a href={`https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">try again</a>{" "}
+            <a href={`https://wa.me/${SCHOOL.whatsapp}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">try again</a>{" "}
             or call the office on <a href={`tel:+${SCHOOL.mobile}`}>{SCHOOL.mobileLabel}</a>.
           </>
         )}
         {sent && via === "email" && (
           <>
             <strong>Your email app should now be open with this message.</strong> Press send there to deliver it. If no app opened,{" "}
-            <a href={`https://wa.me/${SCHOOL.mobile}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">send it on WhatsApp</a>{" "}
+            <a href={`https://wa.me/${SCHOOL.whatsapp}?text=${encodeURIComponent(sent)}`} target="_blank" rel="noopener">send it on WhatsApp</a>{" "}
             or call the office on <a href={`tel:${SCHOOL.phone}`}>{SCHOOL.phoneLabel}</a>.
           </>
         )}

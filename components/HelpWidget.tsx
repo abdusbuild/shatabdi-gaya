@@ -46,7 +46,7 @@ export default function HelpWidget() {
             <span className="enquire-opt__icon enquire-opt__icon--call"><Phone /></span>
             <span className="enquire-opt__copy"><strong>Call the office</strong><small>{SCHOOL.phoneLabel}</small></span>
           </a>
-          <a className="enquire-opt" href={`https://wa.me/${SCHOOL.mobile}`} target="_blank" rel="noopener">
+          <a className="enquire-opt" href={`https://wa.me/${SCHOOL.whatsapp}`} target="_blank" rel="noopener">
             <span className="enquire-opt__icon enquire-opt__icon--whatsapp"><WhatsApp /></span>
             <span className="enquire-opt__copy"><strong>WhatsApp</strong><small>Chat with reception</small></span>
           </a>
