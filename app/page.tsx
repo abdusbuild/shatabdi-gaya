@@ -23,8 +23,8 @@ const heroSlides: Slide[] = [
 ];
 
 const stats = [
-  { count: "26", suffix: "", label: "Years of teaching in Gaya" },
-  { count: "1400", suffix: "+", label: "Students enrolled" },
+  { count: "26", suffix: "", label: "Years of teaching in Gaya Ji" },
+  { count: "1000", suffix: "+", label: "Students enrolled" },
   { count: "20000", suffix: "+", label: "Books in the library" },
   { count: "2.58", suffix: " ac", label: "Campus area" },
 ];
