@@ -119,7 +119,7 @@ export default function EnquiryForm({ subject, children, submitLabel, via = "ema
       setSent(text);
       return;
     }
-    window.location.href = `mailto:${SCHOOL.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+    window.location.href = `mailto:${SCHOOL.email}?cc=${SCHOOL.emailBackup}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
     setSent(`${subject}\n\n${lines}`);
   };
 
