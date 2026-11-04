@@ -12,10 +12,13 @@ import { OPEN_GRAPH } from "@/lib/seo";
 export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { ...OPEN_GRAPH, url: "/" } };
 
 const heroSlides: Slide[] = [
-  { src: "/images/campus-name-facade.webp", alt: "Shatabdi Public School, Gaya, painted on the building", position: "70% 50%" },
-  { src: "/images/campus-main-building.webp", alt: "The main building and courtyard on Katari Hill Road", position: "55% 50%" },
-  { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", position: "60% 50%" },
-  { src: "/images/campus-garden-entrance.webp", alt: "The garden by the school entrance" },
+  { src: "/hero/science-museum-visit.webp", alt: "Students on a science museum visit", position: "50% 35%" },
+  { src: "/hero/excursion-girls-group.webp", alt: "Students in school uniform on an educational excursion", position: "50% 35%" },
+  { src: "/hero/study-tour-girls.webp", alt: "Senior students on a study tour", position: "50% 35%" },
+  { src: "/hero/excursion-bus-selfie.webp", alt: "Students taking a selfie on the bus during an excursion", position: "50% 35%" },
+  { src: "/hero/excursion-girls-gate.webp", alt: "Secondary students at the gate on an educational excursion", position: "50% 35%" },
+  { src: "/hero/study-tour-selfie.webp", alt: "Students taking a selfie on a study tour", position: "60% 30%" },
+  { src: "/hero/excursion-group-gate.webp", alt: "Students and teachers on an educational excursion", position: "50% 35%" },
 ];
 
 const stats = [
