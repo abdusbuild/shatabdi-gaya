@@ -5,7 +5,7 @@ import { Arrow } from "./Icons";
 import { SkeletonImage } from "./Skeleton";
 import { Photo } from "./ui";
 
-type Item = [src: string, label: string];
+type Item = [src: string, label: string, tall?: boolean];
 
 // Photo grid that opens a full-screen viewer. The viewer is a native <dialog> (Esc, focus
 // handling) holding a scroll-snap strip, so phones swipe between photos with native momentum;
@@ -65,9 +65,9 @@ export default function Gallery({ items }: { items: Item[] }) {
   return (
     <>
       <div className="gallery">
-        {items.map(([src, label], i) => (
-          <button type="button" key={src} className="gallery__item reveal" onClick={() => show(i)} onMouseMove={follow} aria-label={`Open photo: ${label}`}>
-            <Photo src={src} label={label} sizes={i % 7 === 0 ? "(max-width: 760px) 100vw, 800px" : "(max-width: 760px) 50vw, 400px"} />
+        {items.map(([src, label, tall], i) => (
+          <button type="button" key={src} className={`gallery__item${tall ? " gallery__item--tall" : ""} reveal`} onClick={() => show(i)} onMouseMove={follow} aria-label={`Open photo: ${label}`}>
+            <Photo src={src} label={label} sizes={i % 7 === 0 && !tall ? "(max-width: 760px) 100vw, 800px" : "(max-width: 760px) 50vw, 400px"} />
           </button>
         ))}
       </div>

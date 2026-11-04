@@ -82,10 +82,28 @@ const houses = [
 const activities = ["Speeches", "Songs", "Antakshari (Baitbazi)", "Drawing & painting", "Debates", "Poem recitation", "Quiz", "Dance", "Drama", "Fancy dress", "Patriotic songs", "Action songs"];
 const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day", "Gandhi Jayanti", "Teachers' Day", "Children's Day", "Annual Function", "Sports Day"];
 
-const gallery: [string, string][] = [
+// A third value of true marks a portrait photo, shown as a tall tile so it is not cropped
+const gallery: [string, string, boolean?][] = [
   ["/images/fd26-assembly-ali-bhawan.webp", "Foundation Day assembly in front of Ali Bhawan"],
   ["/images/fd26-welcome-address.webp", "Welcome address, Foundation Day"],
-  ["/images/fd26-student-speakers.webp", "Student speakers, Foundation Day"],
+  ["/images/fd26-student-speakers.webp", "Student speakers, Foundation Day", true],
+  ["/images/fd26-students-seated.webp", "Students seated for the Foundation Day programme"],
+  ["/images/fd26-guests-and-students.webp", "Guests and students in front of Ali Bhawan"],
+  ["/images/fd26-guests.webp", "Guests at the Foundation Day programme"],
+  ["/images/fd26-hosts.webp", "The hosts on stage, Foundation Day"],
+  ["/images/fd26-little-ones.webp", "Our youngest pupils on stage, Foundation Day"],
+  ["/images/fd26-skit.webp", "Primary pupils performing a skit, Foundation Day"],
+  ["/images/fd26-solo-dance.webp", "A solo dance, Foundation Day"],
+  ["/images/fd26-group-song.webp", "A group song, Foundation Day"],
+  ["/images/fd26-prize.webp", "Prize giving, Foundation Day"],
+  ["/images/fd26-prize-certificate.webp", "A young winner with her certificate, Foundation Day"],
+  ["/images/fd26-guest-address.webp", "A guest addresses the gathering, Foundation Day"],
+  ["/images/exhibition-volcano.webp", "Volcano model, project exhibition"],
+  ["/images/exhibition-cell-model.webp", "Plant and animal cell models, project exhibition"],
+  ["/images/exhibition-solar-system.webp", "Solar system model, project exhibition"],
+  ["/images/exhibition-solar-system-2.webp", "Another solar system model, project exhibition"],
+  ["/images/exhibition-smart-city.webp", "A pollution-free city model, project exhibition"],
+  ["/images/exhibition-social-science.webp", "Social Science models, project exhibition"],
   ["/images/campus-main-building.webp", "The main school building"],
   ["/images/campus-name-facade.webp", "Shatabdi Public School, Gaya"],
   ["/images/campus-garden-entrance.webp", "Garden by the entrance"],
@@ -93,11 +111,12 @@ const gallery: [string, string][] = [
   ["/images/campus-stair-tower.webp", "The stair tower"],
   ["/images/campus-building-side.webp", "Classroom wing"],
   ["/images/campus-courtyard-school-bus.webp", "The courtyard and school buses"],
+  ["/images/campus-buses-classroom-wing.webp", "School buses beside the classroom wing"],
   ["/images/annual-function-dance.webp", "Annual Function dance"],
   ["/images/annual-function-dance-yellow.webp", "Young dancers, Annual Function"],
   ["/images/annual-function-girls-group.webp", "Annual Function presentation"],
-  ["/images/annual-function-speech.webp", "Student speech, Annual Function"],
-  ["/images/annual-function-student-speech.webp", "Speaking at the podium, Annual Function"],
+  ["/images/annual-function-speech.webp", "Student speech, Annual Function", true],
+  ["/images/annual-function-student-speech.webp", "Speaking at the podium, Annual Function", true],
   ["/images/annual-function-audience.webp", "Parents and guests at the Annual Function"],
   ["/images/excursion-group-gate.webp", "Educational excursion"],
   ["/images/excursion-group-line.webp", "Students on an educational excursion"],
@@ -110,9 +129,10 @@ const gallery: [string, string][] = [
   ["/images/study-tour-girls.webp", "Senior students on a study tour"],
   ["/images/study-tour-girls-2.webp", "Study tour"],
   ["/images/study-tour-selfie.webp", "Study tour selfie"],
+  ["/images/study-tour-teachers.webp", "Teachers on a study tour", true],
+  ["/images/management-group.webp", "School management", true],
+  // Last on purpose: on desktop it becomes a tall tile so the final row has no gap (see globals.css)
   ["/images/science-museum-visit.webp", "Science museum visit"],
-  ["/images/study-tour-teachers.webp", "Teachers on a study tour"],
-  ["/images/management-group.webp", "School management"],
 ];
 
 export default function Campus() {
