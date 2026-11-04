@@ -25,7 +25,7 @@ export const SCHOOL = {
 
 // Public origin used for canonical URLs, the sitemap and social previews.
 // Set NEXT_PUBLIC_SITE_URL when deploying to a different domain.
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shatabdigaya.com";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.shatabdigaya.com";
 
 export const NAV = [
   { href: "/", label: "Home" },
