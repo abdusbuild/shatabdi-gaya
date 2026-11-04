@@ -5,6 +5,7 @@ import Gallery from "@/components/Gallery";
 import { PageHero, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
+import VideoGrid, { type Video } from "@/components/VideoGrid";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -12,6 +13,36 @@ export const metadata: Metadata = {
   description: "Buildings, labs, library, houses, clubs and photo gallery of Shatabdi Public School's 2.58-acre campus on Katari Hill Road, Gaya.",
   alternates: { canonical: "/campus" }, openGraph: { ...OPEN_GRAPH, url: "/campus", images: [ogImage("campus", "Campus and school life at Shatabdi Public School, Gaya")] },
 };
+
+// From the school's YouTube channel. Keep the count a multiple of 3 so the last row stays full.
+const videos: Video[] = [
+  { id: "aan2nQ8NI4w", title: "Munna Bhai MBBS" },
+  { id: "H2L5CMJE9b0", title: "Nagada song by Jiara Hussain" },
+  { id: "LoMEb248if0", title: "Beti Hun Main" },
+  { id: "svjVUzjC4TA", title: "Anpadh Neta, a play" },
+  { id: "RBDPWE6HdDU", title: "Sandeshe Aate Hain by students of Class II" },
+  { id: "s3ZU8L6vBOs", title: "With pride and patriotism" },
+  { id: "1oirlY7FhLY", title: "Maa Se Hai Maati by the Class V group" },
+  { id: "-KWsTGqZNMc", title: "Divya Abhishek, a Shatabdi student who cracked the BPSC exam and became an SDM" },
+  { id: "bGEW4jaPpxc", title: "Silver Jubilee Celebration 2025" },
+];
+
+// Silver Jubilee details come from the titles and descriptions of these videos on the school's channel.
+const jubileeVideos: Video[] = [
+  { id: "Gmsu2LEyp4o", title: "Tarana-e-Shatabdi by students" },
+  { id: "RvA8q4k2Lcs", title: "Speech by the Chief Guest, Dr. Syed Abuzar Kamaluddin" },
+  { id: "iBStG7-lPRs", title: "Welcome message by the Principal" },
+  { id: "rwyjyrYn7rA", title: "Speech by Janab Badiuzzaman, Hon. Secretary, Shatabdi Foundation" },
+  { id: "n6OWoDgPJq0", title: "Interview with the Secretary and Principal, with student reviews" },
+  { id: "ebk9ejBjqAA", title: "Group video with members of the Managing Committee" },
+];
+
+const jubileeSpeakers = [
+  ["Chief Guest", "Dr. Syed Abuzar Kamaluddin"],
+  ["Ameer Halqa Bihar", "Janab Rizwan Islahi"],
+  ["Hon. Secretary, Shatabdi Foundation", "Janab Badiuzzaman"],
+  ["Speaker", "Dr. Shamshul Islam"],
+];
 
 const stats = [
   { count: "5", label: "School buildings" },
@@ -166,6 +197,24 @@ export default function Campus() {
         </div>
       </section>
 
+      <section className="band band--deep" id="silver-jubilee">
+        <div className="wrap">
+          <p className="eyebrow reveal">Silver Jubilee 2025</p>
+          <h2 className="slide-title band__title">Twenty-five years of <em>Shatabdi</em></h2>
+          <p className="band__sub reveal">The school marked twenty-five years since its inauguration on 26 October 2000 with speeches and student performances, from the Tarana-e-Shatabdi to dances, dramas, an Urdu mushaira and the dohas of Kabir.</p>
+          <dl className="jubilee__people reveal">
+            {jubileeSpeakers.map(([role, name]) => (
+              <div key={name}>
+                <dt>{role}</dt>
+                <dd>{name}</dd>
+              </div>
+            ))}
+          </dl>
+          <VideoGrid videos={jubileeVideos} />
+          <a className="pill jubilee__more" href={`${SCHOOL.youtube}/search?query=silver%20jubilee`} target="_blank" rel="noopener">Watch all the performances</a>
+        </div>
+      </section>
+
       <section className="section--alt" id="gallery">
         <div className="wrap">
           <SectionHead title="Life at Shatabdi">
@@ -182,7 +231,7 @@ export default function Campus() {
         <div className="wrap split">
           <div className="reveal">
             <h2 className="h2-md">Principal&rsquo;s address, Foundation Day 2026</h2>
-            <p className="muted">The school celebrated its Foundation Day on 26 October 2026 with performances by students of every section. Watch the Principal&rsquo;s address, and find more videos on our channel.</p>
+            <p className="muted">The school celebrated its Foundation Day on 26 October 2026 with performances by students of every section. Watch the Principal&rsquo;s address here, with more videos from the school below.</p>
             <a className="btn btn--navy" href={SCHOOL.youtube} target="_blank" rel="noopener">Visit our YouTube channel</a>
           </div>
           <div className="video reveal">
@@ -195,6 +244,10 @@ export default function Campus() {
               allowFullScreen
             />
           </div>
+        </div>
+        <div className="wrap videos-more">
+          <h2 className="h2-sm reveal">More from our channel</h2>
+          <VideoGrid videos={videos} />
         </div>
       </section>
     </>
