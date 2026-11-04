@@ -82,7 +82,7 @@ export default function Home() {
       <section className="hero">
         <HeroSlider slides={heroSlides} sound="/audio/hero.mp3">
           <div className="hero__text">
-            <h1 className="hero__title">Shatabdi Public School <span>Gaya</span></h1>
+            <h1 className="hero__title">Shatabdi Public School <span>Gaya Ji</span></h1>
             <span className="rule rule--hero" />
             <p className="hero__tag">Rooted in values, reaching for the century ahead.</p>
           </div>
@@ -97,7 +97,7 @@ export default function Home() {
 
       <section className="band intro">
         <div className="wrap">
-          <p className="intro__lead reveal">Welcome to <strong>Shatabdi Public School, Gaya</strong> &mdash; an English-medium, co-educational CBSE school on Katari Hill Road that has paired modern academics with lasting values since 2000, from Prep to Class XII.</p>
+          <p className="intro__lead reveal">Welcome to <strong>Shatabdi Public School, Gaya Ji</strong> &mdash; an English-medium, co-educational CBSE school on Katari Hill Road that has paired modern academics with lasting values since 2000, from Prep to Class XII.</p>
           <div className="intro__foot">
             <span className="rule rule--grow" />
             <Link className="pill" href="/about">Our story</Link>
@@ -159,7 +159,7 @@ export default function Home() {
             <h2 className="h2-md slide-title">Nurturing <RotatingWord words={["character", "curiosity", "confidence", "togetherness"]} /> since 2000</h2>
             <span className="rule" />
             <p className="lead reveal">Shatabdi means &ldquo;century.&rdquo; The school was formally inaugurated on 26 October 2000 by Janab Saiyid Hamid, former Vice-Chancellor of Aligarh Muslim University and then Chancellor of Jamia Hamdard.</p>
-            <p className="muted reveal">It was the first venture of the Shatabdi Foundation, Gaya. The school began with Classes I to VII, gained CBSE affiliation for the secondary classes in 2005 and was upgraded to Class XII in 2007. Today about 1,400 students study here, many of them the first in their families to receive a formal education.</p>
+            <p className="muted reveal">It was the first venture of the Shatabdi Foundation, Gaya Ji. The school began with Classes I to VII, gained CBSE affiliation for the secondary classes in 2005 and was upgraded to Class XII in 2007. Today about 1,000 students study here, many of them the first in their families to receive a formal education.</p>
             <Link className="pill pill--dark" href="/about">Read our full story</Link>
           </div>
           {/* Columns of photos that drift up and down, the middle one against the others */}
@@ -182,7 +182,7 @@ export default function Home() {
         <div className="wrap">
           <div className="title-row">
             <h2 className="slide-title">Why parents <em>choose us</em></h2>
-            <p className="muted reveal">For a quarter of a century, families across Gaya have trusted us with these four things.</p>
+            <p className="muted reveal">For a quarter of a century, families across Gaya Ji have trusted us with these four things.</p>
           </div>
           <ol className="promises">
             {promises.map(([title, text], i) => (
@@ -289,7 +289,7 @@ export default function Home() {
               ["When do admissions open?", <>Admissions for Std I to IX usually open in December. Admission is based on a written entrance test and an interview. See the <Link href="/admissions" className="link-gold">Admissions page</Link> for details.</>],
               ["Is the school co-educational?", "Yes. Shatabdi Public School is a co-educational, English-medium school. About 40% of our students are girls."],
               ["Is there transport or a hostel?", "Conveyance is provided for the many students who come from nearby rural areas. Taiyab Bhawan also houses a hostel for boys from remote areas. Contact the office for details."],
-              ["Where is the school located?", "Katari Hill Road, Aliganj, Gaya, Bihar 823001, about 3 km west of Gaya Railway Junction."],
+              ["Where is the school located?", "Katari Hill Road, Aliganj, Gaya Ji, Bihar 823001, about 3 km west of Gaya Railway Junction."],
             ]}
           />
         </div>
