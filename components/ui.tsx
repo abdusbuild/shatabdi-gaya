@@ -33,9 +33,8 @@ export function DropTitle({ text }: { text: string }) {
   );
 }
 
-// Title band for inner pages. With `image`, a real photo bleeds off the right edge;
-// with `art`, an illustration (components/HeroArt.tsx) sits beside the text.
-export function PageHero({ crumb, path, title, children, image, art }: { crumb: string; path: string; title: string; children: ReactNode; image?: { src: string; alt: string; position?: string }; art?: ReactNode }) {
+// Title band for inner pages. With `image`, a real photo bleeds off the right edge.
+export function PageHero({ crumb, path, title, children, image }: { crumb: string; path: string; title: string; children: ReactNode; image?: { src: string; alt: string; position?: string } }) {
   const text = (
     <div className="page-hero__text">
       <BreadcrumbJsonLd name={crumb} path={path} />
@@ -44,16 +43,6 @@ export function PageHero({ crumb, path, title, children, image, art }: { crumb: 
       <p>{children}</p>
     </div>
   );
-  if (art) {
-    return (
-      <section className="page-hero page-hero--art">
-        <div className="wrap page-hero__grid">
-          {text}
-          <div className="page-hero__art">{art}</div>
-        </div>
-      </section>
-    );
-  }
   if (!image) return <section className="page-hero"><div className="wrap">{text}</div></section>;
   return (
     <section className="page-hero page-hero--photo">
