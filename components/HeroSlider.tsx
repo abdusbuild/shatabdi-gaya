@@ -6,16 +6,57 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 
 export type Slide = { src: string; alt: string; position?: string };
 
-const INTERVAL = 6000;
+const CYCLE = 4500; // a new photo starts arriving every 4.5 seconds
+const STRIPS = 10;
+const DROP_MS = 900; // matches the hero-strip-drop animation in globals.css
+const TRANSITION_MS = DROP_MS + STRIPS * 55 + 25 + 60; // longest the strip drop can take
+const INTERVAL = CYCLE - TRANSITION_MS; // time a photo rests before the next drop starts
 
-// Full-bleed photo slideshow behind the home page hero text. Crossfades every few seconds with a
-// slow zoom, pauses while hovered or focused, and stays on the first photo for reduced-motion users.
+type Strip = { left: number; width: number; delay: number };
+type Drop = { to: number; src: string; position: string; strips: Strip[] };
+
+// Random-width vertical strips covering the full width, staggered left to right.
+function makeStrips(): Strip[] {
+  const weights = Array.from({ length: STRIPS }, () => 0.5 + Math.random());
+  const total = weights.reduce((a, b) => a + b, 0);
+  let left = 0;
+  return weights.map((w, i) => {
+    const width = (w / total) * 100;
+    const strip = { left, width, delay: Math.round(i * 55 + Math.random() * 25) };
+    left += width;
+    return strip;
+  });
+}
+
+// Full-bleed photo slideshow behind the home page hero text. The next photo drops in from the top
+// as staggered vertical strips with a slight bounce, then takes over; each photo slowly zooms while
+// shown. Pauses while a control has keyboard focus; for reduced-motion users the photos still change,
+// but swap instantly without the drop.
 export default function HeroSlider({ slides, sound, children }: { slides: Slide[]; sound?: string; children: ReactNode }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [still, setStill] = useState(false);
+  const [drop, setDrop] = useState<Drop | null>(null);
   const touchX = useRef<number | null>(null);
-  const go = useCallback((i: number) => setIndex((i + slides.length) % slides.length), [slides.length]);
+  const slidesEl = useRef<HTMLDivElement>(null);
+  const busy = useRef(false);
+
+  const go = useCallback((n: number) => {
+    const to = (n + slides.length) % slides.length;
+    if (busy.current || to === index) return;
+    if (still) { setIndex(to); return; }
+    busy.current = true;
+    // Reuse the exact file the slide's <img> already loaded, so the strips need no extra download.
+    const img = slidesEl.current?.children[to]?.querySelector("img");
+    const src = img?.currentSrc || slides[to].src;
+    const strips = makeStrips();
+    setDrop({ to, src, position: slides[to].position ?? "50% 50%", strips });
+    setTimeout(() => {
+      setIndex(to);
+      setDrop(null);
+      busy.current = false;
+    }, DROP_MS + strips[strips.length - 1].delay + 60);
+  }, [index, slides, still]);
 
   useEffect(() => {
     const mq = matchMedia("(prefers-reduced-motion: reduce)");
@@ -26,8 +67,8 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
   }, []);
 
   useEffect(() => {
-    if (paused || still) return;
-    const t = setTimeout(() => go(index + 1), INTERVAL);
+    if (paused) return;
+    const t = setTimeout(() => go(index + 1), still ? CYCLE : INTERVAL);
     return () => clearTimeout(t);
   }, [index, paused, still, go]);
 
@@ -36,9 +77,9 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
       className="hero-slider"
       aria-roledescription="carousel"
       aria-label="Photos of the school"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
+      // The hero fills the screen, so pausing on hover would stop it almost always. Pause only for
+      // keyboard focus, so a mouse click on an arrow or the sound button doesn't freeze it.
+      onFocus={(e) => { if (e.target.matches(":focus-visible")) setPaused(true); }}
       onBlur={() => setPaused(false)}
       onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
       onTouchEnd={(e) => {
@@ -49,11 +90,29 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
       }}
     >
       <div className="hero-slider__slides">
-        {slides.map((s, i) => (
-          <div key={s.src} className={`hero-slide${i === index ? " is-active" : ""}`} aria-hidden={i !== index} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
-            <Image src={s.src} alt={s.alt} fill priority={i === 0} loading={i === 0 ? undefined : "eager"} quality={85} sizes="100vw" style={s.position ? { objectPosition: s.position } : undefined} />
+        <div className="hero-slider__stage" ref={slidesEl}>
+          {slides.map((s, i) => (
+            <div key={s.src} className={`hero-slide${i === index ? " is-active" : ""}`} aria-hidden={i !== index} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
+              <Image src={s.src} alt={s.alt} fill priority={i === 0} loading={i === 0 ? undefined : "eager"} quality={85} sizes="100vw" style={s.position ? { objectPosition: s.position } : undefined} />
+            </div>
+          ))}
+        </div>
+        {drop && (
+          <div className="hero-strips" aria-hidden="true">
+            {drop.strips.map((s, i) => (
+              <span
+                key={i}
+                className="hero-strip"
+                style={{
+                  backgroundImage: `url("${drop.src}")`,
+                  backgroundPosition: drop.position,
+                  clipPath: `inset(0 ${(100 - s.left - s.width).toFixed(3)}% 0 ${s.left.toFixed(3)}%)`,
+                  animationDelay: `${s.delay}ms`,
+                }}
+              />
+            ))}
           </div>
-        ))}
+        )}
       </div>
       <div className="hero-slider__shade" />
       <div className="wrap hero-slider__content">{children}</div>
