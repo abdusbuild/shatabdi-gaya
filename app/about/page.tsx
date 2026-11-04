@@ -48,7 +48,7 @@ const supported = [
 export default function About() {
   return (
     <>
-      <PageHero crumb="About" path="/about" title="About the school" image={{ src: "/images/campus-name-facade.webp", alt: "The school building with Shatabdi Public School, Gaya Ji written on its facade", position: "70% center" }}>
+      <PageHero crumb="About" path="/about" title="About the school" image={{ src: "/images/campus-courtyard-school-bus.webp", alt: "The courtyard and school buses on Katari Hill Road", position: "60% center" }}>
         Twenty-six years of English-medium CBSE education on Katari Hill Road, built on togetherness and service.
       </PageHero>
 
@@ -60,7 +60,7 @@ export default function About() {
             <p className="muted">The school lies in a peaceful part of the city, about 3 km west of Gaya Railway Junction. Five buildings with well-ventilated classrooms, modern laboratories, a well-furnished library and a computer lab make it an ideal place for learning. Trees along the boundary wall and a garden keep the campus green.</p>
             <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,000 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas. They are taught by 50 teachers and supported by 20 non-teaching staff.</p>
           </div>
-          <Photo src="/images/campus-courtyard-school-bus.webp" label="The campus on Katari Hill Road" className="reveal ph--tall" />
+          <Photo src="/images/campus-garden-entrance.webp" label="The garden at the school entrance" className="reveal ph--tall" />
         </div>
       </section>
 

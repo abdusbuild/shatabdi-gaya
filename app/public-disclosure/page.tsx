@@ -28,7 +28,7 @@ export default function PublicDisclosure() {
   return (
     <LegalPage
       path="/public-disclosure"
-      image={{ src: "/images/campus-name-facade.webp", alt: "The school building with Shatabdi Public School, Gaya Ji written on its facade", position: "70% center" }}
+      image={{ src: "/images/campus-wide-view.webp", alt: "Wide view of the campus: school buses in the courtyard, trees, the classroom blocks and the main gate", position: "50% 60%" }}
       crumb="Public Disclosure"
       title="Mandatory Public Disclosure"
       updated="4 November 2026"

@@ -91,10 +91,8 @@ const gallery: [string, string, boolean?][] = [
   ["/images/fd26-guests-and-students.webp", "Guests and students in front of Ali Bhawan"],
   ["/images/fd26-guests.webp", "Guests at the Foundation Day programme"],
   ["/images/fd26-hosts.webp", "The hosts on stage, Foundation Day"],
-  ["/images/fd26-little-ones.webp", "Our youngest pupils on stage, Foundation Day"],
   ["/images/fd26-skit.webp", "Primary pupils performing a skit, Foundation Day"],
   ["/images/fd26-solo-dance.webp", "A solo dance, Foundation Day"],
-  ["/images/fd26-group-song.webp", "A group song, Foundation Day"],
   ["/images/fd26-prize.webp", "Prize giving, Foundation Day"],
   ["/images/fd26-prize-certificate.webp", "A young winner with her certificate, Foundation Day"],
   ["/images/fd26-guest-address.webp", "A guest addresses the gathering, Foundation Day"],
@@ -126,12 +124,11 @@ const gallery: [string, string, boolean?][] = [
   ["/images/excursion-bus-selfie.webp", "On the bus"],
   ["/images/excursion-teachers.webp", "Teachers on an excursion"],
   ["/images/excursion-staff.webp", "Staff and parents on an excursion"],
+  ["/images/management-group.webp", "School management", true],
   ["/images/study-tour-girls.webp", "Senior students on a study tour"],
   ["/images/study-tour-girls-2.webp", "Study tour"],
   ["/images/study-tour-selfie.webp", "Study tour selfie"],
   ["/images/study-tour-teachers.webp", "Teachers on a study tour", true],
-  ["/images/management-group.webp", "School management", true],
-  // Last on purpose: on desktop it becomes a tall tile so the final row has no gap (see globals.css)
   ["/images/science-museum-visit.webp", "Science museum visit"],
 ];
 

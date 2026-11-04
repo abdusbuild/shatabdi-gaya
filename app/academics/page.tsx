@@ -94,7 +94,7 @@ export default function Academics() {
 
       <section>
         <div className="wrap split">
-          <Photo src="/images/study-tour-girls.webp" label="Senior students on a study tour" className="reveal ph--tall" />
+          <Photo src="/images/library-books.webp" label="Rows of books on library shelves" caption={false} className="reveal ph--tall" />
           <div className="reveal">
             <h2 className="h2-md">More than 20,000 books</h2>
             <p className="lead">Our computerised library is enriched every year with books and journals for students and teachers alike.</p>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import EnquiryForm, { NameInput, PhoneInput } from "@/components/EnquiryForm";
-import { Faq, PageHero, Photo, SectionHead } from "@/components/ui";
+import { Faq, PageHero, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
@@ -51,12 +51,9 @@ export default function Admissions() {
       </PageHero>
 
       <section>
-        <div className="wrap split split--top">
-          <div className="reveal">
-            <h2 className="h2-md">Admission process</h2>
-            <p className="muted">Admissions for Std I to IX usually open in December for the session that begins in April. Pre-primary admissions (PP-1, PP-2) need a minimum age of 4 years.</p>
-          </div>
-          <div className="steps reveal">
+        <div className="wrap">
+          <SectionHead title="Admission process">Admissions for Std I to IX usually open in December for the session that begins in April. Pre-primary admissions (PP-1, PP-2) need a minimum age of 4 years.</SectionHead>
+          <div className="steps grid-2 reveal">
             {steps.map(([title, text]) => (
               <div className="step" key={title}><div><h3>{title}</h3><p>{text}</p></div></div>
             ))}
@@ -65,17 +62,11 @@ export default function Admissions() {
       </section>
 
       <section className="section--alt" id="documents">
-        <div className="wrap split split--top">
-          <div className="reveal">
-            <h2 className="h2-md">Documents required</h2>
-            <p className="muted">Please bring these at the time of admission.</p>
-          </div>
+        <div className="wrap">
+          <SectionHead title="Documents required">Please bring these at the time of admission.</SectionHead>
           <div className="card reveal">
-            <ul className="checklist mt-0">{documents.map((d) => <li key={d}>{d}</li>)}</ul>
+            <ul className="checklist grid-2 mt-0">{documents.map((d) => <li key={d}>{d}</li>)}</ul>
           </div>
-        </div>
-        <div className="wrap mt-lg">
-          <Photo src="/images/fd26-student-speakers.webp" label="Students presenting at a school programme" className="reveal ph--tall ph--top" />
         </div>
       </section>
 
@@ -130,7 +121,6 @@ export default function Admissions() {
           <div className="reveal">
             <h2 className="h2-md">Start an admission enquiry</h2>
             <p className="muted">Fill in the details and press Send. WhatsApp will open with your enquiry addressed to the school office on <strong>{SCHOOL.whatsappLabel}</strong>, ready to send. You can also visit the school office on Katari Hill Road.</p>
-            <Photo className="contact-photo" label="Pre-primary pupils performing on stage at Foundation Day" src="/images/fd26-little-ones.webp" caption={false} sizes="(max-width: 900px) 100vw, 520px" />
           </div>
           <EnquiryForm subject="Admission enquiry from website" submitLabel="Send on WhatsApp" via="whatsapp">
             <div className="form-row">
