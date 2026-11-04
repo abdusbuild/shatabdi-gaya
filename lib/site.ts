@@ -19,6 +19,8 @@ export const SCHOOL = {
   youtube: "https://www.youtube.com/@shatabdipublicschoolgaya1753",
   address: "Katari Hill Road, Aliganj, Gaya, Bihar 823001",
   cbseRecord: "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/330113",
+  erp: "http://101.53.157.220:7122/shatabdi/",
+  minorityCertificate: "/documents/minority-certificate.pdf",
 };
 
 // Public origin used for canonical URLs, the sitemap and social previews.
