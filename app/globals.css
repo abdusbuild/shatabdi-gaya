@@ -850,8 +850,8 @@ html:has(.lightbox[open]) { overflow: hidden; }
 @media (max-width: 900px) { .contact-photo { margin-top: 20px; max-width: none; } }
 
 /* ---------- Home page: editorial layout (fewer cards, photo-led bands) ---------- */
-.band { --gold-text: var(--gold-400); color: #fff; background: radial-gradient(ellipse 80% 70% at 85% 0%, rgba(255, 112, 0, .16), transparent 60%), linear-gradient(160deg, #1f1e1d 0%, #2e2d2c 55%, #1a1918 100%); }
-.band--deep { background: radial-gradient(ellipse 70% 80% at 10% 100%, rgba(255, 112, 0, .14), transparent 60%), linear-gradient(200deg, #262524 0%, #1a1918 100%); }
+.band { --accent-text: var(--accent-light); color: #fff; background: radial-gradient(ellipse 80% 70% at 85% 0%, rgba(24, 120, 184, .16), transparent 60%), linear-gradient(160deg, #16204d 0%, #1c2a5e 55%, #0f1738 100%); }
+.band--deep { background: radial-gradient(ellipse 70% 80% at 10% 100%, rgba(24, 120, 184, .14), transparent 60%), linear-gradient(200deg, #1a2658 0%, #0f1738 100%); }
 .band p { color: rgba(255, 255, 255, .78); }
 .band blockquote { color: #fff; }
 
@@ -871,7 +871,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .figures { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(48px, 6vw, 72px); border-top: 1px solid rgba(255, 255, 255, .14); }
 .figure { padding: 28px 20px 0 0; }
 .figure + .figure { padding-left: clamp(16px, 3vw, 32px); border-left: 1px solid rgba(255, 255, 255, .14); }
-.figure__num { font-family: var(--font-heading); font-size: clamp(40px, 5.5vw, 64px); font-weight: 600; line-height: 1; color: var(--gold-400); letter-spacing: -.02em; }
+.figure__num { font-family: var(--font-heading); font-size: clamp(40px, 5.5vw, 64px); font-weight: 600; line-height: 1; color: var(--accent-light); letter-spacing: -.02em; }
 .figure__label { margin-top: 10px; font-size: 14px; color: rgba(255, 255, 255, .7); }
 @media (max-width: 760px) {
   .figures { grid-template-columns: 1fr 1fr; }
@@ -923,7 +923,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
 /* Promises: numbered editorial list, no cards */
 .promises { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 6vw, 80px); }
 .promise { display: grid; grid-template-columns: auto 1fr; column-gap: 22px; padding: 30px 0; border-top: 1px solid var(--line); }
-.promise__num { grid-row: span 2; font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--gold-text); padding-top: 6px; }
+.promise__num { grid-row: span 2; font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--accent-text); padding-top: 6px; }
 .promise h3 { font-size: clamp(20px, 2vw, 24px); margin: 0 0 8px; }
 .promise p { margin: 0; color: var(--muted); }
 @media (max-width: 760px) { .promises { grid-template-columns: 1fr; } .promise { padding: 24px 0; } }
@@ -964,10 +964,10 @@ html:has(.lightbox[open]) { overflow: hidden; }
 @media (max-width: 480px) { .news__item { grid-template-columns: 110px 1fr; gap: 14px; } }
 
 /* Campus band: full-width photo with text over it */
-section.campus-band { position: relative; isolation: isolate; overflow: clip; padding: clamp(110px, 16vw, 200px) 0; color: #fff; --gold-text: var(--gold-400); }
+section.campus-band { position: relative; isolation: isolate; overflow: clip; padding: clamp(110px, 16vw, 200px) 0; color: #fff; --accent-text: var(--accent-light); }
 .campus-band__img { position: absolute; inset: -12% 0; z-index: -2; }
 .campus-band__img img { object-fit: cover; }
-.campus-band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(20, 19, 18, .86), rgba(20, 19, 18, .45) 60%, rgba(20, 19, 18, .15)); }
+.campus-band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(12, 18, 45, .86), rgba(12, 18, 45, .45) 60%, rgba(12, 18, 45, .15)); }
 .campus-band__text h2 { font-size: clamp(36px, 5.5vw, 64px); margin-bottom: 14px; }
 .campus-band__text p { max-width: 520px; font-size: 18px; color: rgba(255, 255, 255, .85); margin: 0 0 28px; }
 
