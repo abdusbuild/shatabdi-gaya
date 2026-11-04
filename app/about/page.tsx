@@ -31,7 +31,7 @@ const milestones = [
   ["2005", "CBSE affiliation for the secondary classes (Class X)."],
   ["2007", "Upgraded to Senior Secondary, with Class XII in Science and Commerce."],
   ["2017", "26 Class X students score a perfect 10 CGPA in the board examinations."],
-  ["2025", "CBSE affiliation renewed to 31 March 2030 (Affiliation No. 330113)."],
+  ["2025", "The school celebrates its Silver Jubilee, twenty-five years since its inauguration. CBSE affiliation renewed to 31 March 2030 (Affiliation No. 330113)."],
   ["2026", "Foundation Day celebrated on 26 October, marking 26 years of the school."],
 ];
 
