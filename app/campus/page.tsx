@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Book, Bus, Flask, Globe, Monitor, Music, Plus, Screen, Shield } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
 import Gallery from "@/components/Gallery";
-import { CampusArt } from "@/components/HeroArt";
 import { PageHero, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
@@ -88,7 +87,7 @@ const gallery: [string, string][] = [
 export default function Campus() {
   return (
     <>
-      <PageHero crumb="Campus & Life" path="/campus" title="Campus & school life" art={<CampusArt />}>
+      <PageHero crumb="Campus & Life" path="/campus" title="Campus & school life" image={{ src: "/images/campus-main-building.webp", alt: "The main school building and courtyard, with school buses parked by the gate" }}>
         A green, walled 2.58-acre campus on Katari Hill Road with five buildings, modern labs, a computerised library and a busy calendar of celebrations.
       </PageHero>
 
