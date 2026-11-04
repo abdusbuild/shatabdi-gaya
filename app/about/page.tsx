@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AboutArt } from "@/components/HeroArt";
 import { CtaBand, PageHero, Photo } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -49,7 +48,7 @@ const supported = [
 export default function About() {
   return (
     <>
-      <PageHero crumb="About" path="/about" title="About the school" art={<AboutArt />}>
+      <PageHero crumb="About" path="/about" title="About the school" image={{ src: "/images/campus-name-facade.webp", alt: "The school building with Shatabdi Public School, Gaya Ji written on its facade", position: "70% center" }}>
         Twenty-six years of English-medium CBSE education on Katari Hill Road, built on togetherness and service.
       </PageHero>
 

@@ -424,7 +424,7 @@ blockquote { margin: 0; font-family: var(--font-sans); font-size: 18px; font-wei
 
 /* Page hero */
 .page-hero { background: var(--brand-800); color: #fff; padding: clamp(56px, 8vw, 96px) 0; position: relative; overflow: clip; }
-.page-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--gold-500); }
+.page-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accent); }
 .page-hero--photo { padding: 0; }
 .page-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 72px); }
 .page-hero--photo .page-hero__text { padding: clamp(56px, 8vw, 96px) 0; align-self: center; }
@@ -441,7 +441,7 @@ blockquote { margin: 0; font-family: var(--font-sans); font-size: 18px; font-wei
 .page-hero h1 { font-size: clamp(38px, 6vw, 64px); }
 .page-hero p { color: rgba(255,255,255,.78); font-size: 18px; max-width: 640px; margin: 0; }
 .crumbs { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 16px; }
-.crumbs a { text-decoration: none; color: var(--gold-400); }
+.crumbs a { text-decoration: none; color: var(--accent-light); }
 
 /* Tables */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
