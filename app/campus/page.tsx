@@ -10,8 +10,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Campus & School Life",
-  description: "Buildings, labs, library, houses, clubs and photo gallery of Shatabdi Public School's 2.58-acre campus on Katari Hill Road, Gaya.",
-  alternates: { canonical: "/campus" }, openGraph: { ...OPEN_GRAPH, url: "/campus", images: [ogImage("campus", "Campus and school life at Shatabdi Public School, Gaya")] },
+  description: "Buildings, labs, library, houses, clubs and photo gallery of Shatabdi Public School's 2.58-acre campus on Katari Hill Road, Gaya Ji.",
+  alternates: { canonical: "/campus" }, openGraph: { ...OPEN_GRAPH, url: "/campus", images: [ogImage("campus", "Campus and school life at Shatabdi Public School, Gaya Ji")] },
 };
 
 // From the school's YouTube channel. Keep the count a multiple of 3 so the last row stays full.
@@ -105,7 +105,7 @@ const gallery: [string, string, boolean?][] = [
   ["/images/exhibition-smart-city.webp", "A pollution-free city model, project exhibition"],
   ["/images/exhibition-social-science.webp", "Social Science models, project exhibition"],
   ["/images/campus-main-building.webp", "The main school building"],
-  ["/images/campus-name-facade.webp", "Shatabdi Public School, Gaya"],
+  ["/images/campus-name-facade.webp", "Shatabdi Public School, Gaya Ji"],
   ["/images/campus-garden-entrance.webp", "Garden by the entrance"],
   ["/images/campus-arched-windows.webp", "Arched windows of the school building"],
   ["/images/campus-stair-tower.webp", "The stair tower"],

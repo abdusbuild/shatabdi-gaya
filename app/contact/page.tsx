@@ -8,8 +8,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Address, phone numbers, email and map for Shatabdi Public School, Katari Hill Road, Gaya, Bihar 823001.",
-  alternates: { canonical: "/contact" }, openGraph: { ...OPEN_GRAPH, url: "/contact", images: [ogImage("contact", "Contact Shatabdi Public School, Gaya")] },
+  description: "Address, phone numbers, email and map for Shatabdi Public School, Katari Hill Road, Gaya Ji, Bihar 823001.",
+  alternates: { canonical: "/contact" }, openGraph: { ...OPEN_GRAPH, url: "/contact", images: [ogImage("contact", "Contact Shatabdi Public School, Gaya Ji")] },
 };
 
 export default function Contact() {
@@ -24,7 +24,7 @@ export default function Contact() {
           <div className="card reveal">
             <div className="contact-item">
               <div className="card__icon"><Pin /></div>
-              <div><h4>Address</h4>Shatabdi Public School<br />Katari Hill Road, Aliganj<br />Gaya, Bihar 823001<br /><span className="muted">About 3 km west of Gaya Railway Junction</span></div>
+              <div><h4>Address</h4>Shatabdi Public School<br />Katari Hill Road, Aliganj<br />Gaya Ji, Bihar 823001<br /><span className="muted">About 3 km west of Gaya Railway Junction</span></div>
             </div>
             <div className="contact-item">
               <div className="card__icon"><Phone /></div>
@@ -56,7 +56,7 @@ export default function Contact() {
           </div>
           <SkeletonFrame
             className="map reveal"
-            title="Map showing Shatabdi Public School, Gaya"
+            title="Map showing Shatabdi Public School, Gaya Ji"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             src="https://maps.google.com/maps?q=Shatabdi%20Public%20School%2C%20Katari%20Hill%20Road%2C%20Gaya%2C%20Bihar&z=15&output=embed"
