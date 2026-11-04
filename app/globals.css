@@ -484,10 +484,10 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 
 /* Footer */
 .footer { background: var(--brand-900); color: rgba(255,255,255,.72); padding: 72px 0 0; font-size: 15px; }
-:root[data-theme="dark"] .footer { background: #141312; }
+:root[data-theme="dark"] .footer { background: #0a0f26; }
 .footer__grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr) 1.35fr; gap: 36px; }
 .footer a { text-decoration: none; transition: color .2s; }
-.footer a:hover { color: var(--gold-400); }
+.footer a:hover { color: var(--accent-light); }
 .footer .brand__name { color: #fff; }
 .footer .brand__tag { color: rgba(255,255,255,.55); }
 .footer__about p { margin: 18px 0 0; }
@@ -497,10 +497,10 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 .footer-acc summary::-webkit-details-marker { display: none; }
 .footer-acc summary i { display: none; }
 .footer__reach li { display: flex; gap: 10px; align-items: flex-start; }
-.footer__reach svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--gold-400); }
+.footer__reach svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--accent-light); }
 .socials { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
 .socials a { width: 40px; height: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); display: grid; place-items: center; transition: border-color .2s, background .2s, color .2s; }
-.socials a:hover { border-color: var(--gold-400); background: rgba(255,255,255,.06); }
+.socials a:hover { border-color: var(--accent-light); background: rgba(255,255,255,.06); }
 .socials svg { width: 18px; height: 18px; }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 56px; padding: 22px 0 calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.55); }
 .footer__legal { display: flex; gap: 18px; flex-wrap: wrap; }
@@ -519,7 +519,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .footer-acc { border-bottom: 1px solid rgba(255,255,255,.09); }
   .footer-acc:first-of-type { border-top: 1px solid rgba(255,255,255,.09); }
   .footer-acc summary { cursor: pointer; margin: 0; padding: 18px 28px 18px 0; }
-  .footer-acc summary i { display: block; position: absolute; right: 6px; top: 50%; width: 8px; height: 8px; border-right: 2px solid var(--gold-400); border-bottom: 2px solid var(--gold-400); border-radius: 1px; transform: translateY(-70%) rotate(45deg); transition: transform .35s var(--ease); }
+  .footer-acc summary i { display: block; position: absolute; right: 6px; top: 50%; width: 8px; height: 8px; border-right: 2px solid var(--accent-light); border-bottom: 2px solid var(--accent-light); border-radius: 1px; transform: translateY(-70%) rotate(45deg); transition: transform .35s var(--ease); }
   .footer-acc[open] summary i { transform: translateY(-30%) rotate(-135deg); }
   .footer-acc__body { padding-bottom: 18px; animation: fade-up .4s var(--ease); }
   .footer-acc__body a { display: inline-block; padding: 3px 0; }
@@ -529,11 +529,11 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 
 /* Floating enquire button and contact card */
 .enquire { position: fixed; left: 20px; bottom: 20px; z-index: 60; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-.enquire__toggle { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px 0 18px; border: 0; border-radius: 999px; background: var(--gold-500); color: #1f1e1d; font: 600 15px/1 var(--font-sans); cursor: pointer; box-shadow: 0 10px 24px -10px rgba(46, 45, 44, .55); transition: background .2s, transform .3s var(--ease); }
-.enquire__toggle:hover { background: var(--gold-400); }
+.enquire__toggle { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px 0 18px; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 600 15px/1 var(--font-sans); cursor: pointer; box-shadow: 0 10px 24px -10px rgba(16, 24, 60, .55); transition: background .2s, transform .3s var(--ease); }
+.enquire__toggle:hover { background: var(--accent-light); }
 .enquire__toggle:active { transform: scale(.97); }
 .enquire__toggle svg { width: 18px; height: 18px; }
-.enquire-panel { position: relative; width: 300px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px 16px; box-shadow: 0 24px 48px -20px rgba(46, 45, 44, .45); transform-origin: 30px 100%; opacity: 0; transform: translateY(12px) scale(.96); visibility: hidden; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
+.enquire-panel { position: relative; width: 300px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px 16px; box-shadow: 0 24px 48px -20px rgba(16, 24, 60, .45); transform-origin: 30px 100%; opacity: 0; transform: translateY(12px) scale(.96); visibility: hidden; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
 .enquire.is-open .enquire-panel { opacity: 1; transform: none; visibility: visible; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s; }
 .enquire-panel__close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--bg-alt); color: var(--muted); display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s; }
 .enquire-panel__close:hover { background: var(--line); color: var(--text); }
@@ -542,30 +542,21 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 .enquire-panel__lede { font-size: 14px; color: var(--muted); margin: 4px 0 14px; }
 .enquire-panel__list { display: grid; gap: 8px; }
 .enquire-opt { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); transition: border-color .2s, background .2s; }
-.enquire-opt:hover { border-color: color-mix(in srgb, var(--gold-text) 50%, var(--line)); background: color-mix(in srgb, var(--gold-100) 55%, transparent); }
+.enquire-opt:hover { border-color: color-mix(in srgb, var(--accent-text) 50%, var(--line)); background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
 .enquire-opt__icon { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
 .enquire-opt__icon svg { width: 17px; height: 17px; }
 .enquire-opt__icon--call { background: var(--brand-800); }
 .enquire-opt__icon--whatsapp { background: #1f9d55; }
-.enquire-opt__icon--mail { background: var(--gold-500); color: #1f1e1d; }
+.enquire-opt__icon--mail { background: var(--accent); color: #fff; }
 .enquire-opt__icon--form { background: var(--brand-700); }
 .enquire-opt__copy { display: grid; min-width: 0; line-height: 1.3; }
 .enquire-opt__copy strong { font-size: 15px; }
 .enquire-opt__copy small { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .enquire-panel__foot { display: block; text-align: center; font-size: 13px; color: var(--muted); margin-top: 12px; }
-:root[data-theme="dark"] .enquire-opt__icon--call { background: #434242; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .enquire-opt__icon--call { background: #434242; } }
+:root[data-theme="dark"] .enquire-opt__icon--call { background: var(--brand-700); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .enquire-opt__icon--call { background: var(--brand-700); } }
 @media (prefers-reduced-motion: reduce) { .enquire-panel, .enquire.is-open .enquire-panel { transition: none; transform: none; } }
 
-/* Reveal animation */
-/* Pure CSS, driven by scroll position, so no script ever edits React-rendered elements.
-   Browsers without scroll-driven animations simply show the content. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal { animation: reveal-in linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
-  }
-}
-@keyframes reveal-in { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
 
 .muted { color: var(--muted); }
 .mt-0 { margin-top: 0; }
@@ -1199,7 +1190,7 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 
 /* ---------- Enquiry pop-up ---------- */
 .enq-pop { position: fixed; inset: 0; margin: auto; height: fit-content; width: min(440px, calc(100vw - 32px)); max-width: none; max-height: calc(100svh - 32px); padding: 0; border: 0; background: transparent; color: #fff; overflow: visible; }
-.enq-pop::backdrop { background: rgba(10, 9, 8, .62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.enq-pop::backdrop { background: rgba(5, 9, 25, .62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .enq-pop[open] { animation: enq-in .55s var(--ease); }
 .enq-pop[open]::backdrop { animation: enq-fade .4s ease; }
 @keyframes enq-in { from { opacity: 0; transform: translateY(24px) scale(.96); } to { opacity: 1; transform: none; } }
