@@ -54,14 +54,14 @@ const photoColumns = [
     ["/images/fd26-assembly-ali-bhawan.webp", "Students gathered in front of Ali Bhawan on Foundation Day"],
     ["/images/annual-function-dance-yellow.webp", "Young pupils dancing at the Annual Function"],
     ["/images/campus-courtyard-school-bus.webp", "The courtyard and school buses on Katari Hill Road"],
-    ["/images/excursion-group-gate.webp", "Students and teachers on an educational excursion"],
-    ["/images/annual-function-girls-group.webp", "A group presentation at the Annual Function"],
+    ["/images/exhibition-volcano.webp", "A volcano model at the school project exhibition"],
+    ["/images/fd26-group-song.webp", "A group song on stage on Foundation Day"],
   ],
   [
     ["/images/campus-garden-entrance.webp", "The garden by the school entrance"],
     ["/images/fd26-welcome-address.webp", "The welcome address on Foundation Day"],
     ["/images/science-museum-visit.webp", "Students on a science museum visit"],
-    ["/images/campus-arched-windows.webp", "Arched windows of the school building"],
+    ["/images/exhibition-cell-model.webp", "Plant and animal cell models at the project exhibition"],
     ["/images/annual-function-audience.webp", "Parents and guests at the Annual Function"],
   ],
 ];
@@ -69,7 +69,7 @@ const photoColumns = [
 const moments = [
   { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
   { src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", date: "Annual Function", title: "On stage at the Annual Function", text: "Dances, speeches and group presentations in front of parents and guests." },
-  { src: "/images/excursion-group-gate.webp", alt: "Students and teachers on an educational excursion", date: "Educational excursion", title: "Learning outside the classroom", text: "Senior students and teachers on a day out to explore and learn together." },
+  { src: "/images/exhibition-smart-city.webp", alt: "A model of a pollution-free city at the project exhibition", date: "Project exhibition", title: "Ideas you can hold", text: "Students built models of volcanoes, cells, the solar system and a pollution-free city for the school exhibition." },
   { src: "/images/science-museum-visit.webp", alt: "Students on a science museum visit", date: "Study tour", title: "A visit to the science museum", text: "Exhibits on space and science bring classroom lessons to life." },
 ];
 
@@ -169,7 +169,7 @@ export default function Home() {
                 <div className="photo-columns__track">
                   {/* The photos repeat once so the drift can loop; only the first copy is described */}
                   {[...col, ...col].map(([src, alt], i) => (
-                    <span className="photo-columns__img" key={i} aria-hidden={i >= col.length || undefined}><Image src={src} alt={i < col.length ? alt : ""} fill sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
+                    <span className="photo-columns__img" key={i} aria-hidden={i >= col.length || undefined}><Image src={src} alt={i < col.length ? alt : ""} fill loading="eager" sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
                   ))}
                 </div>
               </div>
