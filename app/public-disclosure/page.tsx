@@ -31,7 +31,7 @@ export default function PublicDisclosure() {
       image={{ src: "/images/campus-name-facade.webp", alt: "The school building with Shatabdi Public School, Gaya Ji written on its facade", position: "70% center" }}
       crumb="Public Disclosure"
       title="Mandatory Public Disclosure"
-      updated="30 October 2026"
+      updated="4 November 2026"
       intro={<p>Information published in line with the CBSE requirement for affiliated schools. The affiliation details can be checked on the <a href={SCHOOL.cbseRecord} target="_blank" rel="noopener">CBSE SARAS portal</a>.</p>}
       sections={[
         {
@@ -43,8 +43,8 @@ export default function PublicDisclosure() {
               ["School code", "65109"],
               ["Complete address", "Katari Hill Road, Aliganj, Gaya, Bihar 823001"],
               ["Principal", "Mr. Saquib Zarar (M.B.A., B.Ed.)"],
-              ["School email", <a key="e" href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a>],
-              ["Contact numbers", `${SCHOOL.phoneLabel} (Principal's office) · ${SCHOOL.principalMobileLabel} · ${SCHOOL.mobileLabel} (Reception)`],
+              ["School email", <span key="e"><a href={`mailto:${SCHOOL.emailBackup}`}>{SCHOOL.emailBackup}</a> · <a href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a></span>],
+              ["Contact numbers", `${SCHOOL.phoneLabel} (Principal's office) · ${SCHOOL.principalMobileLabel} · ${SCHOOL.mobileLabel} (Reception) · ${SCHOOL.whatsappLabel} (WhatsApp & call)`],
             ]} />
           ),
         },
@@ -52,8 +52,8 @@ export default function PublicDisclosure() {
           id: "documents", title: "B. Documents & information",
           body: (
             <Table rows={[
-              ["Affiliation status", "Senior Secondary · affiliated 01 April 2025 to 31 March 2030"],
-              ["Managing society", "Shatabdi Foundation, Gaya"],
+              ["Affiliation status", "Senior Secondary · Affiliated 01 April 2025 to 31 March 2030"],
+              ["Managing society", "Shatabdi Foundation, Gaya Ji"],
               ["Society registration", "Registered under the Societies Registration Act, 1860 · Reg. No. 495/2000-01"],
               ["Year of establishment", "2000 (Inaugurated 26 October 2000)"],
               ["Minority status", "Declared a Minority Educational Institution under Section 2(g) of the NCMEI Act, 2004 · National Commission for Minority Educational Institutions, New Delhi · Case No. 717 of 2011, order dated 22 December 2011"],
