@@ -4,3 +4,9 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 .env*.local
+
+.vercel
+.env*
+
+# raw photo/video originals (kept locally only)
+originals/
