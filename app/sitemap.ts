@@ -5,7 +5,7 @@ import { OG_SLUGS } from "@/lib/seo";
 // Each entry also lists its preview image so image search can pick it up
 const image = (href: string) => (OG_SLUGS[href] ? [`${SITE_URL}/og/${OG_SLUGS[href]}.jpg`] : undefined);
 
-const LEGAL = ["/privacy-policy", "/terms-and-conditions", "/public-disclosure"];
+const LEGAL = ["/privacy-policy", "/terms-and-conditions"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

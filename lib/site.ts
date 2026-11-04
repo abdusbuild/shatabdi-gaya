@@ -33,5 +33,6 @@ export const NAV = [
   { href: "/academics", label: "Academics" },
   { href: "/campus", label: "Campus & Life" },
   { href: "/admissions", label: "Admissions" },
+  { href: "/public-disclosure", label: "Disclosure" },
   { href: "/contact", label: "Contact" },
 ];
