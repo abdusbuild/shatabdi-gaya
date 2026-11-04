@@ -27,12 +27,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
 
-// Browser UI colour (address bar on phones) to match the site in each theme.
+// Browser UI colour (address bar on phones) to match the default light theme.
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#16204d" },
-  ],
+  themeColor: "#ffffff",
 };
 
 // Structured data so search engines can show the school's address, phone and profiles.
@@ -68,14 +65,15 @@ const schoolJsonLd = {
   ],
 };
 
-// Applies the saved/system theme before paint to avoid a flash, and flags that JS is running.
+// The site opens in the light theme (set on <html> below). This applies a theme the visitor chose
+// with the switch before paint to avoid a flash, and flags that JS is running.
 // Also decides whether the opening crest screen (Preloader) plays: once per visit, and never for
 // reduced-motion users.
-const themeScript = `var d=document.documentElement;d.classList.add("js");if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("rv");setTimeout(function(){if(!d.classList.contains("rv-ready"))d.classList.remove("rv")},5000)}try{var t=localStorage.getItem("sps-theme");d.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}try{if(sessionStorage.getItem("sps-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("intro-seen");else sessionStorage.setItem("sps-intro","1")}catch(e){d.classList.add("intro-seen")}`;
+const themeScript = `var d=document.documentElement;d.classList.add("js");if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("rv");setTimeout(function(){if(!d.classList.contains("rv-ready"))d.classList.remove("rv")},5000)}try{var t=localStorage.getItem("sps-theme");if(t)d.setAttribute("data-theme",t)}catch(e){}try{if(sessionStorage.getItem("sps-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("intro-seen");else sessionStorage.setItem("sps-intro","1")}catch(e){d.classList.add("intro-seen")}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={fontVariables} suppressHydrationWarning>
+    <html lang="en-IN" className={fontVariables} data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schoolJsonLd) }} />
