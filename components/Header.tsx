@@ -28,6 +28,8 @@ const MENU_GROUPS = [
     { href: "/admissions#enquiry", label: "Enquiry form" },
   ] },
 ];
+// Columns of the full-screen menu, left to right: About + Academics, Campus, Admissions, then the plain links.
+const MENU_COLUMNS = [[MENU_GROUPS[0], MENU_GROUPS[1]], [MENU_GROUPS[2]], [MENU_GROUPS[3]]];
 const MENU_PLAIN: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/contact", label: "Contact Us" },
@@ -65,12 +67,18 @@ export default function Header() {
   const [stuck, setStuck] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hidden, setHidden] = useState(false);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
 
   // Close the drawer after navigating
   useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    // Move focus into the menu when it opens, and back to the hamburger when it closes
+    if (open) closeRef.current?.focus();
+    else if (wasOpen.current) burgerRef.current?.focus();
+    wasOpen.current = open;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -134,14 +142,15 @@ export default function Header() {
               <span><span className="nav__erp-full">ERP Login</span><span className="nav__erp-short" aria-hidden="true">ERP</span></span>
             </a>
             <button
-              className={`burger${open ? " is-open" : ""}`}
+              ref={burgerRef}
+              className="burger"
               type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-menu"
-              onClick={() => setOpen((o) => !o)}
+              onClick={() => setOpen(true)}
             >
-              <i /><i /><i />
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
             </button>
           </div>
         </div>
@@ -157,20 +166,27 @@ export default function Header() {
               <span className="brand__tag">Gaya · CBSE 330113</span>
             </span>
           </Link>
-          <button className="mobile-menu__close" type="button" aria-label="Close menu" onClick={() => setOpen(false)}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-          </button>
+          <div className="mobile-menu__tools">
+            <ThemeSwitch />
+            <button ref={closeRef} className="mobile-menu__close" type="button" aria-label="Close menu" onClick={() => setOpen(false)}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
         </div>
         <div className="mobile-menu__body">
           <div className="mobile-menu__grid">
-            {MENU_GROUPS.map((g) => (
-              <div className="mobile-menu__group" key={g.title}>
-                <Link className="mobile-menu__head" href={g.href}>{g.title}</Link>
-                <ul>
-                  {g.links.map((l) => (
-                    <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
-                  ))}
-                </ul>
+            {MENU_COLUMNS.map((col, i) => (
+              <div className="mobile-menu__col" key={i}>
+                {col.map((g) => (
+                  <div className="mobile-menu__group" key={g.title}>
+                    <Link className="mobile-menu__head" href={g.href}>{g.title}</Link>
+                    <ul>
+                      {g.links.map((l) => (
+                        <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             ))}
             <div className="mobile-menu__group mobile-menu__group--plain">
@@ -181,6 +197,10 @@ export default function Header() {
                   <Link key={l.href} className="mobile-menu__head" href={l.href}>{l.label}</Link>
                 ),
               )}
+              <a className="navpill navpill--gold mobile-menu__erp" href={SCHOOL.erp} target="_blank" rel="noopener" aria-label="School ERP login (opens in a new tab)">
+                <span>ERP Login</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </a>
             </div>
           </div>
           <div className="mobile-menu__foot">
