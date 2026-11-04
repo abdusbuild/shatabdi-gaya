@@ -3,12 +3,12 @@
 // The branded 1200x630 preview images live in public/og/ (one per page).
 export const ogImage = (slug: string, alt: string) => ({ url: `/og/${slug}.jpg`, width: 1200, height: 630, alt, type: "image/jpeg" });
 
-export const OG_IMAGE = ogImage("home", "Shatabdi Public School, Gaya: English-medium CBSE school since 2000");
+export const OG_IMAGE = ogImage("home", "Shatabdi Public School, Gaya Ji: English-medium CBSE school since 2000");
 
 export const OPEN_GRAPH = {
   type: "website" as const,
   locale: "en_IN",
-  siteName: "Shatabdi Public School, Gaya",
+  siteName: "Shatabdi Public School, Gaya Ji",
   images: [OG_IMAGE],
 };
 

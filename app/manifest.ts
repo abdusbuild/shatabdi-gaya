@@ -3,9 +3,9 @@ import type { MetadataRoute } from "next";
 // Web app manifest: name, colours and icons used when the site is added to a phone's home screen.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Shatabdi Public School, Gaya",
+    name: "Shatabdi Public School, Gaya Ji",
     short_name: "Shatabdi School",
-    description: "English-medium, co-educational CBSE senior secondary school on Katari Hill Road, Gaya, since 2000.",
+    description: "English-medium, co-educational CBSE senior secondary school on Katari Hill Road, Gaya Ji, since 2000.",
     start_url: "/",
     scope: "/",
     display: "standalone",
