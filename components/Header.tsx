@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { NAV, SCHOOL } from "@/lib/site";
+import { useEffect, useRef, useState } from "react";
+import { SCHOOL } from "@/lib/site";
 import { Facebook, Instagram, Mail, Moon, Phone, Pin, Sun, WhatsApp, YouTube } from "./Icons";
 
 // Link groups in the full-screen menu: an orange heading (itself a link) over its sub-pages.
@@ -94,7 +94,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+
+  // The bar sits transparent over the home page hero until the page scrolls.
+  const over = pathname === "/" && !stuck && !open;
 
   return (
     <>
@@ -108,29 +110,29 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <header className={`nav${stuck ? " is-stuck" : ""}${open ? " is-open" : ""}${hidden && !open ? " is-hidden" : ""}${pathname === "/" && !stuck && !open ? " nav--over" : ""}`} onFocus={() => setHidden(false)}>
+      <header className={`nav${stuck ? " is-stuck" : ""}${open ? " is-open" : ""}${hidden && !open ? " is-hidden" : ""}${over ? " nav--over" : ""}`} onFocus={() => setHidden(false)}>
         <div className="wrap nav__in">
           <Link className="brand" href="/">
             <img className="brand__logo" src="/logo-nav.webp" alt="" width={66} height={78} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
-              <span className="brand__tag">Gaya · CBSE 330113</span>
+              {over ? (
+                <span className="brand__info">
+                  <span>(A Senior Secondary School)</span>
+                  <span>AFFILIATED TO C.B.S.E., DELHI</span>
+                  <span>Katari Hill Road, Gaya Ji – 823001 (Bihar).</span>
+                </span>
+              ) : (
+                <span className="brand__tag">Gaya Ji · CBSE 330113</span>
+              )}
             </span>
           </Link>
-          <nav aria-label="Main" className="nav__desktop">
-            <ul className="nav__menu">
-              {NAV.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className={isActive(item.href) ? "is-active" : undefined} aria-current={isActive(item.href) ? "page" : undefined}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
           <div className="nav__actions">
-            <ThemeSwitch />
-            <Link className="btn btn--gold btn--sm nav__cta" href="/admissions#enquiry">Apply Now</Link>
+            <Link className="navpill navpill--gold nav__pill" href="/admissions"><span>Admissions</span></Link>
+            <Link className="navpill navpill--light nav__pill" href="/admissions#enquiry"><span>Enquiry Now</span></Link>
+            <a className="navpill navpill--light nav__erp" href={SCHOOL.erp} target="_blank" rel="noopener" aria-label="School ERP login (opens in a new tab)">
+              <span><span className="nav__erp-full">ERP Login</span><span className="nav__erp-short" aria-hidden="true">ERP</span></span>
+            </a>
             <button
               className={`burger${open ? " is-open" : ""}`}
               type="button"
