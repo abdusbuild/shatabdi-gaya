@@ -760,7 +760,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   background: linear-gradient(100deg, var(--skel) 30%, var(--skel-hi) 50%, var(--skel) 70%) 0 0 / 300% 100%;
   animation: skeleton 1.4s ease-in-out infinite;
 }
-.page-hero, .section--navy { --skel: #3a3836; --skel-hi: #4a4846; }
+.page-hero, .section--navy { --skel: #25356f; --skel-hi: #2f417f; }
 .js .skeleton-img { opacity: 0; transition: opacity .45s ease; }
 .js .skeleton-img.is-loaded { opacity: 1; }
 /* Hide the caption and dark overlay until the photo is in */
@@ -793,7 +793,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 /* Highlighted words: <em> in a heading starts in the heading colour and fades into the accent
    as it scrolls up to mid-screen. Without scroll-driven animations it just shows the accent. */
 @property --hl { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
-:is(h1, h2) em { font-style: normal; color: color-mix(in srgb, var(--gold-text) var(--hl), currentColor); }
+:is(h1, h2) em { font-style: normal; color: color-mix(in srgb, var(--accent-text) var(--hl), currentColor); }
 @keyframes hl-in {
   0%, 35% { opacity: 1; --hl: 0%; }
   60% { opacity: 0; --hl: 0%; }
@@ -862,11 +862,11 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .band blockquote { color: #fff; }
 
 /* Thin orange line that draws itself in, and outlined pill buttons */
-.rule { display: block; width: min(320px, 60%); height: 2px; margin: 4px 0 26px; background: linear-gradient(90deg, var(--gold-500), rgba(255, 112, 0, 0)); transform-origin: left; }
+.rule { display: block; width: min(320px, 60%); height: 2px; margin: 4px 0 26px; background: linear-gradient(90deg, var(--accent), rgba(24, 120, 184, 0)); transform-origin: left; }
 .rule--grow { flex: 1; width: auto; margin: 0; }
 .rule--hero { width: min(420px, 70%); margin: 6px 0 22px; }
-.pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border: 1.5px solid var(--gold-500); border-radius: 999px; color: inherit; font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; transition: background .3s var(--ease), color .3s var(--ease); }
-.pill:hover { background: var(--gold-500); color: #1f1e1d; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border: 1.5px solid var(--accent); border-radius: 999px; color: inherit; font-weight: 600; font-size: 15px; text-decoration: none; white-space: nowrap; transition: background .3s var(--ease), color .3s var(--ease); }
+.pill:hover { background: var(--accent); color: #fff; }
 .pill--dark { color: var(--text); }
 
 /* Intro band */
@@ -978,20 +978,13 @@ section.campus-band { position: relative; isolation: isolate; overflow: clip; pa
 /* Scroll-driven motion for the home page. Without support (or with reduced motion) everything just shows. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .slide-title { animation: slide-title linear both; animation-timeline: view(); animation-range: entry 5% cover 35%; }
-    .rule { animation: rule-draw linear both; animation-timeline: view(); animation-range: entry 10% cover 40%; }
-    .img-reveal { animation: img-reveal linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
-    .img-reveal img { animation: img-settle linear both; animation-timeline: view(); animation-range: entry 0% cover 60%; }
     .campus-band__img { animation: parallax linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
   }
 }
 @media (prefers-reduced-motion: no-preference) { .hero .rule--hero { animation: rule-draw 1.2s var(--ease) .6s both; animation-timeline: auto; } }
-@keyframes slide-title { from { opacity: .08; transform: translateX(-70px); } to { opacity: 1; transform: none; } }
 @keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes img-reveal { from { clip-path: inset(22% 0 0 0); } to { clip-path: inset(0); } }
-@keyframes img-settle { from { transform: scale(1.18); } to { transform: scale(1); } }
 @keyframes parallax { from { transform: translateY(-8%); } to { transform: translateY(8%); } }
-@media (prefers-reduced-motion: reduce) { .stage, .stage img, .stage__text, .stage__more, .news img { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .stage img, .stage__more svg, .news img { transition: none !important; } }
 
 /* ---------- Home hero: full-height photo, header over it, title at the bottom ---------- */
 /* The hero slides up under the sticky header, which stays transparent until the page scrolls */
@@ -1151,26 +1144,18 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 
 /* ---------- Motion inspired by premium studio sites: blur-in reveals, glowing title rules, drifting photo columns ---------- */
 
-/* Content sharpens out of a soft blur as it rises into view */
-@keyframes reveal-in { from { opacity: 0; transform: translateY(40px); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
-@keyframes slide-title { from { opacity: .08; transform: translateX(-70px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
 
 /* Glowing orange line under section titles, drawn in from the centre/left as the title arrives */
 .title-row h2::after, .section-head h2::after, .band__title::after {
   content: ""; display: block; width: 120px; height: 3px; margin-top: 14px; border-radius: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold-500) 20%, var(--gold-400) 80%, transparent);
-  box-shadow: 0 0 14px rgba(255, 112, 0, .55); transform-origin: left;
+  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent-light) 80%, transparent);
+  box-shadow: 0 0 14px rgba(24, 120, 184, .55); transform-origin: left;
 }
 .section-head.center h2::after { margin-inline: auto; transform-origin: center; }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .title-row h2::after, .section-head h2::after, .band__title::after { animation: rule-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 40%; }
-  }
-}
 
 /* Small label above a heading */
-.eyebrow { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-text); }
-.story .rotating-word { color: var(--gold-text); }
+.eyebrow { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-text); }
+.story .rotating-word { color: var(--accent-text); }
 .story h2 { text-wrap: balance; }
 
 /* Drifting photo columns beside the story: two calm columns moving slowly in opposite directions.

@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HelpWidget from "@/components/HelpWidget";
 import Preloader from "@/components/Preloader";
+import RevealObserver from "@/components/RevealObserver";
 import EnquiryPopup from "@/components/EnquiryPopup";
 import { fontVariables } from "@/lib/fonts";
 import { SCHOOL, SITE_URL } from "@/lib/site";
@@ -70,7 +71,7 @@ const schoolJsonLd = {
 // Applies the saved/system theme before paint to avoid a flash, and flags that JS is running.
 // Also decides whether the opening crest screen (Preloader) plays: once per visit, and never for
 // reduced-motion users.
-const themeScript = `var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("sps-theme");d.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}try{if(sessionStorage.getItem("sps-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("intro-seen");else sessionStorage.setItem("sps-intro","1")}catch(e){d.classList.add("intro-seen")}`;
+const themeScript = `var d=document.documentElement;d.classList.add("js");if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("rv");setTimeout(function(){if(!d.classList.contains("rv-ready"))d.classList.remove("rv")},5000)}try{var t=localStorage.getItem("sps-theme");d.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}try{if(sessionStorage.getItem("sps-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("intro-seen");else sessionStorage.setItem("sps-intro","1")}catch(e){d.classList.add("intro-seen")}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <RevealObserver />
         <HelpWidget />
         <EnquiryPopup />
       </body>
