@@ -1,6 +1,6 @@
 // Original illustration for the FAQ section: a thinking student in front of a big question mark,
 // with floating school props. Animation lives in globals.css under "FAQ illustration".
-const ink = "#2e2d2c";
+const ink = "#1c2a5e";
 const line = { stroke: ink, strokeWidth: 3, strokeLinejoin: "round", strokeLinecap: "round" } as const;
 
 export default function FaqArt() {
@@ -10,9 +10,9 @@ export default function FaqArt() {
       {/* Big question mark */}
       <g className="faq-art__qmark">
         <path d="M244 128c0-62 108-70 110-6 2 50-56 56-56 104v18" fill="none" stroke={ink} strokeWidth="54" strokeLinecap="round" />
-        <path d="M244 128c0-62 108-70 110-6 2 50-56 56-56 104v18" fill="none" stroke="#ff7000" strokeWidth="44" strokeLinecap="round" />
+        <path d="M244 128c0-62 108-70 110-6 2 50-56 56-56 104v18" fill="none" stroke="#d71920" strokeWidth="44" strokeLinecap="round" />
         <path d="M262 112c8-26 52-30 66-8" fill="none" stroke="#fff" strokeOpacity=".55" strokeWidth="6" strokeLinecap="round" />
-        <circle cx="298" cy="300" r="26" fill="#ff7000" {...line} />
+        <circle cx="298" cy="300" r="26" fill="#d71920" {...line} />
       </g>
 
       {/* Exclamation marks */}
@@ -25,8 +25,8 @@ export default function FaqArt() {
 
       {/* Floating graduation cap */}
       <g className="faq-art__float faq-art__float--a">
-        <path d="M38 78l52-20 52 20-52 20z" fill="#2e2d2c" {...line} />
-        <path d="M62 88v20c16 12 40 12 56 0V88l-28 10z" fill="#434242" {...line} />
+        <path d="M38 78l52-20 52 20-52 20z" fill="#1c2a5e" {...line} />
+        <path d="M62 88v20c16 12 40 12 56 0V88l-28 10z" fill="#1c2a5e" {...line} />
         <path d="M128 84v26" {...line} fill="none" />
         <circle cx="128" cy="114" r="5" fill="#ffc400" {...line} />
       </g>
@@ -53,13 +53,13 @@ export default function FaqArt() {
 
       {/* Stack of books */}
       <g className="faq-art__books">
-        <rect x="58" y="314" width="78" height="22" rx="4" fill="#00904d" {...line} />
+        <rect x="58" y="314" width="78" height="22" rx="4" fill="#1878b8" {...line} />
         <rect x="66" y="292" width="70" height="22" rx="4" fill="#dc4b3f" {...line} />
-        <rect x="54" y="270" width="74" height="22" rx="4" fill="#ff7000" {...line} />
+        <rect x="54" y="270" width="74" height="22" rx="4" fill="#d71920" {...line} />
         <path d="M66 325h56M74 303h50M64 281h52" stroke="#fff" strokeOpacity=".6" strokeWidth="3" strokeLinecap="round" />
         <circle cx="98" cy="254" r="15" fill="#dc4b3f" {...line} />
         <path d="M98 240c0-6 4-10 8-11" fill="none" {...line} />
-        <path d="M100 236c6-4 12-2 14 2-6 3-11 2-14-2z" fill="#00904d" {...line} strokeWidth={2} />
+        <path d="M100 236c6-4 12-2 14 2-6 3-11 2-14-2z" fill="#1878b8" {...line} strokeWidth={2} />
       </g>
 
       {/* Student */}
@@ -67,7 +67,7 @@ export default function FaqArt() {
         {/* torso in white shirt */}
         <path d="M140 340c2-50 26-78 70-80 44 2 70 30 72 80z" fill="#fff" {...line} />
         <path d="M196 262l14 16 14-16" fill="none" {...line} />
-        <path d="M210 278l-7 10 7 40 7-40z" fill="#2e2d2c" {...line} />
+        <path d="M210 278l-7 10 7 40 7-40z" fill="#1c2a5e" {...line} />
         <path d="M206 284l8 0" stroke="#ffc400" strokeWidth="3" strokeLinecap="round" />
         {/* neck */}
         <path d="M198 240v24h24v-24" fill="#e0a87c" {...line} />

@@ -386,13 +386,13 @@ blockquote { margin: 0; font-family: var(--font-sans); font-size: 18px; font-wei
 .faq-layout .section-head { margin-bottom: 32px; }
 .faq { display: grid; gap: 12px; interpolate-size: allow-keywords; }
 .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; transition: border-color .3s, box-shadow .3s, transform .3s var(--ease); }
-.faq details:hover { border-color: color-mix(in srgb, var(--gold-text) 45%, var(--line)); }
-.faq details[open] { border-color: var(--gold-text); box-shadow: var(--shadow); }
+.faq details:hover { border-color: color-mix(in srgb, var(--accent-text) 45%, var(--line)); }
+.faq details[open] { border-color: var(--accent-text); box-shadow: var(--shadow); }
 .faq summary { cursor: pointer; list-style: none; padding: 20px 0; font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 14px; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq__num { flex: none; font-size: 13px; color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.faq__num { flex: none; font-size: 13px; color: var(--accent-text); font-variant-numeric: tabular-nums; }
 .faq__q { flex: 1; }
-.faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--gold-100); font-size: 20px; line-height: 1; color: var(--gold-text); transition: transform .4s var(--ease), background .3s, color .3s; }
+.faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); font-size: 20px; line-height: 1; color: var(--accent-text); transition: transform .4s var(--ease), background .3s, color .3s; }
 .faq details[open] summary::after { transform: rotate(135deg); background: var(--brand-800); color: #fff; }
 .faq details::details-content { block-size: 0; overflow: hidden; transition: block-size .4s var(--ease), content-visibility .4s allow-discrete; }
 .faq details[open]::details-content { block-size: auto; }
