@@ -5,8 +5,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Mandatory Public Disclosure",
-  description: "CBSE mandatory public disclosure for Shatabdi Public School, Gaya (Affiliation No. 330113, School Code 65109).",
-  alternates: { canonical: "/public-disclosure" }, openGraph: { ...OPEN_GRAPH, url: "/public-disclosure", images: [ogImage("public-disclosure", "Mandatory public disclosure, Shatabdi Public School, Gaya")] },
+  description: "CBSE mandatory public disclosure for Shatabdi Public School, Gaya Ji (Affiliation No. 330113, School Code 65109).",
+  alternates: { canonical: "/public-disclosure" }, openGraph: { ...OPEN_GRAPH, url: "/public-disclosure", images: [ogImage("public-disclosure", "Mandatory public disclosure, Shatabdi Public School, Gaya Ji")] },
 };
 
 // Values not published online are marked so the school office can fill them in.
@@ -41,7 +41,7 @@ export default function PublicDisclosure() {
               ["Name of the school", "Shatabdi Public School"],
               ["Affiliation No.", "330113"],
               ["School code", "65109"],
-              ["Complete address", "Katari Hill Road, Aliganj, Gaya, Bihar 823001"],
+              ["Complete address", "Katari Hill Road, Aliganj, Gaya Ji, Bihar 823001"],
               ["Principal", "Mr. Saquib Zarar (M.B.A., B.Ed.)"],
               ["School email", <span key="e"><a href={`mailto:${SCHOOL.emailBackup}`}>{SCHOOL.emailBackup}</a> · <a href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a></span>],
               ["Contact numbers", `${SCHOOL.phoneLabel} (Principal's office) · ${SCHOOL.principalMobileLabel} · ${SCHOOL.mobileLabel} (Reception) · ${SCHOOL.whatsappLabel} (WhatsApp & call)`],

@@ -6,8 +6,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Shatabdi Public School, Gaya collects, uses and protects information shared through this website.",
-  alternates: { canonical: "/privacy-policy" }, openGraph: { ...OPEN_GRAPH, url: "/privacy-policy", images: [ogImage("privacy-policy", "Privacy policy, Shatabdi Public School, Gaya")] },
+  description: "How Shatabdi Public School, Gaya Ji collects, uses and protects information shared through this website.",
+  alternates: { canonical: "/privacy-policy" }, openGraph: { ...OPEN_GRAPH, url: "/privacy-policy", images: [ogImage("privacy-policy", "Privacy policy, Shatabdi Public School, Gaya Ji")] },
 };
 
 export default function PrivacyPolicy() {
@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
       crumb="Privacy Policy"
       title="Privacy Policy"
       updated="30 October 2026"
-      intro={<p>Shatabdi Public School, Gaya (&ldquo;the School&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), run by the Shatabdi Foundation, respects the privacy of parents, students and visitors. This policy explains what information this website handles and how it is used.</p>}
+      intro={<p>Shatabdi Public School, Gaya Ji (&ldquo;the School&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), run by the Shatabdi Foundation, respects the privacy of parents, students and visitors. This policy explains what information this website handles and how it is used.</p>}
       sections={[
         {
           id: "overview", title: "1. Overview",

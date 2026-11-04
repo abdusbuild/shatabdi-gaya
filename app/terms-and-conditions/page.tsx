@@ -6,8 +6,8 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Terms of use for the Shatabdi Public School, Gaya website.",
-  alternates: { canonical: "/terms-and-conditions" }, openGraph: { ...OPEN_GRAPH, url: "/terms-and-conditions", images: [ogImage("terms-and-conditions", "Terms and conditions, Shatabdi Public School, Gaya")] },
+  description: "Terms of use for the Shatabdi Public School, Gaya Ji website.",
+  alternates: { canonical: "/terms-and-conditions" }, openGraph: { ...OPEN_GRAPH, url: "/terms-and-conditions", images: [ogImage("terms-and-conditions", "Terms and conditions, Shatabdi Public School, Gaya Ji")] },
 };
 
 export default function Terms() {
@@ -18,7 +18,7 @@ export default function Terms() {
       crumb="Terms & Conditions"
       title="Terms & Conditions"
       updated="30 October 2026"
-      intro={<p>These terms apply to your use of the Shatabdi Public School, Gaya website. By using this website you agree to them.</p>}
+      intro={<p>These terms apply to your use of the Shatabdi Public School, Gaya Ji website. By using this website you agree to them.</p>}
       sections={[
         {
           id: "acceptance", title: "1. Acceptance of terms",
@@ -54,7 +54,7 @@ export default function Terms() {
         },
         {
           id: "law", title: "9. Governing law",
-          body: <p>These terms are governed by the laws of India. Any disputes are subject to the jurisdiction of the courts at Gaya, Bihar.</p>,
+          body: <p>These terms are governed by the laws of India. Any disputes are subject to the jurisdiction of the courts at Gaya Ji, Bihar.</p>,
         },
         {
           id: "changes", title: "10. Changes to these terms",
