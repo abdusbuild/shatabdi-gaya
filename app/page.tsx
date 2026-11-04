@@ -197,7 +197,7 @@ export default function Home() {
       <section className="band">
         <div className="wrap leader">
           <div className="leader__photo img-reveal">
-            <Image src="/images/campus-stair-tower.webp" alt="The school building on Katari Hill Road" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
+            <Image src="/images/principal.webp" alt="Mr. Saquib Zarar, Principal, addressing the school on Foundation Day 2026" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
             <span className="leader__cap"><strong>Mr. Saquib Zarar</strong>Principal, Shatabdi Public School</span>
           </div>
           <div>

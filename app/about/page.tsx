@@ -80,7 +80,7 @@ export default function About() {
       <section id="principal">
         <div className="wrap split split--top">
           <div className="reveal principal-photo">
-            <Photo src="/images/fd26-welcome-address.webp" label="Foundation Day 2026" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
+            <Photo src="/images/principal.webp" label="Mr. Saquib Zarar, Principal" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
           </div>
           <div className="reveal message">
             <h2 className="h2-md">Educating the mind and soul</h2>
@@ -88,7 +88,7 @@ export default function About() {
             <p>To enlighten the mind and soul of the new generation, Shatabdi Public School, Gaya was established in the year 2000, inaugurated by Saiyid Hamid, Chancellor of Jamia Hamdard, New Delhi and former Vice-Chancellor of Aligarh Muslim University, to promote socialization of the new generation in a plural society and to prepare a generation to face the challenges of the new &ldquo;Shatabdi&rdquo;.</p>
             <p>A child born in this world must have the freedom to grow without any restriction. Provision of proper education is a birthright of all children, to bring in them the desirable behavioural change that leads to their development. Quality and competitiveness in tune with modern necessities, to inculcate leadership qualities in the young generation so that it can face challenges boldly and successfully, should be the goal of education.</p>
             <p>We are working for all round development of a child; our 100 percent focus is to achieve 100 percent. It is possible only due to our dedication, hard work, discipline, enthusiasm, punctuality and above all our motivation. Whether in the scholastic or co-scholastic part of a child&rsquo;s life, we add more attractive and beautiful colours to the fabric of education, so that he or she may become a responsible citizen with strong character and fear of God, and a trustworthy torch-bearer of the future.</p>
-            <p><strong>— Principal, Shatabdi Public School</strong></p>
+            <p><strong>— Mr. Saquib Zarar, Principal, Shatabdi Public School</strong></p>
           </div>
         </div>
       </section>
