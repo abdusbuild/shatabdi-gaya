@@ -77,7 +77,7 @@ export default function Academics() {
               <li>A vocational or skill subject, such as Information Technology</li>
             </ul>
           </div>
-          <Photo src="/images/science-museum-visit.webp" label="Students on a science museum visit" className="reveal ph--tall ph--top" />
+          <Photo src="/images/exhibition-cell-model.webp" label="Cell models at the school project exhibition" className="reveal ph--tall" />
         </div>
       </section>
 
