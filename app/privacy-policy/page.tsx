@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PrivacyArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -15,7 +14,7 @@ export default function PrivacyPolicy() {
   return (
     <LegalPage
       path="/privacy-policy"
-      art={<PrivacyArt />}
+      image={{ src: "/images/campus-stair-tower.webp", alt: "The stair tower of the classroom block" }}
       crumb="Privacy Policy"
       title="Privacy Policy"
       updated="30 October 2026"

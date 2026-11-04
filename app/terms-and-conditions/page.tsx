@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TermsArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -15,7 +14,7 @@ export default function Terms() {
   return (
     <LegalPage
       path="/terms-and-conditions"
-      art={<TermsArt />}
+      image={{ src: "/images/campus-building-side.webp", alt: "Side view of the multi-storey classroom block" }}
       crumb="Terms & Conditions"
       title="Terms & Conditions"
       updated="30 October 2026"

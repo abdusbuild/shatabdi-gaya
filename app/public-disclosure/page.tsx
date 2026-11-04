@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DisclosureArt } from "@/components/HeroArt";
 import LegalPage from "@/components/LegalPage";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -29,7 +28,7 @@ export default function PublicDisclosure() {
   return (
     <LegalPage
       path="/public-disclosure"
-      art={<DisclosureArt />}
+      image={{ src: "/images/campus-name-facade.webp", alt: "The school building with Shatabdi Public School, Gaya Ji written on its facade", position: "70% center" }}
       crumb="Public Disclosure"
       title="Mandatory Public Disclosure"
       updated="30 October 2026"
