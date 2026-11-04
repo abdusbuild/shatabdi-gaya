@@ -35,6 +35,7 @@ const groups: { title: string; links: FooterLink[] }[] = [
       { href: "/privacy-policy", label: "Privacy policy" },
       { href: "/terms-and-conditions", label: "Terms & conditions" },
       { href: "/public-disclosure", label: "Mandatory public disclosure" },
+      { href: SCHOOL.minorityCertificate, label: "Minority certificate", external: true },
       { href: SCHOOL.cbseRecord, label: "CBSE affiliation record", external: true },
     ],
   },
