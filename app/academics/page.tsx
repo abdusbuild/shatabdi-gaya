@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Chart, Flask, Leaf } from "@/components/Icons";
-import { AcademicsArt } from "@/components/HeroArt";
 import { CtaBand, PageHero, Photo, SectionHead } from "@/components/ui";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
@@ -27,7 +26,7 @@ const streams = [
 export default function Academics() {
   return (
     <>
-      <PageHero crumb="Academics" path="/academics" title="Academics" art={<AcademicsArt />}>
+      <PageHero crumb="Academics" path="/academics" title="Academics" image={{ src: "/images/exhibition-solar-system.webp", alt: "A student-made solar system model at the school science exhibition" }}>
         A complete CBSE pathway, from a child&rsquo;s first day in pre-primary to the Class XII board examinations.
       </PageHero>
 
