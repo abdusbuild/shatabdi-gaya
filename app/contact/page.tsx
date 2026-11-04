@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import EnquiryForm, { NameInput, PhoneInput } from "@/components/EnquiryForm";
 import { Facebook, Mail, Phone, Pin } from "@/components/Icons";
-import { ContactArt, MessageArt } from "@/components/HeroArt";
-import { PageHero } from "@/components/ui";
+import { PageHero, Photo } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { SkeletonFrame } from "@/components/Skeleton";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <PageHero crumb="Contact" path="/contact" title="Contact us" art={<ContactArt />}>
+      <PageHero crumb="Contact" path="/contact" title="Contact us" image={{ src: "/images/campus-garden-entrance.webp", alt: "The garden at the school entrance, with palm trees in front of the classroom block" }}>
         We would be glad to hear from you. Call, write, or visit us on Katari Hill Road.
       </PageHero>
 
@@ -70,7 +69,7 @@ export default function Contact() {
           <div className="reveal">
             <h2 className="h2-md">Send a message</h2>
             <p className="muted">Press Send and your email app will open with the message addressed to the school office.</p>
-            <div className="contact-art"><MessageArt /></div>
+            <Photo className="contact-photo" label="School buses parked beside the classroom wing" src="/images/campus-buses-classroom-wing.webp" caption={false} sizes="(max-width: 900px) 100vw, 520px" />
           </div>
           <EnquiryForm subject="Message from website" submitLabel="Send message">
             <div className="form-row">
