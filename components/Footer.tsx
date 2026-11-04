@@ -103,7 +103,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Shatabdi Public School, Gaya · A unit of Shatabdi Foundation · CBSE Affiliation No. 330113</span>
+          <span>© {new Date().getFullYear()} Shatabdi Public School, Gaya Ji · A unit of Shatabdi Foundation · CBSE Affiliation No. 330113</span>
           <nav aria-label="Legal" className="footer__legal">
             <Link href="/privacy-policy">Privacy</Link>
             <Link href="/terms-and-conditions">Terms</Link>

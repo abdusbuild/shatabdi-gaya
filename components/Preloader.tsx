@@ -20,7 +20,7 @@ export default function Preloader() {
             <span className="preloader__logo"><img src="/logo-lg.webp" alt="" width={164} height={193} /></span>
           </div>
           <div className="preloader__name">Shatabdi</div>
-          <div className="preloader__sub">Public School &middot; Gaya</div>
+          <div className="preloader__sub">Public School &middot; Gaya Ji</div>
           <div className="preloader__tag">CBSE &middot; Since 2000</div>
           <div className="preloader__bar"><i /></div>
         </div>

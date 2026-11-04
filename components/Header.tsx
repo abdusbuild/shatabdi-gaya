@@ -163,7 +163,7 @@ export default function Header() {
             <img src="/logo-nav.webp" alt="" width={54} height={64} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
-              <span className="brand__tag">Gaya · CBSE 330113</span>
+              <span className="brand__tag">Gaya Ji · CBSE 330113</span>
             </span>
           </Link>
           <div className="mobile-menu__tools">
@@ -207,7 +207,7 @@ export default function Header() {
             <div className="mobile-menu__contacts">
               <a href={`tel:${SCHOOL.phone}`}><Phone />{SCHOOL.phoneLabel}</a>
               <a href={`mailto:${SCHOOL.email}`}><Mail />{SCHOOL.email}</a>
-              <span><Pin />Katari Hill Road, Aliganj, Gaya 823001</span>
+              <span><Pin />Katari Hill Road, Aliganj, Gaya Ji 823001</span>
             </div>
             <div className="mobile-menu__social">
               <a href={SCHOOL.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Facebook /></a>
