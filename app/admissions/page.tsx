@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import EnquiryForm, { NameInput, PhoneInput } from "@/components/EnquiryForm";
-import { AdmissionsArt, MessageArt } from "@/components/HeroArt";
 import { Faq, PageHero, Photo, SectionHead } from "@/components/ui";
 import { SCHOOL } from "@/lib/site";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -34,7 +33,7 @@ const classes = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII
 export default function Admissions() {
   return (
     <>
-      <PageHero crumb="Admissions" path="/admissions" title="Admissions" art={<AdmissionsArt />}>
+      <PageHero crumb="Admissions" path="/admissions" title="Admissions" image={{ src: "/images/excursion-group-gate.webp", alt: "Students in school uniform lined up at a gate during a study tour" }}>
         Admission is open to every child, regardless of caste, creed or religion. Here is how to join Shatabdi.
       </PageHero>
 
