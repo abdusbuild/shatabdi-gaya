@@ -73,7 +73,7 @@ export default function PublicDisclosure() {
               ["Classes offered", "Prep-I and Prep-II, Class I to XII"],
               ["Streams (XI–XII)", "Science (with or without Mathematics), Commerce"],
               ["Academic session", "April to March"],
-              ["Fee structure", ASK],
+              ["Fee structure", <a key="f" href={SCHOOL.feeStructure} target="_blank" rel="noopener">View fee structure 2026–27 (PDF, opens in a new tab)</a>],
               ["Annual academic calendar", ASK],
               ["Class X and XII board results (last three years)", ASK],
             ]} />

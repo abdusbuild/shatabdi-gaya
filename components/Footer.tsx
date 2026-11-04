@@ -24,6 +24,7 @@ const groups: { title: string; links: FooterLink[] }[] = [
     links: [
       { href: "/admissions", label: "Admission process" },
       { href: "/admissions#documents", label: "Documents required" },
+      { href: "/admissions#fees", label: "Fee structure" },
       { href: "/admissions#faq", label: "Admission FAQs" },
       { href: "/admissions#enquiry", label: "Enquiry form" },
       { href: "/contact", label: "Contact the office" },

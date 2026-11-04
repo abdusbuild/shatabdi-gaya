@@ -17,7 +17,7 @@ export default function Terms() {
       image={{ src: "/images/campus-building-side.webp", alt: "Side view of the multi-storey classroom block" }}
       crumb="Terms & Conditions"
       title="Terms & Conditions"
-      updated="30 October 2026"
+      updated="4 November 2026"
       intro={<p>These terms apply to your use of the Shatabdi Public School, Gaya Ji website. By using this website you agree to them.</p>}
       sections={[
         {
@@ -34,7 +34,7 @@ export default function Terms() {
         },
         {
           id: "admissions", title: "4. Admissions & fees",
-          body: <p>An enquiry through this website does not reserve a seat. Admission depends on the School&rsquo;s admission process, including the entrance test, interview and submission of documents, and is confirmed only when fees are deposited within the stated time. The current fee structure is available from the School office. See the <Link href="/admissions">Admissions page</Link>.</p>,
+          body: <p>An enquiry through this website does not reserve a seat. Admission depends on the School&rsquo;s admission process, including the entrance test, interview and submission of documents, and is confirmed only when fees are deposited within the stated time. The current fee structure is published on the <Link href="/admissions#fees">Admissions page</Link> and is also available from the School office.</p>,
         },
         {
           id: "ip", title: "5. Intellectual property",

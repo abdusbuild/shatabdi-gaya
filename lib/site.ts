@@ -21,6 +21,7 @@ export const SCHOOL = {
   cbseRecord: "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/330113",
   erp: "http://101.53.157.220:7122/shatabdi/",
   minorityCertificate: "/documents/minority-certificate.pdf",
+  feeStructure: "/documents/Fees-Structure-2026-27.pdf",
 };
 
 // Public origin used for canonical URLs, the sitemap and social previews.

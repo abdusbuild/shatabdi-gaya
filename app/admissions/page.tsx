@@ -6,7 +6,7 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Admissions",
-  description: "Admission process, entrance test, required documents and enquiry form for Shatabdi Public School, Gaya Ji.",
+  description: "Admission process, entrance test, required documents, 2026–27 fee structure and enquiry form for Shatabdi Public School, Gaya Ji.",
   alternates: { canonical: "/admissions" }, openGraph: { ...OPEN_GRAPH, url: "/admissions", images: [ogImage("admissions", "Admissions at Shatabdi Public School, Gaya Ji")] },
 };
 
@@ -14,7 +14,7 @@ const steps = [
   ["Collect & submit the form", "Get the admission form (and the transport form, if needed) from the school office and submit it with the registration fee."],
   ["Entrance test", "A 50-mark written test in English, Mathematics, Science and General Knowledge, based on the previous class syllabus."],
   ["Interview", "Shortlisted students and their parents meet the school for an interaction. Candidates need at least 40% in English, Maths, Science and Hindi in their last examination."],
-  ["Confirm admission", "Deposit the fees within 15 days of the test result being declared, or the seat may be offered to another candidate."],
+  ["Confirm admission", "Deposit the fees within 10 days of the test result being declared, or the seat may be offered to another candidate."],
 ];
 
 const documents = [
@@ -27,6 +27,19 @@ const documents = [
   "Proof of residence",
   "Proof of parents' occupation",
 ];
+
+// From the signed fee structure for 2026–27 (public/documents/Fees-Structure-2026-27.pdf).
+// Existing students pay tuition and development only; new admissions also pay registration and admission.
+const REGISTRATION_FEE = 550;
+const fees = [
+  { label: "Std I & II", admission: 5000, tuition: 1500, development: 3200 },
+  { label: "Std III to V", admission: 5000, tuition: 1600, development: 3200 },
+  { label: "Std VI & VII", admission: 5800, tuition: 1800, development: 3200 },
+  { label: "Std VIII", admission: 8000, tuition: 1900, development: 3200 },
+  { label: "Std IX & X", admission: 13500, tuition: 2200, development: 3200 },
+  { label: "Std XI & XII (Science)", admission: 14000, tuition: 2500, development: 4700 },
+];
+const rupees = (amount: number) => `₹${amount.toLocaleString("en-IN")}`;
 
 const classes = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "XI – Science", "XI – Commerce"];
 
@@ -66,11 +79,47 @@ export default function Admissions() {
         </div>
       </section>
 
-      <section>
+      <section id="fees">
         <div className="wrap">
-          <div className="cols">
+          <SectionHead title="Fee structure 2026–27">Fees for each class, for new admissions and existing students. All amounts are in rupees.</SectionHead>
+          <div className="table-wrap reveal">
+            <table className="fee-table" aria-label="Fee structure for 2026–27 by class">
+              <thead>
+                <tr>
+                  <th scope="col">Class</th>
+                  <th scope="col">Registration <small>New admissions only</small></th>
+                  <th scope="col">Admission <small>New admissions only</small></th>
+                  <th scope="col">Tuition <small>Per month</small></th>
+                  <th scope="col">Development</th>
+                  <th scope="col">Total <small>New admission</small></th>
+                  <th scope="col">Total <small>Existing student</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                {fees.map(({ label, admission, tuition, development }) => (
+                  <tr key={label}>
+                    <th scope="row">{label}</th>
+                    <td data-label="Registration (new admissions only)">{rupees(REGISTRATION_FEE)}</td>
+                    <td data-label="Admission (new admissions only)">{rupees(admission)}</td>
+                    <td data-label="Tuition per month">{rupees(tuition)}</td>
+                    <td data-label="Development">{rupees(development)}</td>
+                    <td className="fee-table__total fee-table__total--new" data-label="Total, new admission">{rupees(REGISTRATION_FEE + admission + tuition + development)}</td>
+                    <td className="fee-table__total" data-label="Total, existing student">{rupees(tuition + development)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <ul className="checklist reveal">
+            <li>Each total includes one month&rsquo;s tuition. Examination fees are charged separately.</li>
+            <li>Examination fee for Std I to X: {rupees(750)} (June, September, November and February).</li>
+            <li>Examination fee for Std XI &amp; XII (Science): {rupees(2000)} (September and January).</li>
+            <li>For PP-1, PP-2 and Commerce fees, please ask the school office.</li>
+          </ul>
+          <a className="btn btn--navy fee-download reveal" href={SCHOOL.feeStructure} target="_blank" rel="noopener">View the signed fee structure (PDF)</a>
+          <div className="cols mt-lg">
             <article className="col reveal"><span className="col__tag">Session</span><h3>April – March</h3><p>The academic year begins in April. Summer vacation runs from mid-May to mid-June.</p></article>
-            <article className="col reveal"><span className="col__tag">Fees</span><h3>Ask the office</h3><p>Fees vary by class and include registration, admission, tuition, term and development charges. The office can give you the current fee structure.</p></article>
+            <article className="col reveal"><span className="col__tag">Fee deadline</span><h3>Within 10 days</h3><p>Deposit the fees within 10 days of the entrance test result being declared, or the seat may be offered to another candidate.</p></article>
             <article className="col reveal"><span className="col__tag">Admission desk</span><h3>Call reception</h3><p>For admission queries, call reception on <a href={`tel:+${SCHOOL.mobile}`} className="link-gold">{SCHOOL.mobileLabel}</a>, call or WhatsApp <a href={`tel:+${SCHOOL.whatsapp}`} className="link-gold">{SCHOOL.whatsappLabel}</a>, or the Principal&rsquo;s office on <a href={`tel:${SCHOOL.phone}`} className="link-gold">{SCHOOL.phoneLabel}</a>.</p></article>
           </div>
         </div>
@@ -110,7 +159,7 @@ export default function Admissions() {
             items={[
               ["What is the minimum age for admission?", "Children must be at least 4 years old for entry to pre-primary."],
               ["Is there an entrance test for every class?", "Admission to Std I to IX is through a 50-mark entrance test and an interview. For pre-primary and Class XI, please check the process with the office."],
-              ["When must the fees be paid?", "Fees must be deposited within 15 days of the entrance test result."],
+              ["When must the fees be paid?", "Fees must be deposited within 10 days of the entrance test result."],
               ["Does the school have a hostel?", "Taiyab Bhawan houses a hostel for boys coming from remote areas. Please contact the office for availability."],
               ["Are scholarships available?", "Yes. Merit-cum-poverty scholarships are awarded, and the Shatabdi Foundation supports deserving students from its free school with fees, books and uniforms."],
               ["Which languages are taught?", "English is the medium of instruction. Hindi and Urdu are offered as languages."],
