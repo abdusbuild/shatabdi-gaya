@@ -32,12 +32,18 @@ export default function Contact() {
               <div>
                 <h4>Phone</h4>
                 Principal&rsquo;s office: <a href={`tel:${SCHOOL.phone}`}>{SCHOOL.phoneLabel}</a> · <a href={`tel:${SCHOOL.principalMobile}`}>{SCHOOL.principalMobileLabel}</a><br />
-                Reception: <a href={`tel:+${SCHOOL.mobile}`}>{SCHOOL.mobileLabel}</a>
+                Reception: <a href={`tel:+${SCHOOL.mobile}`}>{SCHOOL.mobileLabel}</a><br />
+                WhatsApp &amp; call: <a href={`tel:+${SCHOOL.whatsapp}`}>{SCHOOL.whatsappLabel}</a>
               </div>
             </div>
             <div className="contact-item">
               <div className="card__icon"><Mail /></div>
-              <div><h4>Email</h4><a href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a></div>
+              <div>
+                <h4>Email</h4>
+                <a href={`mailto:${SCHOOL.email}`}>{SCHOOL.email}</a>
+                <br />
+                Also: <a href={`mailto:${SCHOOL.emailBackup}`}>{SCHOOL.emailBackup}</a>
+              </div>
             </div>
             <div className="contact-item">
               <div className="card__icon"><Facebook /></div>

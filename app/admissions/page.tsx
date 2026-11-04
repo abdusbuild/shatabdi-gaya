@@ -72,7 +72,7 @@ export default function Admissions() {
           <div className="cols">
             <article className="col reveal"><span className="col__tag">Session</span><h3>April – March</h3><p>The academic year begins in April. Summer vacation runs from mid-May to mid-June.</p></article>
             <article className="col reveal"><span className="col__tag">Fees</span><h3>Ask the office</h3><p>Fees vary by class and include registration, admission, tuition, term and development charges. The office can give you the current fee structure.</p></article>
-            <article className="col reveal"><span className="col__tag">Admission desk</span><h3>Call reception</h3><p>For admission queries, call reception on <a href={`tel:+${SCHOOL.mobile}`} className="link-gold">{SCHOOL.mobileLabel}</a> or the Principal&rsquo;s office on <a href={`tel:${SCHOOL.phone}`} className="link-gold">{SCHOOL.phoneLabel}</a>.</p></article>
+            <article className="col reveal"><span className="col__tag">Admission desk</span><h3>Call reception</h3><p>For admission queries, call reception on <a href={`tel:+${SCHOOL.mobile}`} className="link-gold">{SCHOOL.mobileLabel}</a>, call or WhatsApp <a href={`tel:+${SCHOOL.whatsapp}`} className="link-gold">{SCHOOL.whatsappLabel}</a>, or the Principal&rsquo;s office on <a href={`tel:${SCHOOL.phone}`} className="link-gold">{SCHOOL.phoneLabel}</a>.</p></article>
           </div>
         </div>
       </section>
@@ -81,8 +81,8 @@ export default function Admissions() {
         <div className="wrap split split--top">
           <div className="reveal">
             <h2 className="h2-md">Start an admission enquiry</h2>
-            <p className="muted">Fill in the details and press Send. WhatsApp will open with your enquiry addressed to the school office on <strong>{SCHOOL.mobileLabel}</strong>, ready to send. You can also visit the school office on Katari Hill Road.</p>
-            <div className="contact-art art-still"><MessageArt /></div>
+            <p className="muted">Fill in the details and press Send. WhatsApp will open with your enquiry addressed to the school office on <strong>{SCHOOL.whatsappLabel}</strong>, ready to send. You can also visit the school office on Katari Hill Road.</p>
+            <Photo className="contact-photo" label="Pre-primary pupils performing on stage at Foundation Day" src="/images/fd26-little-ones.webp" caption={false} sizes="(max-width: 900px) 100vw, 520px" />
           </div>
           <EnquiryForm subject="Admission enquiry from website" submitLabel="Send on WhatsApp" via="whatsapp">
             <div className="form-row">
