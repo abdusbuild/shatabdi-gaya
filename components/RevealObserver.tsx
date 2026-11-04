@@ -3,12 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-// One-shot reveal animations: each element plays its entrance once, the first time it comes into view
-// (text slides in from the left, photos and buttons from the right, everything else rises and fades in).
+// One-shot reveal animations: each element rises into place once, the first time it comes into view.
 //
 // The script only ever sets a data-inview attribute, never className, so React re-renders cannot undo it.
-// Elements stay hidden only while <html> carries the "rv" class, which the head script in layout.tsx adds
-// and removes again after a few seconds if this component never starts, so content can't stay invisible.
+// Elements stay offset only while <html> carries the "rv" class, which the head script in layout.tsx adds
+// and removes again after a few seconds if this component never starts, so content can't stay out of place.
 const SELECTOR = [
   ".reveal",
   ".slide-title",

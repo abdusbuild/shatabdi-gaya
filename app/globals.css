@@ -1295,35 +1295,23 @@ html:has(.mobile-menu.is-open) { overflow: hidden; }
 @keyframes hero-img-in { from { opacity: 0; clip-path: inset(0 0 0 100%); transform: translateX(40px); } to { opacity: 1; clip-path: inset(0); transform: none; } }
 
 /* ---------- One-shot reveals (RevealObserver.tsx marks elements with data-inview the first time they show) ----------
-   Text slides in from the left, photos and buttons from the right, everything else rises 30px and fades in;
-   orange lines draw out. Hidden states apply only while <html> has .rv, which the head script sets when
-   motion is allowed and drops again if the observer never starts. Fill mode "backwards" hands the element
-   back to its own styles once the entrance ends, so hover effects keep working. */
-html, body { overflow-x: clip; } /* the sideways entrances must never widen the page */
-:root { --rv-x: 100px; }
-@media (max-width: 700px) { :root { --rv-x: 44px; } }
+   Blocks rise over 1s without fading, so nothing is ever invisible while it waits; orange lines draw out.
+   The offset applies only while <html> has .rv, which the head script sets when motion is allowed and drops
+   again if the observer never starts. Fill mode "backwards" hands the element back to its own styles once
+   the entrance ends, so hover effects keep working. */
+html, body { overflow-x: clip; }
+:root { --rise: 50px; }
+@media (max-width: 600px) { :root { --rise: 30px; } } /* tighter phone sections: a bigger rise would reach the next band */
 
-.rv :is(.reveal, .slide-title, .img-reveal, .pill):not([data-inview]) { opacity: 0; }
+.rv :is(.reveal, .slide-title, .img-reveal, .pill):not([data-inview]) { transform: translateY(var(--rise)); }
 .rv .rule:not(.rule--hero):not([data-inview]) { transform: scaleX(0); }
 .rv :is(.title-row h2, .section-head h2, .band__title):not([data-inview])::after { transform: scaleX(0); }
 
-.rv .reveal[data-inview] { animation: rv-up .6s ease-out backwards; }
-.rv :is(.slide-title, .eyebrow.reveal, .lead.reveal, .intro__lead.reveal, .band__sub.reveal, .muted.reveal, .message.reveal, .leader__quote.reveal)[data-inview] { animation: rv-left 1.1s var(--ease) backwards; }
-.rv :is(.img-reveal, .pill, .ph--tall.reveal, .principal-photo.reveal, .video.reveal, .map.reveal, .figure.reveal, .building.reveal, .faq-layout__art.reveal, .rating-badge.reveal)[data-inview] { animation: rv-right 1.1s var(--ease) backwards; }
-.rv .pill.pill[data-inview] { animation-delay: .25s; }
+.rv :is(.reveal, .slide-title, .img-reveal, .pill)[data-inview] { animation: rv-rise 1s ease-in-out backwards; }
 .rv .rule:not(.rule--hero)[data-inview] { animation: rule-draw 1.5s var(--ease) .3s backwards; }
 .rv :is(.title-row h2, .section-head h2, .band__title)[data-inview]::after { animation: rule-draw 1.5s var(--ease) .3s backwards; }
 
-/* Cards in a row arrive one after another */
-.rv :is(.grid-2, .grid-3, .grid-4, .cols, .facilities, .houses, .gallery, .stats, .feats) > [data-inview]:nth-child(6n+2) { animation-delay: .1s; }
-.rv :is(.grid-2, .grid-3, .grid-4, .cols, .facilities, .houses, .gallery, .stats, .feats) > [data-inview]:nth-child(6n+3) { animation-delay: .2s; }
-.rv :is(.grid-2, .grid-3, .grid-4, .cols, .facilities, .houses, .gallery, .stats, .feats) > [data-inview]:nth-child(6n+4) { animation-delay: .3s; }
-.rv :is(.grid-2, .grid-3, .grid-4, .cols, .facilities, .houses, .gallery, .stats, .feats) > [data-inview]:nth-child(6n+5) { animation-delay: .4s; }
-.rv :is(.grid-2, .grid-3, .grid-4, .cols, .facilities, .houses, .gallery, .stats, .feats) > [data-inview]:nth-child(6n) { animation-delay: .5s; }
-
-@keyframes rv-up { from { opacity: 0; transform: translateY(30px); } }
-@keyframes rv-left { from { opacity: 0; transform: translateX(calc(var(--rv-x) * -1)); } }
-@keyframes rv-right { from { opacity: 0; transform: translateX(var(--rv-x)); } }
+@keyframes rv-rise { from { transform: translateY(var(--rise)); } }
 
 /* ---------- Menu fit on small and short screens: everything visible without scrolling ---------- */
 /* Shorter screens (laptops at 768px tall, small phones): less empty space above and below the links */
