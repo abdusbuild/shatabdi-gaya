@@ -16,6 +16,7 @@ const groups: { title: string; links: FooterLink[] }[] = [
       { href: "/campus", label: "Campus & facilities" },
       { href: "/campus#gallery", label: "Photo gallery" },
       { href: "/about#principal", label: "Principal's message" },
+      { href: "/about#faculty", label: "Our teachers" },
       { href: "/about#foundation", label: "Shatabdi Foundation" },
     ],
   },

@@ -6,7 +6,7 @@ import { OPEN_GRAPH, ogImage } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "History, mission, Principal's message and the Shatabdi Foundation behind Shatabdi Public School, Gaya Ji, established in 2000.",
+  description: "History, mission, Principal's message, faculty and the Shatabdi Foundation behind Shatabdi Public School, Gaya Ji, established in 2000.",
   alternates: { canonical: "/about" }, openGraph: { ...OPEN_GRAPH, url: "/about", images: [ogImage("about", "About Shatabdi Public School, Gaya Ji")] },
 };
 
@@ -44,6 +44,58 @@ const supported = [
   "Jamia Haleema Saadia, Bihar Sharif",
 ];
 
+// Teaching staff from the school's staff list (Nov 2026), with departed staff removed.
+// Each group is shown as a ruled column; `role` adds a line under a name where the group title is not enough.
+const faculty: { title: string; tag: string; people: { name: string; role?: string }[] }[] = [
+  { title: "School leadership", tag: "Leadership", people: [
+    { name: "Mr. Saquib Zarar", role: "Principal" },
+    { name: "Mr. Gopal Kumar Singh", role: "Vice Principal" },
+  ] },
+  { title: "Heads of Department", tag: "HOD", people: [
+    { name: "Mr. Kaushal Kishore Mishra" },
+    { name: "Mr. Arshad Hussain" },
+    { name: "Md. Abdus Sattar" },
+  ] },
+  { title: "Pre-primary & laboratory", tag: "Support", people: [
+    { name: "Ms. Effat Perween", role: "Mother Teacher" },
+    { name: "Ms. Nazra Perween", role: "Mother Teacher" },
+    { name: "Md. Rizwan Uz Zaman", role: "Laboratory" },
+  ] },
+  { title: "Post Graduate Teachers", tag: "PGT · Classes XI–XII", people: [
+    { name: "Dr. Syed Mohammad Minhajul Hassan" },
+    { name: "Md. Abid" },
+    { name: "Md. Farrukh Alam" },
+    { name: "Md. Harun" },
+    { name: "Ms. Saba Humayun Warsi" },
+    { name: "Md. Quamar Hassan" },
+  ] },
+  { title: "Trained Graduate Teachers", tag: "TGT · Classes VI–X", people: [
+    { name: "Mr. S. Shakil Ahmad" },
+    { name: "Ms. Ratna Tripathi" },
+    { name: "Ms. Najma Sayeed Quadri" },
+    { name: "Mr. Prince Kumar" },
+    { name: "Ms. Nazan Matloob" },
+    { name: "Ms. Ritu Sinha" },
+    { name: "Mr. Abhishek Kumar" },
+    { name: "Mr. Mohammad Rameez" },
+    { name: "Mr. Pankaj Roy" },
+  ] },
+  { title: "Primary Teachers", tag: "PRT · Classes I–V", people: [
+    { name: "Md. Hanzala" },
+    { name: "Ms. Sana Perween" },
+    { name: "Ms. Uzaifa Simab" },
+    { name: "Ms. Shabina Shaheen" },
+    { name: "Ms. Ashna Mehreen" },
+    { name: "Ms. Tayyiba Naaz" },
+    { name: "Ms. Reena Rani" },
+    { name: "Ms. Musarrat Jahan" },
+    { name: "Ms. Darakhshan" },
+    { name: "Ms. Kahkashan Fatima" },
+    { name: "Ms. Seema Naz" },
+    { name: "Ms. Saba Fatima" },
+    { name: "Ms. Alisha Mallick" },
+  ] },
+];
 
 export default function About() {
   return (
@@ -80,7 +132,7 @@ export default function About() {
       <section id="principal">
         <div className="wrap split split--top">
           <div className="reveal principal-photo">
-            <Photo src="/images/principal.webp" label="Mr. Saquib Zarar, Principal" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
+            <Photo src="/images/principal-portrait.webp" label="Mr. Saquib Zarar, Principal" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
           </div>
           <div className="reveal message">
             <h2 className="h2-md">Educating the mind and soul</h2>
@@ -106,6 +158,29 @@ export default function About() {
                 <div className="timeline__year">{year}</div>
                 <p>{text}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faculty">
+        <div className="wrap">
+          <div className="section-head reveal">
+            <p className="eyebrow">Our faculty</p>
+            <h2>The teachers behind Shatabdi</h2>
+            <p>Experienced, qualified teachers guide our students from the first day of pre-primary to the Class XII board examinations.</p>
+          </div>
+          <div className="cols faculty">
+            {faculty.map(({ title, tag, people }) => (
+              <article className="col reveal" key={title}>
+                <span className="col__tag">{tag}</span>
+                <h3>{title}</h3>
+                <ul className="faculty__list">
+                  {people.map(({ name, role }) => (
+                    <li key={name}>{name}{role && <span>{role}</span>}</li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
         </div>

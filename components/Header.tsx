@@ -11,6 +11,7 @@ const MENU_GROUPS = [
   { title: "About Us", href: "/about", links: [
     { href: "/about", label: "About the school" },
     { href: "/about#principal", label: "Principal's message" },
+    { href: "/about#faculty", label: "Our teachers" },
     { href: "/about#foundation", label: "Shatabdi Foundation" },
   ] },
   { title: "Academics", href: "/academics", links: [
@@ -125,11 +126,7 @@ export default function Header() {
             <img className="brand__logo" src="/logo-nav.webp" alt="" width={66} height={78} />
             <span>
               <span className="brand__name">Shatabdi Public School</span>
-              <span className="brand__info">
-                <span>(A Senior Secondary School)</span>
-                <span>AFFILIATED TO C.B.S.E., DELHI</span>
-                <span>Katari Hill Road, Gaya Ji – 823001 (Bihar).</span>
-              </span>
+              <span className="brand__tag">Gaya Ji · CBSE 330113</span>
             </span>
           </Link>
           <div className="nav__actions">
