@@ -71,11 +71,12 @@ const faculty: { title: string; tag: string; people: { name: string; role?: stri
   ] },
   { title: "Trained Graduate Teachers", tag: "TGT · Classes VI–X", people: [
     { name: "Mr. S. Shakil Ahmad" },
-    { name: "Ms. Ratna Tripathi" },
+    { name: "Mrs. Ratna Tripathi" },
     { name: "Ms. Najma Sayeed Quadri" },
     { name: "Mr. Prince Kumar" },
     { name: "Ms. Nazan Matloob" },
-    { name: "Ms. Ritu Sinha" },
+    { name: "Mrs. Ritu Sinha" },
+    { name: "Mr. Khushnood Alam" },
     { name: "Mr. Abhishek Kumar" },
     { name: "Mr. Mohammad Rameez" },
     { name: "Mr. Pankaj Roy" },
@@ -87,7 +88,7 @@ const faculty: { title: string; tag: string; people: { name: string; role?: stri
     { name: "Ms. Shabina Shaheen" },
     { name: "Ms. Ashna Mehreen" },
     { name: "Ms. Tayyiba Naaz" },
-    { name: "Ms. Reena Rani" },
+    { name: "Mrs. Reena Rani" },
     { name: "Ms. Musarrat Jahan" },
     { name: "Ms. Darakhshan" },
     { name: "Ms. Kahkashan Fatima" },
@@ -110,7 +111,7 @@ export default function About() {
             <h2 className="h2-md">A school of peace and enlightenment</h2>
             <p className="lead">Gaya Ji is a historic city with glorious traditions of <em>Shanti</em> (peace) and enlightenment. Shatabdi Public School is an English-medium Senior Secondary School affiliated to CBSE, imparting modern quality education with moral orientation.</p>
             <p className="muted">The school lies in a peaceful part of the city, about 3 km west of Gaya Railway Junction. Five buildings with well-ventilated classrooms, modern laboratories, a well-furnished library and a computer lab make it an ideal place for learning. Trees along the boundary wall and a garden keep the campus green.</p>
-            <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,000 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas. They are taught by 50 teachers and supported by 20 non-teaching staff.</p>
+            <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,000 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas. They are taught by 36 teachers and supported by 11 non-teaching staff.</p>
           </div>
           <Photo src="/images/campus-garden-entrance.webp" label="The garden at the school entrance" className="reveal ph--tall" />
         </div>
@@ -191,7 +192,6 @@ export default function About() {
           <div className="reveal">
             <h2 className="h2-md">Education on a non-commercial basis</h2>
             <p style={{ color: "rgba(255,255,255,.78)" }}>Shatabdi Foundation, Gaya Ji, a society registered under the Societies Registration Act, 1860 (Registration No. 495/2000-01), started Shatabdi Public School as its first venture. Most of our students come from weaker sections, the middle class and minority communities, and many are first-generation learners.</p>
-            <p style={{ color: "rgba(255,255,255,.78)" }}>The Foundation also runs a free school after school hours, where about 150 children study up to Std V. It moves promising students into the main school and pays their fees, books and uniforms. Merit-cum-poverty scholarships are awarded every year.</p>
           </div>
           <div className="card reveal">
             <h3>Schools supported by the Foundation</h3>

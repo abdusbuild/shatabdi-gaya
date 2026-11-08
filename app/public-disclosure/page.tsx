@@ -84,9 +84,9 @@ export default function PublicDisclosure() {
           body: (
             <Table rows={[
               ["Principal", "Mr. Saquib Zarar"],
-              ["Total number of teachers", "50"],
-              ["Non-teaching staff", "20"],
-              ["Student–teacher ratio", "20 : 1 (about 1,000 students, 50 teachers)"],
+              ["Total number of teachers", "36"],
+              ["Non-teaching staff", "11"],
+              ["Student–teacher ratio", "28 : 1 (about 1,000 students, 36 teachers)"],
               ["Teacher–section ratio", ASK],
               ["Details of special educator and counsellor", ASK],
             ]} />

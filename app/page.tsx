@@ -13,13 +13,12 @@ import { OPEN_GRAPH } from "@/lib/seo";
 export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { ...OPEN_GRAPH, url: "/" } };
 
 const heroSlides: Slide[] = [
-  { src: "/hero/campus-classroom-wing.webp", alt: "The classroom wing and cobbled courtyard, with school buses parked under the trees", position: "50% 55%" },
-  { src: "/hero/students-school-hall.webp", alt: "Senior students in school blazers seated in the school hall", position: "50% 55%" },
-  { src: "/hero/hero1.jpeg", alt: "Senior boys and girls seated in the school hall", position: "50% 60%" },
-  { src: "/hero/excursion-group-gate.webp", alt: "Students and a teacher at the gate of Rajdhani Vatika on a study tour", position: "50% 45%" },
-  { src: "/hero/plantation-drive-group-2.webp", alt: "The Principal with students at the plantation drive", position: "50% 40%" },
-  { src: "/hero/study-tour-girls.webp", alt: "Five students in school uniform on a study tour", position: "50% 40%" },
   { src: "/hero/building1.jpeg", alt: "School buildings around the brick-paved courtyard, with school buses under the trees", position: "50% 55%" },
+  { src: "/hero/students-school-hall.webp", alt: "Senior students in school blazers seated in the school hall", position: "50% 55%" },
+  { src: "/hero/excursion-group-gate.webp", alt: "Students and a teacher at the gate of Rajdhani Vatika on a study tour", position: "50% 45%" },
+  { src: "/hero/excursion-teachers.webp", alt: "Teachers at the gate of Rajdhani Vatika on a study tour", position: "50% 40%" },
+  { src: "/hero/plantation-drive-group-2.webp", alt: "The Principal with students at the plantation drive", position: "50% 40%" },
+  { src: "/hero/study-tour-girls-2.webp", alt: "Five students in school uniform on a study tour", position: "50% 40%" },
 ];
 
 const stats = [
