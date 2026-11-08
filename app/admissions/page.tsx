@@ -151,7 +151,6 @@ export default function Admissions() {
               ["Is there an entrance test for every class?", "Admission to Std I to IX is through a 50-mark entrance test and an interview. For pre-primary and Class XI, please check the process with the office."],
               ["When must the fees be paid?", "Fees must be deposited within 10 days of the entrance test result."],
               ["Does the school have a hostel?", "Taiyab Bhawan houses a hostel for boys coming from remote areas. Please contact the office for availability."],
-              ["Are scholarships available?", "Yes. Merit-cum-poverty scholarships are awarded, and the Shatabdi Foundation supports deserving students from its free school with fees, books and uniforms."],
               ["Which languages are taught?", "English is the medium of instruction. Hindi and Urdu are offered as languages."],
             ]}
           />
