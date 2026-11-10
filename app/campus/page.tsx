@@ -64,7 +64,7 @@ const facilities = [
   { Icon: Flask, title: "Science labs", text: "Physics, Chemistry, Biology and Mathematics labs, equipped as CBSE prescribes up to Class XII." },
   { Icon: Monitor, title: "Computer lab", text: "A Computer Science lab with internet access and a Wi-Fi zone." },
   { Icon: Book, title: "Computerised library", text: "More than 20,000 books, including about 9,000 reference books, plus 18 periodicals, 6 dailies and 23 magazines." },
-  { Icon: Music, title: "Auditorium", text: "Maulana Abul Kalam Hall hosts assemblies, Foundation Day, the Annual Function and cultural programmes." },
+  { Icon: Music, title: "Auditorium", text: "Maulana Abul Kalam Hall hosts assemblies, Foundation Day, Sir Syed Day and cultural programmes." },
   { Icon: Globe, title: "Sports", text: "Indoor and outdoor games: football, cricket, volleyball, badminton, kho-kho, kabaddi, chess and carrom." },
   { Icon: Bus, title: "Conveyance", text: "Transport for the many students who come from neighbouring rural areas." },
   { Icon: Screen, title: "Smart classrooms", text: "Well-ventilated classrooms with audio-visual teaching aids." },
@@ -79,7 +79,7 @@ const houses = [
 ];
 
 const activities = ["Speeches", "Songs", "Antakshari (Baitbazi)", "Drawing & painting", "Debates", "Poem recitation", "Quiz", "Dance", "Drama", "Fancy dress", "Patriotic songs", "Action songs"];
-const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day", "Gandhi Jayanti", "Teachers' Day", "Children's Day", "Annual Function", "Sports Day"];
+const occasions = ["Foundation Day (26 Oct)", "Independence Day", "Republic Day", "Gandhi Jayanti", "Teachers' Day", "Children's Day", "Sir Syed Day", "Sports Day"];
 
 // A third value of true marks a portrait photo, shown as a tall tile so it is not cropped
 const gallery: [string, string, boolean?][] = [
@@ -110,12 +110,12 @@ const gallery: [string, string, boolean?][] = [
   ["/images/campus-classroom-wing-courtyard.webp", "The classroom wing and courtyard"],
   ["/images/campus-courtyard-school-bus.webp", "The courtyard and school buses"],
   ["/images/campus-buses-classroom-wing.webp", "School buses beside the classroom wing"],
-  ["/images/annual-function-dance.webp", "Annual Function dance"],
-  ["/images/annual-function-dance-yellow.webp", "Young dancers, Annual Function"],
-  ["/images/annual-function-girls-group.webp", "Annual Function presentation"],
-  ["/images/annual-function-speech.webp", "Student speech, Annual Function", true],
-  ["/images/annual-function-student-speech.webp", "Speaking at the podium, Annual Function", true],
-  ["/images/annual-function-audience.webp", "Parents and guests at the Annual Function"],
+  ["/images/annual-function-dance.webp", "Sir Syed Day dance"],
+  ["/images/annual-function-dance-yellow.webp", "Young dancers, Sir Syed Day"],
+  ["/images/annual-function-girls-group.webp", "Sir Syed Day presentation"],
+  ["/images/annual-function-speech.webp", "Student speech, Sir Syed Day", true],
+  ["/images/annual-function-student-speech.webp", "Speaking at the podium, Sir Syed Day", true],
+  ["/images/annual-function-audience.webp", "Parents and guests at Sir Syed Day"],
   ["/images/excursion-group-gate.webp", "Educational excursion"],
   ["/images/excursion-group-line.webp", "Students on an educational excursion"],
   ["/images/excursion-girls-gate.webp", "Senior students on an excursion"],
@@ -239,7 +239,7 @@ export default function Campus() {
       <section className="section--alt" id="gallery">
         <div className="wrap">
           <SectionHead title="Life at Shatabdi">
-            Moments from Foundation Day, Independence Day and the Annual Function. More on our{" "}
+            Moments from Foundation Day, Independence Day and Sir Syed Day. More on our{" "}
             <a href={SCHOOL.youtube} target="_blank" rel="noopener" className="link-gold">YouTube</a>,{" "}
             <a href={SCHOOL.instagram} target="_blank" rel="noopener" className="link-gold">Instagram</a> and{" "}
             <a href={SCHOOL.facebook} target="_blank" rel="noopener" className="link-gold">Facebook</a> pages.
