@@ -72,7 +72,7 @@ const faculty: { title: string; tag: string; people: { name: string; role?: stri
     { name: "Mr. Neyaz Ahmad", role: "Network Administrator" },
   ] },
   { title: "Post Graduate Teachers", tag: "PGT · Classes XI–XII", people: [
-    { name: "Ms. Saba Humayun Warsi" },
+    { name: "Ms. Saba Humayun Warsi", role: "Incharge (Primary Section)" },
   ] },
   { title: "Trained Graduate Teachers", tag: "TGT · Classes VI–X", people: [
     { name: "Mr. S. Shakil Ahmad" },
@@ -136,7 +136,7 @@ export default function About() {
       <section id="principal">
         <div className="wrap split split--top">
           <div className="reveal principal-photo">
-            <Photo src="/images/principal-portrait.webp" label="Mr. Saquib Zarar, Principal" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
+            <Photo src="/images/principal-portrait-new.webp" label="Mr. Saquib Zarar, Principal" className="ph--portrait" sizes="(max-width: 900px) 90vw, 440px" />
           </div>
           <div className="reveal message">
             <h2 className="h2-md">Educating the mind and soul</h2>

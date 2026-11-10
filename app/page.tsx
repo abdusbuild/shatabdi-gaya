@@ -51,7 +51,7 @@ const achievements = [
 const photoColumns = [
   [
     ["/images/fd26-assembly-ali-bhawan.webp", "Students gathered in front of Ali Bhawan on Foundation Day"],
-    ["/images/annual-function-dance-yellow.webp", "Young pupils dancing at the Annual Function"],
+    ["/images/annual-function-dance-yellow.webp", "Young pupils dancing at Sir Syed Day"],
     ["/images/campus-courtyard-school-bus.webp", "The courtyard and school buses on Katari Hill Road"],
     ["/images/exhibition-volcano.webp", "A volcano model at the school project exhibition"],
     ["/images/fd26-group-song.webp", "A group song on stage on Foundation Day"],
@@ -61,13 +61,13 @@ const photoColumns = [
     ["/images/fd26-welcome-address.webp", "The welcome address on Foundation Day"],
     ["/images/science-museum-visit.webp", "Students on a science museum visit"],
     ["/images/exhibition-cell-model.webp", "Plant and animal cell models at the project exhibition"],
-    ["/images/annual-function-audience.webp", "Parents and guests at the Annual Function"],
+    ["/images/annual-function-audience.webp", "Parents and guests at Sir Syed Day"],
   ],
 ];
 
 const moments = [
   { src: "/images/fd26-assembly-ali-bhawan.webp", alt: "Students gathered in front of Ali Bhawan on Foundation Day 2026", date: "26 October 2026", title: "Foundation Day 2026", text: "The school marked its Foundation Day with dances, songs, speeches and the Principal's address, with performances by students of every section." },
-  { src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at the Annual Function", date: "Annual Function", title: "On stage at the Annual Function", text: "Dances, speeches and group presentations in front of parents and guests." },
+  { src: "/images/annual-function-dance.webp", alt: "Primary pupils dancing on stage at Sir Syed Day", date: "Sir Syed Day", title: "On stage at Sir Syed Day", text: "Dances, speeches and group presentations in front of parents and guests." },
   { src: "/images/exhibition-smart-city.webp", alt: "A model of a pollution-free city at the project exhibition", date: "Project exhibition", title: "Ideas you can hold", text: "Students built models of volcanoes, cells, the solar system and a pollution-free city for the school exhibition." },
   { src: "/images/science-museum-visit.webp", alt: "Students on a science museum visit", date: "Study tour", title: "A visit to the science museum", text: "Exhibits on space and science bring classroom lessons to life." },
 ];
@@ -198,7 +198,7 @@ export default function Home() {
       <section className="band">
         <div className="wrap leader">
           <div className="leader__photo img-reveal">
-            <Image src="/images/principal-portrait.webp" alt="Mr. Saquib Zarar, Principal of Shatabdi Public School" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
+            <Image src="/images/principal-portrait-new.webp" alt="Mr. Saquib Zarar, Principal of Shatabdi Public School" fill sizes="(max-width: 900px) 100vw, 40vw" quality={85} />
             <span className="leader__cap"><strong>Mr. Saquib Zarar</strong>Principal, Shatabdi Public School</span>
           </div>
           <div>
