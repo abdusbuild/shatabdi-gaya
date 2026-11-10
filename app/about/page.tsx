@@ -114,7 +114,7 @@ export default function About() {
             <h2 className="h2-md">A school of peace and enlightenment</h2>
             <p className="lead">Gaya Ji is a historic city with glorious traditions of <em>Shanti</em> (peace) and enlightenment. Shatabdi Public School is an English-medium Senior Secondary School affiliated to CBSE, imparting modern quality education with moral orientation.</p>
             <p className="muted">The school lies in a peaceful part of the city, about 3 km west of Gaya Railway Junction. Five buildings with well-ventilated classrooms, modern laboratories, a well-furnished library and a computer lab make it an ideal place for learning. Trees along the boundary wall and a garden keep the campus green.</p>
-            <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,000 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas. They are taught by 36 teachers and supported by 11 non-teaching staff.</p>
+            <p className="muted">Admission is open to all without discrimination of caste, creed or religion. Around 1,000 students from every section of society study here, about 40% of them girls, and conveyance is provided for the many who come from nearby rural areas. They are taught by 39 teachers and supported by 11 non-teaching staff.</p>
           </div>
           <Photo src="/images/campus-garden-entrance.webp" label="The garden at the school entrance" className="reveal ph--tall" />
         </div>
