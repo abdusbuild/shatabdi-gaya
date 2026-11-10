@@ -49,29 +49,33 @@ const supported = [
 const faculty: { title: string; tag: string; people: { name: string; role?: string }[] }[] = [
   { title: "School leadership", tag: "Leadership", people: [
     { name: "Mr. Saquib Zarar", role: "Principal" },
-    { name: "Mr. Gopal Kumar Singh", role: "Vice Principal" },
+    { name: "Mr. Arshad Hussain", role: "Vice Principal · HOD, Social Science" },
   ] },
   { title: "Heads of Department", tag: "HOD", people: [
-    { name: "Mr. Kaushal Kishore Mishra" },
-    { name: "Mr. Arshad Hussain" },
-    { name: "Md. Abdus Sattar" },
+    { name: "Mr. Kaushal Kishore Mishra", role: "Hindi" },
+    { name: "Md. Abdus Sattar", role: "Urdu" },
+    { name: "Md. Abid Hussain", role: "Mathematics" },
+    { name: "Md. Quamar Hassan", role: "Chemistry" },
+    { name: "Dr. Syed Mohammad Minhajul Hassan", role: "Biology" },
+    { name: "Mr. Tanweer Alam", role: "Information Technology" },
+    { name: "Md. Farrukh Alam", role: "English" },
+    { name: "Mr. Mumtaz Alam", role: "General Knowledge" },
+    { name: "Mrs. Ratna Tripathi", role: "Sanskrit" },
+    { name: "Md. Harun", role: "Physics" },
+    { name: "Mr. Gopal Kumar Singh", role: "Science" },
+    { name: "Mr. Pankaj Roy", role: "Sports" },
   ] },
-  { title: "Pre-primary & laboratory", tag: "Support", people: [
+  { title: "Pre-primary, lab & IT", tag: "Support", people: [
     { name: "Ms. Effat Perween", role: "Mother Teacher" },
     { name: "Ms. Nazra Perween", role: "Mother Teacher" },
     { name: "Md. Rizwan Uz Zaman", role: "Laboratory" },
+    { name: "Mr. Neyaz Ahmad", role: "Network Administrator" },
   ] },
   { title: "Post Graduate Teachers", tag: "PGT · Classes XI–XII", people: [
-    { name: "Dr. Syed Mohammad Minhajul Hassan" },
-    { name: "Md. Abid" },
-    { name: "Md. Farrukh Alam" },
-    { name: "Md. Harun" },
     { name: "Ms. Saba Humayun Warsi" },
-    { name: "Md. Quamar Hassan" },
   ] },
   { title: "Trained Graduate Teachers", tag: "TGT · Classes VI–X", people: [
     { name: "Mr. S. Shakil Ahmad" },
-    { name: "Mrs. Ratna Tripathi" },
     { name: "Ms. Najma Sayeed Quadri" },
     { name: "Mr. Prince Kumar" },
     { name: "Ms. Nazan Matloob" },
@@ -79,7 +83,6 @@ const faculty: { title: string; tag: string; people: { name: string; role?: stri
     { name: "Mr. Khushnood Alam" },
     { name: "Mr. Abhishek Kumar" },
     { name: "Mr. Mohammad Rameez" },
-    { name: "Mr. Pankaj Roy" },
   ] },
   { title: "Primary Teachers", tag: "PRT · Classes I–V", people: [
     { name: "Md. Hanzala" },
