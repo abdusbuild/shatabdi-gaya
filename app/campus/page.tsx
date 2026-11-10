@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Book, Bus, Flask, Globe, Monitor, Music, Plus, Screen, Shield } from "@/components/Icons";
+import { Book, Bus, Flask, Globe, Monitor, Music, Screen, Shield } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
 import Gallery from "@/components/Gallery";
 import { PageHero, SectionHead } from "@/components/ui";
@@ -53,7 +53,7 @@ const stats = [
 
 const buildings = [
   ["Ali Bhawan", "The triple-storeyed central building and administrative block: Principal's chamber, accounts office, visitors' room, staff rooms, the library and reading room, and classrooms for Classes VI to X."],
-  ["Taiyab Bhawan", "In the east of the campus, the first building, where the school began in 2001. Classrooms for Class XI–XII Commerce on the ground floor, and a hostel for boys from remote areas above."],
+  ["Taiyab Bhawan", "In the east of the campus, the first building, where the school began in 2001. Classrooms for Class XI–XII Commerce."],
   ["Azad Bhawan", "In the west of the campus. Classrooms for girls of Classes VI to X, the Manager's chamber, and the school auditorium, Maulana Abul Kalam Hall."],
   ["Iqbal Bhawan", "A triple-storeyed building south of Ali Bhawan, home to the Preparatory and Primary sections."],
   ["Ibne Sina Lab", "A newer four-storeyed lab block east of Ali Bhawan, with a separate floor each for Computer Science (with internet and Wi-Fi), Chemistry, Physics, Mathematics and Biology. The biology lab is named the Dr. Abul Khair Biological Lab."],
@@ -69,7 +69,6 @@ const facilities = [
   { Icon: Bus, title: "Conveyance", text: "Transport for the many students who come from neighbouring rural areas." },
   { Icon: Screen, title: "Smart classrooms", text: "Well-ventilated classrooms with audio-visual teaching aids." },
   { Icon: Shield, title: "Safe campus", text: "A fenced campus with a boundary wall and security staff." },
-  { Icon: Plus, title: "Boys' hostel", text: "Hostel rooms in Taiyab Bhawan for boys coming from remote areas." },
 ];
 
 const houses = [

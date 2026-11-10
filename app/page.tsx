@@ -287,7 +287,7 @@ export default function Home() {
               ["Which classes do you offer?", "Preparatory (Prep-I, Prep-II) through Class XII. Classes XI–XII offer Science (with or without Mathematics) and Commerce."],
               ["When do admissions open?", <>Admissions for Std I to IX usually open in December. Admission is based on a written entrance test and an interview. See the <Link href="/admissions" className="link-gold">Admissions page</Link> for details.</>],
               ["Is the school co-educational?", "Yes. Shatabdi Public School is a co-educational, English-medium school. About 40% of our students are girls."],
-              ["Is there transport or a hostel?", "Conveyance is provided for the many students who come from nearby rural areas. Taiyab Bhawan also houses a hostel for boys from remote areas. Contact the office for details."],
+              ["Is there transport?", "Conveyance is provided for the many students who come from nearby rural areas. Contact the office for details."],
               ["Where is the school located?", "Katari Hill Road, Aliganj, Gaya Ji, Bihar 823001, about 3 km west of Gaya Railway Junction."],
             ]}
           />

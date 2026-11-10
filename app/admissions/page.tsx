@@ -150,7 +150,6 @@ export default function Admissions() {
               ["What is the minimum age for admission?", "Children must be at least 4 years old for entry to pre-primary."],
               ["Is there an entrance test for every class?", "Admission to Std I to IX is through a 50-mark entrance test and an interview. For pre-primary and Class XI, please check the process with the office."],
               ["When must the fees be paid?", "Fees must be deposited within 10 days of the entrance test result."],
-              ["Does the school have a hostel?", "Taiyab Bhawan houses a hostel for boys coming from remote areas. Please contact the office for availability."],
               ["Which languages are taught?", "English is the medium of instruction. Hindi and Urdu are offered as languages."],
             ]}
           />
