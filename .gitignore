@@ -10,3 +10,11 @@ next-env.d.ts
 
 # raw photo/video originals (kept locally only)
 originals/
+
+# raw camera originals (the site uses the optimised .webp versions)
+/public/images/DSC_*.JPG
+/public/images/IMG_*.JPG
+/public/images/IMG_*.jpg
+/public/images/principal.JPG
+/public/images/principal.jpeg
+/public/7DF7753D-DE38-431A-9004-83515D83DFEC.PNG
