@@ -25,7 +25,7 @@ const streams = [
   { Icon: Chart, title: "Commerce", subjects: ["English Core", "Accountancy", "Business Studies", "Economics", "Elective: Multimedia & Web Technology / Hindi Core / Urdu Core"] },
 ];
 
-// The first photo fills the large tile of the mosaic.
+// The first photo fills the large tile of the mosaic; the last two fill the wide tiles of the bottom row.
 const libraryPhotos: [string, string][] = [
   ["/library/lib2.jpg", "Students reading at the long table in the library reading room"],
   ["/library/lib1.jpg", "A reading period in the library"],
@@ -33,6 +33,7 @@ const libraryPhotos: [string, string][] = [
   ["/library/lib7.jpg", "Book cabinets arranged class by class"],
   ["/library/lib6.jpg", "The computerised library desk"],
   ["/library/lib5.jpg", "Stacks and periodicals in the library"],
+  ["/library/lib3.jpg", "Students seated along the reading table with their books"],
 ];
 
 const libraryFigures = [

@@ -1394,7 +1394,11 @@ html, body { overflow-x: clip; }
 .gallery--library .gallery__item, .gallery--library .ph { border-radius: 12px; }
 .gallery--library .ph img { transition: transform 1.2s var(--ease); }
 .gallery--library .gallery__item:is(:hover, :focus-visible) .ph img { transform: scale(1.05); }
-@media (max-width: 760px) { .gallery--library .gallery__item:last-child { grid-column: span 2; aspect-ratio: 16 / 9; } }
+/* Seven photos: a 2x2 lead tile, four small tiles beside it, then two wide tiles closing the bottom row. */
+@media (min-width: 761px) {
+  .gallery--library { grid-template-columns: repeat(4, 1fr); }
+  .gallery--library .gallery__item:nth-last-child(-n + 2) { grid-column: span 2; }
+}
 .library__panel { --accent-text: var(--accent-light); position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; margin-top: clamp(20px, 3vw, 32px); padding: clamp(28px, 4vw, 48px); border-radius: 14px; color: #fff; background: radial-gradient(ellipse 80% 90% at 100% 0%, rgba(24, 120, 184, .28), transparent 60%), linear-gradient(160deg, #16204d 0%, #1c2a5e 55%, #0f1738 100%); border: 1px solid rgba(255, 255, 255, .1); border-top: 3px solid var(--accent); box-shadow: 0 30px 60px -30px rgba(16, 24, 60, .6); }
 .library__figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px clamp(20px, 3vw, 40px); }
 .library__figure { padding-left: 18px; border-left: 2px solid rgba(74, 163, 224, .45); }
