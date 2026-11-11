@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CountUp from "@/components/CountUp";
+import Gallery from "@/components/Gallery";
 import { Chart, Flask, Leaf } from "@/components/Icons";
 import { CtaBand, PageHero, Photo, SectionHead } from "@/components/ui";
 import { OPEN_GRAPH, ogImage } from "@/lib/seo";
@@ -21,6 +23,23 @@ const streams = [
   { Icon: Flask, title: "Science with Mathematics", subjects: ["English Core", "Physics", "Chemistry", "Mathematics", "Elective: Biology / Multimedia & Web Technology / Physical Education / Hindi Core / Urdu Core"] },
   { Icon: Leaf, title: "Science without Mathematics", subjects: ["English Core", "Physics", "Chemistry", "Biology", "Elective: Multimedia & Web Technology / Physical Education / Hindi Core / Urdu Core"] },
   { Icon: Chart, title: "Commerce", subjects: ["English Core", "Accountancy", "Business Studies", "Economics", "Elective: Multimedia & Web Technology / Hindi Core / Urdu Core"] },
+];
+
+// The first photo fills the large tile of the mosaic.
+const libraryPhotos: [string, string][] = [
+  ["/library/lib2.jpg", "Students reading at the long table in the library reading room"],
+  ["/library/lib1.jpg", "A reading period in the library"],
+  ["/library/lib4.jpg", "Students with storybooks and magazines"],
+  ["/library/lib7.jpg", "Book cabinets arranged class by class"],
+  ["/library/lib6.jpg", "The computerised library desk"],
+  ["/library/lib5.jpg", "Stacks and periodicals in the library"],
+];
+
+const libraryFigures = [
+  { count: "20000", suffix: "+", label: "Books in the collection" },
+  { count: "9000", suffix: "", label: "Reference books (approx.)" },
+  { count: "18", suffix: "", label: "Periodicals" },
+  { count: "23", suffix: "", label: "Magazines" },
 ];
 
 export default function Academics() {
@@ -92,19 +111,34 @@ export default function Academics() {
         </div>
       </section>
 
-      <section>
-        <div className="wrap split">
-          <Photo src="/images/library-books.webp" label="Rows of books on library shelves" caption={false} className="reveal ph--tall" />
-          <div className="reveal">
-            <h2 className="h2-md">More than 20,000 books</h2>
-            <p className="lead">Our computerised library is enriched every year with books and journals for students and teachers alike.</p>
-            <ul className="checklist">
-              <li>About 9,000 reference books</li>
-              <li>18 periodicals, 6 dailies and 23 magazines</li>
-              <li>Class-wise collections from Prep-I to Class XII</li>
-              <li>Yearbooks, almanacs, atlases, maps and globes</li>
-              <li>Stories, comics, and poetry in Urdu, Hindi and English</li>
-            </ul>
+      <section className="section--alt library" id="library">
+        <div className="wrap">
+          <div className="title-row">
+            <div>
+              <p className="eyebrow reveal">The library</p>
+              <h2 className="slide-title">More than <em>20,000 books</em></h2>
+            </div>
+            <p className="muted reveal">Our computerised library and reading room are enriched every year with books and journals for students and teachers alike.</p>
+          </div>
+          <Gallery items={libraryPhotos} className="gallery--library" />
+          <div className="library__panel reveal">
+            <div className="library__figures">
+              {libraryFigures.map((f) => (
+                <div className="library__figure" key={f.label}>
+                  <CountUp className="library__num" value={f.count} suffix={f.suffix} />
+                  <div className="library__label">{f.label}</div>
+                </div>
+              ))}
+            </div>
+            <div className="library__shelf">
+              <h3>On the shelves</h3>
+              <ul className="checklist">
+                <li>Class-wise collections from Prep-I to Class XII</li>
+                <li>Yearbooks, almanacs, atlases, maps and globes</li>
+                <li>Stories, comics, and poetry in Urdu, Hindi and English</li>
+                <li>6 daily newspapers in the reading room</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

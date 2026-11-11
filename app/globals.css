@@ -1384,3 +1384,28 @@ html, body { overflow-x: clip; }
 .jubilee__more { margin-top: 32px; }
 @media (max-width: 860px) { .jubilee__people { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .jubilee__people { grid-template-columns: 1fr; } }
+
+/* ---------- Academics: library showcase (photo mosaic above a dark panel of figures) ---------- */
+.library { position: relative; border-block: 1px solid var(--line); background: radial-gradient(ellipse 60% 50% at 100% 0%, var(--accent-soft), transparent 70%), var(--bg-alt); }
+.library .title-row { align-items: end; }
+.library .eyebrow { display: inline-flex; align-items: center; gap: 12px; }
+.library .eyebrow::before { content: ""; width: 36px; height: 2px; background: var(--accent); }
+.gallery--library { gap: 14px; }
+.gallery--library .gallery__item, .gallery--library .ph { border-radius: 12px; }
+.gallery--library .ph img { transition: transform 1.2s var(--ease); }
+.gallery--library .gallery__item:is(:hover, :focus-visible) .ph img { transform: scale(1.05); }
+@media (max-width: 760px) { .gallery--library .gallery__item:last-child { grid-column: span 2; aspect-ratio: 16 / 9; } }
+.library__panel { --accent-text: var(--accent-light); position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; margin-top: clamp(20px, 3vw, 32px); padding: clamp(28px, 4vw, 48px); border-radius: 14px; color: #fff; background: radial-gradient(ellipse 80% 90% at 100% 0%, rgba(24, 120, 184, .28), transparent 60%), linear-gradient(160deg, #16204d 0%, #1c2a5e 55%, #0f1738 100%); border: 1px solid rgba(255, 255, 255, .1); border-top: 3px solid var(--accent); box-shadow: 0 30px 60px -30px rgba(16, 24, 60, .6); }
+.library__figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px clamp(20px, 3vw, 40px); }
+.library__figure { padding-left: 18px; border-left: 2px solid rgba(74, 163, 224, .45); }
+.library__num { font-family: var(--font-heading); font-size: clamp(34px, 4.4vw, 54px); font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--accent-light); white-space: nowrap; }
+.library__label { margin-top: 8px; font-size: 14px; color: rgba(255, 255, 255, .72); }
+.library__shelf { padding-left: clamp(0px, 4vw, 48px); border-left: 1px solid rgba(255, 255, 255, .14); }
+.library__shelf h3 { margin: 0; font-size: clamp(22px, 2.4vw, 28px); }
+.library__shelf .checklist li { color: rgba(255, 255, 255, .88); }
+.library__shelf .checklist li::before { background: rgba(74, 163, 224, .2); color: var(--accent-light); }
+@media (max-width: 860px) {
+  .library__panel { grid-template-columns: minmax(0, 1fr); }
+  .library__shelf { padding: 28px 0 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+}
+@media (prefers-reduced-motion: reduce) { .gallery--library .ph img { transition: none; } .gallery--library .gallery__item:is(:hover, :focus-visible) .ph img { transform: none; } }

@@ -10,7 +10,7 @@ type Item = [src: string, label: string, tall?: boolean];
 // Photo grid that opens a full-screen viewer. The viewer is a native <dialog> (Esc, focus
 // handling) holding a scroll-snap strip, so phones swipe between photos with native momentum;
 // arrow buttons and arrow keys scroll the same strip on desktop.
-export default function Gallery({ items }: { items: Item[] }) {
+export default function Gallery({ items, className = "" }: { items: Item[]; className?: string }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -64,7 +64,7 @@ export default function Gallery({ items }: { items: Item[] }) {
 
   return (
     <>
-      <div className="gallery">
+      <div className={`gallery ${className}`.trim()}>
         {items.map(([src, label, tall], i) => (
           <button type="button" key={src} className={`gallery__item${tall ? " gallery__item--tall" : ""} reveal`} onClick={() => show(i)} onMouseMove={follow} aria-label={`Open photo: ${label}`}>
             <Photo src={src} label={label} sizes={i % 7 === 0 && !tall ? "(max-width: 760px) 100vw, 800px" : "(max-width: 760px) 50vw, 400px"} />
