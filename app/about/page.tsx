@@ -54,7 +54,7 @@ const faculty: { title: string; tag: string; people: { name: string; role?: stri
   { title: "Heads of Department", tag: "HOD", people: [
     { name: "Mr. Kaushal Kishore Mishra", role: "Hindi" },
     { name: "Md. Abdus Sattar", role: "Urdu" },
-    { name: "Md. Abid Hussain", role: "Mathematics" },
+    { name: "Md Abid", role: "Mathematics" },
     { name: "Md. Quamar Hassan", role: "Chemistry" },
     { name: "Dr. Syed Mohammad Minhajul Hassan", role: "Biology" },
     { name: "Mr. Tanweer Alam", role: "Information Technology" },
