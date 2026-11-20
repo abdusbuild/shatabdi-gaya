@@ -30,11 +30,13 @@ function makeStrips(): Strip[] {
 
 // Full-bleed photo slideshow behind the home page hero text. The next photo drops in from the top
 // as staggered vertical strips with a slight bounce, then takes over; each photo slowly zooms while
-// shown. Pauses while a control has keyboard focus; for reduced-motion users the photos still change,
-// but swap instantly without the drop.
+// shown. Arrows, dots and a pause button are visible at every width (WCAG 2.2.2); it also holds
+// still while the pointer is over a control or a control has keyboard focus. For reduced-motion
+// users it never advances by itself, and manual changes swap instantly without the drop.
 export default function HeroSlider({ slides, sound, children }: { slides: Slide[]; sound?: string; children: ReactNode }) {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(false); // pause button
+  const [hold, setHold] = useState(false); // pointer over / keyboard focus on a control
   const [still, setStill] = useState(false);
   const [drop, setDrop] = useState<Drop | null>(null);
   const touchX = useRef<number | null>(null);
@@ -67,20 +69,22 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
   }, []);
 
   useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => go(index + 1), still ? CYCLE : INTERVAL);
+    if (paused || hold || still) return;
+    const t = setTimeout(() => go(index + 1), INTERVAL);
     return () => clearTimeout(t);
-  }, [index, paused, still, go]);
+  }, [index, paused, hold, still, go]);
 
   return (
     <div
       className="hero-slider"
       aria-roledescription="carousel"
       aria-label="Photos of the school"
-      // The hero fills the screen, so pausing on hover would stop it almost always. Pause only for
-      // keyboard focus, so a mouse click on an arrow or the sound button doesn't freeze it.
-      onFocus={(e) => { if (e.target.matches(":focus-visible")) setPaused(true); }}
-      onBlur={() => setPaused(false)}
+      // The hero fills the screen, so hovering the photo itself does not pause it (it would almost
+      // always be stopped). Hovering a control or tabbing onto one does.
+      onFocus={(e) => { if (e.target.matches(":focus-visible")) setHold(true); }}
+      onBlur={() => setHold(false)}
+      onPointerOver={(e) => { if (e.pointerType === "mouse") setHold(!!(e.target as HTMLElement).closest(".hero-slider__ctrl")); }}
+      onPointerLeave={() => setHold(false)}
       onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
       onTouchEnd={(e) => {
         if (touchX.current === null) return;
@@ -116,12 +120,24 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
       </div>
       <div className="hero-slider__shade" />
       <div className="wrap hero-slider__content">{children}</div>
-      <button type="button" className="hero-slider__arrow hero-slider__arrow--prev" onClick={() => go(index - 1)} aria-label="Previous photo">
+      <button type="button" className="hero-slider__ctrl hero-slider__arrow hero-slider__arrow--prev" onClick={() => go(index - 1)} aria-label="Previous photo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
       </button>
-      <button type="button" className="hero-slider__arrow hero-slider__arrow--next" onClick={() => go(index + 1)} aria-label="Next photo">
+      <button type="button" className="hero-slider__ctrl hero-slider__arrow hero-slider__arrow--next" onClick={() => go(index + 1)} aria-label="Next photo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
       </button>
+      <div className="hero-slider__ctrl hero-slider__bar">
+        <div className="hero-slider__dots">
+          {slides.map((s, i) => (
+            <button key={s.src} type="button" className={`hero-slider__dot${i === index ? " is-active" : ""}`} onClick={() => go(i)} aria-label={`Show photo ${i + 1} of ${slides.length}`} aria-current={i === index || undefined} />
+          ))}
+        </div>
+        {!still && (
+          <button type="button" className="hero-slider__pause" onClick={() => setPaused((p) => !p)} aria-label={paused ? "Play slideshow" : "Pause slideshow"} aria-pressed={paused}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">{paused ? <path d="M8 5v14l11-7z" /> : <path d="M7 5h3v14H7zM14 5h3v14h-3z" />}</svg>
+          </button>
+        )}
+      </div>
       {sound && <HeroSound src={sound} />}
     </div>
   );

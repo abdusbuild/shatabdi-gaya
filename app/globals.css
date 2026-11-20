@@ -235,7 +235,6 @@ section.hero { position: relative; overflow: clip; padding: 0; }
 .hero-slider__arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .hero-slider__arrow--prev { left: clamp(10px, 2vw, 28px); }
 .hero-slider__arrow--next { right: clamp(10px, 2vw, 28px); }
-@media (max-width: 1100px) { .hero-slider__arrow { display: none; } }
 @media (max-width: 700px) {
   .hero-slider { min-height: 0; }
   .hero-slider__shade { background: linear-gradient(180deg, rgba(12, 18, 45, .7), rgba(12, 18, 45, .82)); }
@@ -1190,8 +1189,19 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .enquire { pointer-events: none; }
 .enquire__toggle, .enquire.is-open .enquire-panel { pointer-events: auto; }
 
-/* Hero chevrons: phones and tablets only; the photos can also be swiped */
-.hero-slider__arrow { display: none; z-index: 2; }
+/* Hero controls: chevrons, dots and a pause button at every width; phones can also swipe */
+.hero-slider__arrow { z-index: 2; }
+.hero-slider__bar { position: absolute; z-index: 2; right: clamp(16px, 4vw, 40px); bottom: clamp(18px, 3vw, 32px); display: flex; align-items: center; gap: 6px; padding: 4px 4px 4px 10px; border-radius: 999px; background: rgba(12, 18, 45, .4); border: 1px solid rgba(255, 255, 255, .25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.hero-slider__dots { display: flex; }
+.hero-slider__dot { position: relative; width: 24px; height: 32px; padding: 0; border: 0; background: none; }
+.hero-slider__dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; translate: -50% -50%; border-radius: 999px; background: rgba(255, 255, 255, .5); transition: width .3s var(--ease), background .3s; }
+.hero-slider__dot:hover::before { background: #fff; }
+.hero-slider__dot.is-active::before { width: 18px; background: #fff; }
+.hero-slider__pause { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .14); transition: background .25s; }
+.hero-slider__pause:hover { background: var(--accent); }
+.hero-slider__pause svg { width: 14px; height: 14px; fill: currentColor; }
+.hero-slider__ctrl :focus-visible, .hero-slider__arrow:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (max-width: 640px) { .hero-slider__bar { right: 12px; bottom: 12px; } }
 @media (max-width: 1100px) {
   .hero-slider__arrow { display: grid; width: 40px; height: 40px; top: 50%; }
   .hero-slider__arrow svg { width: 18px; height: 18px; }
