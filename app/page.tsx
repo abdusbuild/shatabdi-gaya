@@ -169,7 +169,7 @@ export default function Home() {
                 <div className="photo-columns__track">
                   {/* The photos repeat once so the drift can loop; only the first copy is described */}
                   {[...col, ...col].map(([src, alt], i) => (
-                    <span className="photo-columns__img" key={i} aria-hidden={i >= col.length || undefined}><Image src={src} alt={i < col.length ? alt : ""} fill loading="eager" sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
+                    <span className="photo-columns__img" key={i} aria-hidden={i >= col.length || undefined}><Image src={src} alt={i < col.length ? alt : ""} fill sizes="(max-width: 900px) 50vw, 300px" quality={80} /></span>
                   ))}
                 </div>
               </div>

@@ -97,7 +97,7 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
         <div className="hero-slider__stage" ref={slidesEl}>
           {slides.map((s, i) => (
             <div key={s.src} className={`hero-slide${i === index ? " is-active" : ""}`} aria-hidden={i !== index} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
-              <Image src={s.src} alt={s.alt} fill priority={i === 0} loading={i === 0 ? undefined : "eager"} quality={85} sizes="100vw" style={s.position ? { objectPosition: s.position } : undefined} />
+              <Image src={s.src} alt={s.alt} fill priority={i === 0} quality={85} sizes="100vw" style={s.position ? { objectPosition: s.position } : undefined} />
             </div>
           ))}
         </div>
