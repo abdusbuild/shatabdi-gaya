@@ -1209,7 +1209,8 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 @media (max-width: 700px) {
   /* Phones: hidden until HelpWidget marks it shown (never on the first screen); keyboard focus always reveals it */
   .enquire:not(.is-shown):not(.is-open) .enquire__toggle { translate: -120% 0; opacity: 0; pointer-events: none; }
-  .enquire .enquire__toggle:focus-visible { translate: none; opacity: 1; pointer-events: auto; }
+  /* Same selector as the hide rule plus :focus-visible, so it always wins: no invisible keyboard focus */
+  .enquire:not(.is-shown):not(.is-open) .enquire__toggle:focus-visible { translate: none; opacity: 1; pointer-events: auto; }
 }
 
 /* Hero controls: chevrons, dots and a pause button at every width; phones can also swipe */
