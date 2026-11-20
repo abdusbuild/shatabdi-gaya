@@ -50,6 +50,10 @@ const schoolJsonLd = {
       email: SCHOOL.email,
       foundingDate: "2000-10-26",
       address: { "@type": "PostalAddress", streetAddress: "Katari Hill Road, Aliganj", addressLocality: "Gaya Ji", addressRegion: "Bihar", postalCode: "823001", addressCountry: "IN" },
+      // TODO(client): add the school's map coordinates and office hours (audit #19), e.g.
+      //   geo: { "@type": "GeoCoordinates", latitude: <lat>, longitude: <lng> },
+      //   openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: [...], opens: "HH:MM", closes: "HH:MM" }],
+      // Coordinates: from the school's Google Maps listing. Hours: from the office.
       areaServed: { "@type": "City", name: "Gaya Ji" },
       identifier: { "@type": "PropertyValue", propertyID: "CBSE Affiliation No.", value: "330113" },
       parentOrganization: { "@type": "Organization", name: "Shatabdi Foundation, Gaya Ji" },

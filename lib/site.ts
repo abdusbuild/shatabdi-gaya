@@ -20,6 +20,9 @@ export const SCHOOL = {
   youtube: "https://www.youtube.com/@shatabdipublicschoolgaya1753",
   address: "Katari Hill Road, Aliganj, Gaya Ji, Bihar 823001",
   cbseRecord: "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/330113",
+  // TODO(client): the ERP (Curium) login is plain HTTP on a raw IP, so passwords travel unencrypted
+  // (audit #1). Ask the vendor for an HTTPS address, ideally https://erp.shatabdigaya.com, then
+  // replace this URL.
   erp: "http://101.53.157.220:7122/shatabdi/",
   minorityCertificate: "/documents/minority-certificate.pdf",
   feeStructure: "/documents/Fees-Structure-2026-27.pdf",

@@ -10,6 +10,10 @@ export const metadata: Metadata = {
 };
 
 // Values not published online are marked so the school office can fill them in.
+// TODO(client): CBSE expects these documents on the website, not only at the office (audit #2).
+// For each row marked ASK, send a self-attested PDF (or the figure) and it will be linked here.
+// Also missing entirely: the School Management Committee (SMC) list and the PTA members list.
+// Check the full list against the current CBSE Mandatory Public Disclosure circular (Appendix IX).
 const ASK = "Available at the school office";
 
 function Table({ rows }: { rows: [string, React.ReactNode][] }) {
@@ -60,6 +64,7 @@ export default function PublicDisclosure() {
               ["Minority certificate", <a key="m" href={SCHOOL.minorityCertificate} target="_blank" rel="noopener">View certificate (PDF, opens in a new tab)</a>],
               ["Secondary affiliation", "2005"],
               ["Senior Secondary upgrade", "2007"],
+              // TODO(client): five separate PDFs: NOC, recognition, building safety, fire safety, sanitary certificates
               ["NOC, recognition, building safety, fire safety and sanitary certificates", ASK],
             ]} />
           ),
@@ -74,7 +79,9 @@ export default function PublicDisclosure() {
               ["Streams (XI–XII)", "Science (with or without Mathematics), Commerce"],
               ["Academic session", "April to March"],
               ["Fee structure", <a key="f" href={SCHOOL.feeStructure} target="_blank" rel="noopener">View fee structure 2026–27 (PDF, opens in a new tab)</a>],
+              // TODO(client): academic calendar 2026-27 (PDF)
               ["Annual academic calendar", ASK],
+              // TODO(client): Class X and XII results for the last three years (appeared, passed, pass %)
               ["Class X and XII board results (last three years)", ASK],
             ]} />
           ),
@@ -87,7 +94,9 @@ export default function PublicDisclosure() {
               ["Total number of teachers", "39"],
               ["Non-teaching staff", "12"],
               ["Student–teacher ratio", "26 : 1 (about 1,000 students, 39 teachers)"],
+              // TODO(client): number of sections, to give the teacher-section ratio
               ["Teacher–section ratio", ASK],
+              // TODO(client): names and qualifications of the special educator and the counsellor
               ["Details of special educator and counsellor", ASK],
             ]} />
           ),
@@ -103,6 +112,7 @@ export default function PublicDisclosure() {
               ["Number of laboratories", "7, including Physics, Chemistry, Biology, Mathematics and Computer Science"],
               ["Library", "Computerised, with more than 20,000 books"],
               ["Internet facility", "Yes, Wi-Fi in the computer lab block"],
+              // TODO(client): number of girls' and boys' toilets
               ["Number of girls' and boys' toilets", ASK],
               ["CCTV and security", "Fenced campus with boundary wall and security staff"],
             ]} />

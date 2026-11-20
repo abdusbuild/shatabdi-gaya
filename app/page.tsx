@@ -13,6 +13,9 @@ import { OPEN_GRAPH } from "@/lib/seo";
 export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { ...OPEN_GRAPH, url: "/" } };
 
 const heroSlides: Slide[] = [
+  // TODO(client): the hero fills the screen width, so slides should be at least 1920 px wide
+  // (audit #15). Narrower now: shatabdi-assembly.jpeg (1024 px), building1.jpeg,
+  // students-school-hall.webp and plantation-drive-group-2.webp (1600 px). Send larger originals.
   { src: "/hero/building1.jpeg", alt: "School buildings around the brick-paved courtyard, with school buses under the trees", position: "50% 55%" },
   { src: "/hero/shatabdi-assembly.jpeg", alt: "Students in rows taking the pledge with teachers at the morning assembly in the school courtyard", position: "50% 60%" },
   { src: "/hero/students-school-hall.webp", alt: "Senior students in school blazers seated in the school hall", position: "50% 55%" },
