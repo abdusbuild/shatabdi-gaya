@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
         {
           id: "cookies", title: "5. Cookies & local storage",
           // TODO(client): review this section (analytics added, Nov 2026)
-          body: <p>This website does not use advertising or tracking cookies. It counts visits with Cloudflare Web Analytics, which does not use cookies or store anything in your browser; it records anonymous information such as the page viewed, the referring site, the type of browser and device, the country and how fast the page loaded. The site stores one setting in your browser&rsquo;s local storage, your choice of light or dark theme, so the site looks the same on your next visit, and two short-lived notes for the current visit only, so the opening screen and the enquiry pop-up are not shown twice. You can clear these at any time from your browser settings.</p>,
+          body: <p>This website does not use advertising or tracking cookies. It counts visits with Cloudflare Web Analytics, which does not use cookies or store anything in your browser; it records anonymous information such as the page viewed, the referring site, the type of browser and device, the country and how fast the page loaded. The site stores one setting in your browser&rsquo;s local storage, your choice of light or dark theme, so the site looks the same on your next visit, and one short-lived note for the current visit only, so the enquiry pop-up is not shown twice. You can clear these at any time from your browser settings.</p>,
         },
         {
           id: "third-party", title: "6. Third-party services",

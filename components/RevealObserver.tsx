@@ -19,8 +19,8 @@ const SELECTOR = [
   ".band__title",
 ].join(",");
 
-// This component lives in the root layout, but pages sit inside loading.tsx's Suspense boundary and
-// hydrate after it. Adding data-inview to an element React is still hydrating causes a hydration
+// This component lives in the root layout, and the page content may still be hydrating when it
+// mounts. Adding data-inview to an element React is still hydrating causes a hydration
 // mismatch, so nothing starts until the main thread goes idle, which React only lets happen once
 // hydration has finished.
 const whenIdle = (fn: () => void) => {
@@ -57,9 +57,7 @@ export default function RevealObserver() {
       });
     };
 
-    // Wait for the opening screen to lift, so the first sections animate where people can see them
     let mo: MutationObserver | undefined;
-    const introOver = () => root.classList.contains("intro-seen") || root.classList.contains("intro-done");
     const start = () => {
       scan();
       // Catch content that mounts later (lazy sections, client-side page changes), at most once a frame
@@ -70,24 +68,12 @@ export default function RevealObserver() {
       });
       mo.observe(document.body, { childList: true, subtree: true });
     };
-    let waitIntro: MutationObserver | undefined;
-    const cancelIdle = whenIdle(() => {
-      if (introOver()) start();
-      else {
-        waitIntro = new MutationObserver(() => {
-          if (!introOver()) return;
-          waitIntro?.disconnect();
-          start();
-        });
-        waitIntro.observe(root, { attributes: true, attributeFilter: ["class"] });
-      }
-    });
+    const cancelIdle = whenIdle(start);
 
     return () => {
       cancelIdle();
       io.disconnect();
       mo?.disconnect();
-      waitIntro?.disconnect();
     };
   }, [pathname]);
 

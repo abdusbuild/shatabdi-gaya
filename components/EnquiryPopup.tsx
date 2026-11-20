@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import EnquiryForm, { NameInput, PhoneInput } from "./EnquiryForm";
 
 const CLASSES = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "XI – Science", "XI – Commerce"];
-const DELAY = 30000; // 30 s after the opening crest screen has gone, so it never interrupts a first look
+const DELAY = 30000; // 30 s into the visit, so it never interrupts a first look
 const KEY = "sps-enquiry-popup";
 
 // "Get in touch" card that opens on its own 30 seconds into a visit, once per browser session.
@@ -19,7 +19,6 @@ export default function EnquiryPopup() {
     if (pathname.startsWith("/admissions") || pathname.startsWith("/contact")) return;
     try { if (sessionStorage.getItem(KEY)) return; } catch { return; }
 
-    const html = document.documentElement;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const tryOpen = () => {
       const busy = document.querySelector("dialog[open]") || document.querySelector(".mobile-menu.is-open");
@@ -27,16 +26,7 @@ export default function EnquiryPopup() {
       try { sessionStorage.setItem(KEY, "1"); } catch {}
       ref.current?.showModal();
     };
-    // Start counting once the crest screen is out of the way
-    const start = () => { timer = setTimeout(tryOpen, DELAY); };
-    if (html.classList.contains("intro-seen") || html.classList.contains("intro-done")) start();
-    else {
-      const watch = new MutationObserver(() => {
-        if (html.classList.contains("intro-done")) { watch.disconnect(); start(); }
-      });
-      watch.observe(html, { attributes: true, attributeFilter: ["class"] });
-      return () => { watch.disconnect(); clearTimeout(timer); };
-    }
+    timer = setTimeout(tryOpen, DELAY);
     return () => clearTimeout(timer);
   }, [pathname]);
 
