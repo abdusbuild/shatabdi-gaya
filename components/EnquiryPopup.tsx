@@ -5,10 +5,10 @@ import { useEffect, useRef } from "react";
 import EnquiryForm, { NameInput, PhoneInput } from "./EnquiryForm";
 
 const CLASSES = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "XI – Science", "XI – Commerce"];
-const DELAY = 6000; // after the opening crest screen has gone
+const DELAY = 30000; // 30 s after the opening crest screen has gone, so it never interrupts a first look
 const KEY = "sps-enquiry-popup";
 
-// "Get in touch" card that opens on its own a few seconds into a visit, once per browser session.
+// "Get in touch" card that opens on its own 30 seconds into a visit, once per browser session.
 // It stays away from the pages that already carry an enquiry form, and never interrupts the
 // phone menu or the photo viewer. A native <dialog> gives Esc-to-close and focus handling.
 export default function EnquiryPopup() {
