@@ -25,6 +25,12 @@ export const SCHOOL = {
   feeStructure: "/documents/Fees-Structure-2026-27.pdf",
 };
 
+// Cloudflare Web Analytics site token (public, not a secret: it ends up in every page's HTML).
+// Cloudflare dashboard -> Analytics & Logs -> Web Analytics -> Add a site -> shatabdigaya.com ->
+// copy the token from the JS snippet. The beacon is only added to pages once this is filled in.
+// TODO(client): paste the token from the school's Cloudflare account.
+export const CLOUDFLARE_ANALYTICS_TOKEN = "";
+
 // Public origin used for canonical URLs, the sitemap and social previews.
 // Set NEXT_PUBLIC_SITE_URL when deploying to a different domain.
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shatabdigaya.com";

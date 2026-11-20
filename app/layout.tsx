@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HelpWidget from "@/components/HelpWidget";
@@ -6,7 +7,7 @@ import Preloader from "@/components/Preloader";
 import RevealObserver from "@/components/RevealObserver";
 import EnquiryPopup from "@/components/EnquiryPopup";
 import { fontVariables } from "@/lib/fonts";
-import { SCHOOL, SITE_URL } from "@/lib/site";
+import { CLOUDFLARE_ANALYTICS_TOKEN, SCHOOL, SITE_URL } from "@/lib/site";
 import { OPEN_GRAPH } from "@/lib/seo";
 import "./globals.css";
 
@@ -86,6 +87,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <RevealObserver />
         <HelpWidget />
         <EnquiryPopup />
+        {/* Cookieless visit statistics (Cloudflare Web Analytics); page views and Web Vitals only */}
+        {CLOUDFLARE_ANALYTICS_TOKEN && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
+            data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_ANALYTICS_TOKEN })}
+          />
+        )}
       </body>
     </html>
   );
