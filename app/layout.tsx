@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Shatabdi Public School, Gaya Ji",
   },
   description:
-    "Shatabdi Public School, Gaya Ji — an English-medium, co-educational CBSE senior secondary school (Affiliation No. 330113) on Katari Hill Road, run by the Shatabdi Foundation since 2000.",
+    "English-medium, co-educational CBSE senior secondary school in Gaya Ji (Affiliation No. 330113) on Katari Hill Road, run by the Shatabdi Foundation since 2000.",
   openGraph: { ...OPEN_GRAPH, url: "/" },
   twitter: { card: "summary_large_image" },
   applicationName: "Shatabdi Public School, Gaya Ji",

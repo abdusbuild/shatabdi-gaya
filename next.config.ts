@@ -10,6 +10,12 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
 ];
 
+// Files in /public are served with max-age=0 by default. Images and icons rarely change, so let
+// browsers keep them for a week and revalidate in the background after that. PDFs get a day, since
+// the fee structure and certificates can be replaced under the same name.
+const week = "public, max-age=604800, stale-while-revalidate=86400";
+const day = "public, max-age=86400, stale-while-revalidate=86400";
+
 const nextConfig: NextConfig = {
   // Keep the dev-only Next.js badge clear of the floating Enquire button (bottom left).
   devIndicators: { position: "bottom-right" },
@@ -20,6 +26,9 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      { source: "/:dir(images|hero|library|og)/:file*", headers: [{ key: "Cache-Control", value: week }] },
+      { source: "/:file(logo.png|logo-lg.webp|logo-nav.webp|logo-sm.webp|icon-192.png|icon-512.png|icon-maskable-512.png)", headers: [{ key: "Cache-Control", value: week }] },
+      { source: "/documents/:file*", headers: [{ key: "Cache-Control", value: day }] },
     ];
   },
 };
