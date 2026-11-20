@@ -560,7 +560,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .socials a { width: 40px; height: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); display: grid; place-items: center; transition: border-color .2s, background .2s, color .2s; }
 .socials a:hover { border-color: var(--accent-light); background: rgba(255,255,255,.06); }
 .socials svg { width: 18px; height: 18px; }
-.footer__bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 56px; padding: 22px 0 calc(22px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; font-size: .8125rem; color: rgba(255,255,255,.55); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 56px; padding: 22px 0 calc(92px + env(safe-area-inset-bottom, 0px)); /* clears the floating Enquire button */ display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; font-size: .8125rem; color: rgba(255,255,255,.55); }
 .footer__legal { display: flex; gap: 6px 18px; flex-wrap: wrap; }
 .footer__legal a { display: inline-block; padding-block: 3px; }
 .footer summary { min-height: 24px; }
@@ -589,12 +589,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 @keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 /* Floating enquire button and contact card */
-.enquire { position: fixed; left: 20px; bottom: 20px; z-index: 60; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.enquire { position: fixed; right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
 .enquire__toggle { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px 0 18px; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 600 .9375rem/1 var(--font-sans); cursor: pointer; box-shadow: 0 10px 24px -10px rgba(16, 24, 60, .55); transition: background .2s, transform .3s var(--ease); }
 .enquire__toggle:hover { background: var(--accent-light); }
 .enquire__toggle:active { transform: scale(.97); }
 .enquire__toggle svg { width: 18px; height: 18px; }
-.enquire-panel { position: relative; width: 300px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px 16px; box-shadow: 0 24px 48px -20px rgba(16, 24, 60, .45); transform-origin: 30px 100%; opacity: 0; transform: translateY(12px) scale(.96); visibility: hidden; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
+.enquire-panel { position: relative; width: 300px; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px 16px; box-shadow: 0 24px 48px -20px rgba(16, 24, 60, .45); transform-origin: calc(100% - 30px) 100%; opacity: 0; transform: translateY(12px) scale(.96); visibility: hidden; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
 .enquire.is-open .enquire-panel { opacity: 1; transform: none; visibility: visible; transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s; }
 .enquire-panel__close { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--bg-alt); color: var(--muted); display: grid; place-items: center; cursor: pointer; transition: background .2s, color .2s; }
 .enquire-panel__close:hover { background: var(--line); color: var(--text); }
@@ -756,7 +756,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   .table-wrap th { padding: 12px 16px 4px; border-bottom: 0; }
   .table-wrap td { padding: 4px 16px 14px; }
   .map { min-height: 300px; }
-  .enquire { left: 14px; bottom: 14px; }
+  .enquire { right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
   .enquire__toggle { width: 52px; padding: 0; justify-content: center; }
   .enquire__toggle span { display: none; }
   .enquire__toggle svg { width: 20px; height: 20px; }
@@ -1184,9 +1184,13 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .enquire { pointer-events: none; }
 .enquire__toggle, .enquire.is-open .enquire-panel { pointer-events: auto; }
 .enquire__toggle { transition: background .2s, transform .3s var(--ease), translate .35s var(--ease), opacity .35s; }
+/* Every width: steps aside (slides out to the right) while the home hero's control bar is on screen,
+   or while text sits under its corner (HelpWidget checks when scrolling stops) */
+.enquire.is-yielding:not(.is-open) .enquire__toggle { translate: 120% 0; opacity: 0; pointer-events: none; }
+.enquire.is-yielding:not(.is-open) .enquire__toggle:focus-visible { translate: none; opacity: 1; pointer-events: auto; }
 @media (max-width: 700px) {
   /* Phones: hidden until HelpWidget marks it shown (never on the first screen); keyboard focus always reveals it */
-  .enquire:not(.is-shown):not(.is-open) .enquire__toggle { translate: -120% 0; opacity: 0; pointer-events: none; }
+  .enquire:not(.is-shown):not(.is-open) .enquire__toggle { translate: 120% 0; opacity: 0; pointer-events: none; }
   /* Same selector as the hide rule plus :focus-visible, so it always wins: no invisible keyboard focus */
   .enquire:not(.is-shown):not(.is-open) .enquire__toggle:focus-visible { translate: none; opacity: 1; pointer-events: auto; }
 }

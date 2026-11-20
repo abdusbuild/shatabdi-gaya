@@ -35,8 +35,8 @@ const week = "public, max-age=604800, stale-while-revalidate=86400";
 const day = "public, max-age=86400, stale-while-revalidate=86400";
 
 const nextConfig: NextConfig = {
-  // Keep the dev-only Next.js badge clear of the floating Enquire button (bottom left).
-  devIndicators: { position: "bottom-right" },
+  // Keep the dev-only Next.js badge clear of the floating Enquire button (bottom right).
+  devIndicators: { position: "bottom-left" },
   // The photos are video stills, so resized copies use a higher quality than the default 75
   // to avoid stacking a second round of compression on top. AVIF first, WebP as fallback.
   images: { qualities: [75, 80, 85], formats: ["image/avif", "image/webp"] },
