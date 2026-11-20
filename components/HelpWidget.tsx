@@ -51,9 +51,10 @@ export default function HelpWidget() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // The button never rests on top of text. When scrolling stops (and after a page change or resize)
-  // it checks the real positions of the text lines under its corner; if any are there it stays out of
-  // sight until the corner is clear again: between sections, beside photos, at the end of the page.
+  // The button never rests on top of text. When scrolling stops (and after a page change, a resize or
+  // a reveal animation) it checks the real positions of the text lines under its corner; if any are
+  // there it stays out of sight until the corner is clear again: between sections, beside photos, at
+  // the end of the page.
   useEffect(() => {
     let settle: ReturnType<typeof setTimeout> | undefined;
     const check = () => {
@@ -89,7 +90,14 @@ export default function HelpWidget() {
     later();
     window.addEventListener("scroll", later, { passive: true });
     window.addEventListener("resize", later);
-    return () => { clearTimeout(settle); window.removeEventListener("scroll", later); window.removeEventListener("resize", later); };
+    // Sections rise into place as they are revealed, so look again when an animation finishes
+    document.addEventListener("animationend", later, true);
+    return () => {
+      clearTimeout(settle);
+      window.removeEventListener("scroll", later);
+      window.removeEventListener("resize", later);
+      document.removeEventListener("animationend", later, true);
+    };
   }, [pathname]);
 
   // The home hero has its own carousel control bar in the same corner (and its own "Enquire now"
