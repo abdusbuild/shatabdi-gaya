@@ -77,10 +77,21 @@ export function Photo({ label, tone, src, caption = true, priority, sizes = "(ma
   );
 }
 
-// Illustration on one side, heading and accordion on the other.
-export function Faq({ title, intro, items }: { title: string; intro?: ReactNode; items: [string, ReactNode][] }) {
+// Illustration on one side, heading and accordion on the other. Also emits FAQPage structured data;
+// an answer written as JSX (with links) needs its plain-text version as the third item.
+type FaqItem = [question: string, answer: ReactNode, plainAnswer?: string];
+export function Faq({ title, intro, items }: { title: string; intro?: ReactNode; items: FaqItem[] }) {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.flatMap(([q, a, plain]) => {
+      const text = typeof a === "string" ? a : plain;
+      return text ? [{ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text } }] : [];
+    }),
+  };
   return (
     <div className="faq-layout">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <div className="faq-layout__art reveal"><FaqArt /></div>
       <div>
         <SectionHead title={title}>{intro}</SectionHead>
