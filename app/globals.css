@@ -1188,6 +1188,9 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
    everything except the button and the card while it is open. */
 .enquire { pointer-events: none; }
 .enquire__toggle, .enquire.is-open .enquire-panel { pointer-events: auto; }
+.enquire__toggle { transition: background .2s, transform .3s var(--ease), translate .35s var(--ease), opacity .35s; }
+.enquire.is-tucked .enquire__toggle { translate: -120% 0; opacity: 0; pointer-events: none; }
+.enquire.is-tucked .enquire__toggle:focus-visible { translate: none; opacity: 1; }
 
 /* Hero controls: chevrons, dots and a pause button at every width; phones can also swipe */
 .hero-slider__arrow { z-index: 2; }
