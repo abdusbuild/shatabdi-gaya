@@ -127,6 +127,11 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
       </button>
       <div className="hero-slider__ctrl hero-slider__bar">
+        {/* Phones: the side arrows would sit on the hero text, so previous/next live in this bar instead
+            (only one pair is ever displayed; the hidden pair is display: none, so it is not focusable) */}
+        <button type="button" className="hero-slider__step" onClick={() => go(index - 1)} aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
         <div className="hero-slider__dots">
           {slides.map((s, i) => (
             <button key={s.src} type="button" className={`hero-slider__dot${i === index ? " is-active" : ""}`} onClick={() => go(i)} aria-label={`Show photo ${i + 1} of ${slides.length}`} aria-current={i === index || undefined} />
@@ -137,6 +142,9 @@ export default function HeroSlider({ slides, sound, children }: { slides: Slide[
             <svg viewBox="0 0 24 24" aria-hidden="true">{paused ? <path d="M8 5v14l11-7z" /> : <path d="M7 5h3v14H7zM14 5h3v14h-3z" />}</svg>
           </button>
         )}
+        <button type="button" className="hero-slider__step" onClick={() => go(index + 1)} aria-label="Next photo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
       </div>
       {sound && <HeroSound src={sound} />}
     </div>

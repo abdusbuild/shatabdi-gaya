@@ -88,6 +88,9 @@ export default function Home() {
             <h1 className="hero__title">Shatabdi Public School <span>Gaya Ji</span></h1>
             <span className="rule rule--hero" />
             <p className="hero__tag">Rooted in values, reaching for the century ahead.</p>
+            <div className="hero__cta">
+              <Link className="btn btn--gold" href="/admissions#enquiry">Enquire now</Link>
+            </div>
           </div>
         </HeroSlider>
       </section>

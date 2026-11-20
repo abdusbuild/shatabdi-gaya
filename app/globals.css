@@ -1066,6 +1066,7 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 @media (prefers-reduced-motion: no-preference) {
   :is(.intro-seen, .intro-done) .hero__title { animation: hero-up 1s var(--ease) .15s both; }
   :is(.intro-seen, .intro-done) .hero__tag { animation: hero-up 1s var(--ease) .45s both; }
+  :is(.intro-seen, .intro-done) .hero__cta { animation: hero-up 1s var(--ease) .6s both; }
 }
 @keyframes hero-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) {
@@ -1230,7 +1231,16 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .hero-slider__pause:hover { background: var(--accent); }
 .hero-slider__pause svg { width: 14px; height: 14px; fill: currentColor; }
 .hero-slider__ctrl :focus-visible, .hero-slider__arrow:focus-visible { outline: 2px solid #0b122e; outline-offset: 2px; box-shadow: 0 0 0 2px #fff; } /* two-tone, see the focus ring rules */
-@media (max-width: 640px) { .hero-slider__bar { right: 12px; bottom: 12px; } }
+/* Previous/next inside the bar: phones only (see below) */
+.hero-slider__step { display: none; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .14); transition: background .25s; }
+.hero-slider__step:hover { background: var(--accent); }
+.hero-slider__step svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 640px) {
+  /* The side arrows sit at mid-height, on the hero text on short phones; use ‹ pause › in the bar instead */
+  .hero-slider__bar { right: 12px; bottom: 12px; padding: 4px; gap: 8px; }
+  .hero-slider .hero-slider__arrow, .hero-slider__dots { display: none; }
+  .hero-slider__step { display: grid; }
+}
 @media (max-width: 1100px) {
   .hero-slider__arrow { display: grid; width: 40px; height: 40px; top: 50%; }
   .hero-slider__arrow svg { width: 18px; height: 18px; }
