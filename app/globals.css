@@ -504,7 +504,7 @@ tr:last-child td { border-bottom: 0; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
 label { font-size: 14px; font-weight: 600; display: grid; gap: 6px; }
-input, select, textarea { font: inherit; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); color: var(--text); width: 100%; }
+input, select, textarea { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); color: var(--text); width: 100%; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-text); }
 .form-note { font-size: 13px; color: var(--muted); }
 .form-status:empty { display: none; }
@@ -1423,3 +1423,16 @@ html, body { overflow-x: clip; }
   .library__shelf { padding: 28px 0 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .14); }
 }
 @media (prefers-reduced-motion: reduce) { .gallery--library .ph img { transition: none; } .gallery--library .gallery__item:is(:hover, :focus-visible) .ph img { transform: none; } }
+
+/* Phones: bigger tap areas for small inline links (WCAG 2.2 target size). Negative margins keep the
+   layout as it was while the padding widens the area that responds to a tap. */
+@media (max-width: 700px) {
+  .crumbs a { display: inline-block; padding: 8px 4px; margin: -8px -4px; }
+  .contact-item a { padding-block: 6px; margin-block: -6px; }
+  .footer ul { gap: 2px; }
+  .footer-acc__body a, .footer__reach a { display: inline-block; padding-block: 10px; }
+  .footer__reach li { align-items: center; }
+  .footer__reach svg { margin-top: 0; }
+  .footer__legal a { padding-block: 10px; }
+  .mobile-menu__contacts a { padding-block: 8px; }
+}
