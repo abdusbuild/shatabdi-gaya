@@ -5,29 +5,49 @@ import { useEffect, useRef } from "react";
 import EnquiryForm, { NameInput, PhoneInput } from "./EnquiryForm";
 
 const CLASSES = ["PP-1", "PP-2", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "XI – Science", "XI – Commerce"];
-const DELAY = 30000; // 30 s into the visit, so it never interrupts a first look
+const DELAY = 30000; // 30 s into the visit
+const SCROLL = 0.5; // or once half of the current page has been scrolled, whichever comes first
 const KEY = "sps-enquiry-popup";
+// Pages that already carry an enquiry form: the popup never shows there
+const EXCLUDED = ["/admissions", "/contact"];
+const excluded = (path: string) => EXCLUDED.some((p) => path === p || path.startsWith(p + "/"));
 
-// "Get in touch" card that opens on its own 30 seconds into a visit, once per browser session.
-// It stays away from the pages that already carry an enquiry form, and never interrupts the
-// phone menu or the photo viewer. A native <dialog> gives Esc-to-close and focus handling.
+// "Get in touch" card that opens on its own once per browser session: 30 seconds into the visit or
+// when the visitor has scrolled half way down a page, whichever comes first. Never on /admissions or
+// /contact, and it waits while the phone menu or another dialog (photo viewer) is open. A native
+// <dialog> gives Esc-to-close and focus handling.
 export default function EnquiryPopup() {
   const ref = useRef<HTMLDialogElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname.startsWith("/admissions") || pathname.startsWith("/contact")) return;
-    try { if (sessionStorage.getItem(KEY)) return; } catch { return; }
+    if (excluded(pathname)) {
+      // e.g. the visitor pressed Back into /admissions while it was open
+      if (ref.current?.open) ref.current.close();
+      return;
+    }
+    const seen = () => { try { return !!sessionStorage.getItem(KEY); } catch { return true; } };
+    if (seen()) return;
 
-    let timer: ReturnType<typeof setTimeout> | undefined;
+    let retry: ReturnType<typeof setTimeout> | undefined;
+    const stop = () => { clearTimeout(timer); clearTimeout(retry); window.removeEventListener("scroll", onScroll); };
     const tryOpen = () => {
+      if (retry || seen()) return;
       const busy = document.querySelector("dialog[open]") || document.querySelector(".mobile-menu.is-open");
-      if (busy) { timer = setTimeout(tryOpen, 4000); return; }
+      if (busy) { retry = setTimeout(() => { retry = undefined; tryOpen(); }, 4000); return; }
+      stop();
       try { sessionStorage.setItem(KEY, "1"); } catch {}
       ref.current?.showModal();
     };
-    timer = setTimeout(tryOpen, DELAY);
-    return () => clearTimeout(timer);
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= SCROLL) tryOpen();
+    };
+    // performance.now() counts from the first page load and keeps counting across in-site
+    // navigation, so moving between pages does not restart the 30 s.
+    const timer = setTimeout(tryOpen, Math.max(0, DELAY - performance.now()));
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return stop;
   }, [pathname]);
 
   const close = () => ref.current?.close();
