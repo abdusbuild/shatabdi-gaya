@@ -771,7 +771,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--a
 .preloader { display: none; }
 .js:not(.intro-seen):not(.intro-gone) .preloader { display: grid; }
 .js:not(.intro-seen):not(.intro-done) body { overflow: hidden; }
-.preloader { position: fixed; inset: 0; z-index: 1000; place-items: center; color: #fff; background: radial-gradient(ellipse 70% 60% at 50% 40%, #283878 0%, #1c2a5e 55%, #0f1738 100%); transition: opacity .6s var(--ease), visibility 0s .6s; animation: pl-failsafe .6s 4s forwards; }
+.preloader { position: fixed; inset: 0; z-index: 1000; place-items: center; color: #fff; background: radial-gradient(ellipse 70% 60% at 50% 40%, #283878 0%, #1c2a5e 55%, #0f1738 100%); transition: opacity .5s var(--ease), visibility 0s .5s; animation: pl-failsafe .5s 2s forwards; pointer-events: none; }
 .intro-done .preloader { opacity: 0; visibility: hidden; }
 .preloader__inner { display: grid; justify-items: center; text-align: center; transition: transform .6s var(--ease); }
 .intro-done .preloader__inner { transform: scale(.97) translateY(-6px); }
@@ -785,7 +785,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--a
 .preloader__sub { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent-light); margin-top: 10px; animation: pl-up .6s var(--ease) .6s both; }
 .preloader__tag { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .5); margin-top: 8px; animation: pl-up .6s var(--ease) .72s both; }
 .preloader__bar { width: 200px; height: 2px; margin-top: 18px; border-radius: 2px; background: rgba(255, 255, 255, .14); overflow: hidden; animation: pl-up .6s var(--ease) .8s both; }
-.preloader__bar i { display: block; height: 100%; background: var(--accent-light); transform-origin: left; animation: pl-bar 1.3s var(--ease) .3s both; }
+.preloader__bar i { display: block; height: 100%; background: var(--accent-light); transform-origin: left; animation: pl-bar .8s var(--ease) .1s both; }
 @keyframes pl-in { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
 @keyframes pl-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes pl-spin { to { transform: rotate(360deg); } }
