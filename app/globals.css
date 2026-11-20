@@ -1194,8 +1194,11 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .enquire { pointer-events: none; }
 .enquire__toggle, .enquire.is-open .enquire-panel { pointer-events: auto; }
 .enquire__toggle { transition: background .2s, transform .3s var(--ease), translate .35s var(--ease), opacity .35s; }
-.enquire.is-tucked .enquire__toggle { translate: -120% 0; opacity: 0; pointer-events: none; }
-.enquire.is-tucked .enquire__toggle:focus-visible { translate: none; opacity: 1; }
+@media (max-width: 700px) {
+  /* Phones: hidden until HelpWidget marks it shown (never on the first screen); keyboard focus always reveals it */
+  .enquire:not(.is-shown):not(.is-open) .enquire__toggle { translate: -120% 0; opacity: 0; pointer-events: none; }
+  .enquire .enquire__toggle:focus-visible { translate: none; opacity: 1; pointer-events: auto; }
+}
 
 /* Hero controls: chevrons, dots and a pause button at every width; phones can also swipe */
 .hero-slider__arrow { z-index: 2; }

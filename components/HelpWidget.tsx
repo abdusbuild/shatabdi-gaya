@@ -8,7 +8,7 @@ import { Arrow, Mail, Phone, WhatsApp } from "./Icons";
 // Floating "Enquire" button that opens a card of ways to reach the school office.
 export default function HelpWidget() {
   const [open, setOpen] = useState(false);
-  const [tucked, setTucked] = useState(false);
+  const [shown, setShown] = useState(false); // phones only; see the effect below
   const ref = useRef<HTMLDivElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -27,17 +27,19 @@ export default function HelpWidget() {
     return () => { document.removeEventListener("click", onClick); document.removeEventListener("keydown", onKey); };
   }, []);
 
-  // On phones the button sits over the left edge of the text, so it slides out of the way while
-  // the visitor scrolls down to read and comes back as soon as they scroll up or reach the end.
+  // On phones text runs the full width, so wherever the button sits it covers some of it. It stays
+  // out of sight on the first screen (CSS hides it from the first paint, so it never flashes over
+  // text), slides in when the visitor scrolls back up or reaches the end of the page, and slides out
+  // again while they scroll down to read. Wider screens always show it.
   useEffect(() => {
-    const phone = matchMedia("(max-width: 700px)");
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       const atEnd = y + window.innerHeight >= document.documentElement.scrollHeight - 80;
-      if (!phone.matches || y < 120 || atEnd) setTucked(false);
-      else if (y > lastY + 8) setTucked(true);
-      else if (y < lastY - 8) setTucked(false);
+      if (y < 120) setShown(false);
+      else if (atEnd) setShown(true);
+      else if (y > lastY + 8) setShown(false);
+      else if (y < lastY - 8) setShown(true);
       if (Math.abs(y - lastY) > 8) lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -52,7 +54,7 @@ export default function HelpWidget() {
   const close = () => setOpen(false);
 
   return (
-    <div className={`enquire${open ? " is-open" : ""}${tucked && !open ? " is-tucked" : ""}`} ref={ref}>
+    <div className={`enquire${open ? " is-open" : ""}${shown ? " is-shown" : ""}`} ref={ref}>
       <div className="enquire-panel" id="enquire-panel" role="dialog" aria-labelledby="enquire-title" ref={panel} inert={!open}>
         <button type="button" className="enquire-panel__close" aria-label="Close" onClick={() => { close(); toggle.current?.focus(); }}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
