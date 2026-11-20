@@ -79,7 +79,7 @@ p { margin: 0 0 1em; }
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
 .skip-link:focus { left: 8px; }
-:where(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+:where(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; border-radius: 4px; }
 
 /* Top bar */
 .topbar { background: var(--navy); color: rgba(255,255,255,.85); font-size: .8125rem; animation: banner-in .7s var(--ease) both; }
@@ -120,14 +120,14 @@ p { margin: 0 0 1em; }
 .theme-switch[aria-checked="true"] .theme-switch__knob { transform: translateX(30px); background: #24325e; }
 .theme-switch[aria-checked="true"] .theme-switch__icon--moon { color: #ffb100; }
 .theme-switch[aria-checked="true"] .theme-switch__icon--sun { color: #6f7790; }
-.theme-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-switch:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 
 /* Hamburger */
 .burger { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; transition: color .25s, transform .15s; }
 .burger svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .burger:hover { color: var(--accent-text); }
 .burger:active { transform: scale(.95); }
-.burger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.burger:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
 
 @keyframes mm-in { to { opacity: 1; transform: none; } }
 @media (max-width: 560px) {
@@ -508,6 +508,18 @@ tr:last-child td { border-bottom: 0; }
 label { font-size: .875rem; font-weight: 600; display: grid; gap: 6px; }
 input, select, textarea { font: inherit; font-size: 1rem; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); color: var(--text); width: 100%; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-text); }
+/* Keyboard focus ring for every form field and button (WCAG 2.4.7 / 1.4.11): 2px, at least 3:1
+   against the surface behind it. --focus-ring is the darker accent on light surfaces and is swapped
+   for a light colour on dark ones (see the "dark surfaces" rule). The border change above stays. */
+:root { --focus-ring: var(--accent-text); }
+/* Dark surfaces (navy in both themes, or the see-through header over the hero photo): light ring */
+:is(.topbar, .nav--over, .mobile-menu, .enq-pop, .footer, .page-hero, .lightbox, .hero-slider) { --focus-ring: var(--accent-light); }
+/* Controls that float over photos or over whatever scrolls beneath them get a two-tone ring: a dark
+   outline with a white band inside it, so one of the two reaches 3:1 on any background. */
+.enquire__toggle:focus-visible, .hero-slider__ctrl :focus-visible, .hero-slider__arrow:focus-visible, .lightbox button:focus-visible {
+  outline: 2px solid #0b122e; outline-offset: 2px; box-shadow: 0 0 0 2px #fff;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 .form-note { font-size: .8125rem; color: var(--muted); }
 .form-status:empty { display: none; }
 .form-status { font-size: .875rem; color: var(--text); background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 6px; padding: 12px 14px; }
@@ -683,7 +695,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--a
 .reviews-scroll__btn { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--line); background: var(--card); color: var(--text); transition: border-color .2s, background .2s, color .2s, opacity .2s; }
 .reviews-scroll__btn:hover:not(:disabled) { border-color: var(--brand-800); background: var(--brand-800); color: #fff; }
 .reviews-scroll__btn:disabled { opacity: .4; cursor: default; }
-.reviews-scroll__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.reviews-scroll__btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 @media (max-width: 960px) { .reviews-scroll__track { grid-auto-columns: calc((100% - 22px) / 2); } }
 @media (max-width: 640px) { .reviews-scroll__track { grid-auto-columns: 85%; gap: 14px; } }
 @media (prefers-reduced-motion: reduce) { .reviews-scroll__track { scroll-behavior: auto; } }
@@ -887,7 +899,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .lightbox__btn:disabled { opacity: 0; pointer-events: none; }
 .lightbox__close { top: calc(14px + env(safe-area-inset-top, 0px)); right: clamp(12px, 2vw, 28px); width: 46px; height: 46px; }
 .lightbox__close:hover { transform: rotate(90deg); }
-.lightbox :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lightbox :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 @media (max-width: 760px), (hover: none) {
   /* Phones swipe, but keep small arrows so it is clear there are more photos */
   .lightbox__btn { width: 38px; height: 38px; background: rgba(7, 12, 32, .45); }
@@ -1093,7 +1105,7 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .mobile-menu__close { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; transition: color .25s, transform .4s var(--ease); }
 .mobile-menu__close:hover { color: var(--accent-light); transform: rotate(90deg); }
 .mobile-menu__close svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-.mobile-menu__close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.mobile-menu__close:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
 .mobile-menu__body { position: relative; flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; padding: clamp(24px, 4vw, 56px) clamp(16px, 4vw, 48px) calc(env(safe-area-inset-bottom, 0px) + 28px); }
 .mobile-menu__grid { display: grid; grid-template-columns: 21% 21% 1fr 1fr; gap: 32px; }
 .mobile-menu__col { display: grid; gap: clamp(24px, 3vw, 36px); align-content: start; }
@@ -1213,7 +1225,7 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 .hero-slider__pause { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .14); transition: background .25s; }
 .hero-slider__pause:hover { background: var(--accent); }
 .hero-slider__pause svg { width: 14px; height: 14px; fill: currentColor; }
-.hero-slider__ctrl :focus-visible, .hero-slider__arrow:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.hero-slider__ctrl :focus-visible, .hero-slider__arrow:focus-visible { outline: 2px solid #0b122e; outline-offset: 2px; box-shadow: 0 0 0 2px #fff; } /* two-tone, see the focus ring rules */
 @media (max-width: 640px) { .hero-slider__bar { right: 12px; bottom: 12px; } }
 @media (max-width: 1100px) {
   .hero-slider__arrow { display: grid; width: 40px; height: 40px; top: 50%; }
