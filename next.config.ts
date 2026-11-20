@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   devIndicators: { position: "bottom-right" },
   // The photos are video stills, so resized copies use a higher quality than the default 75
   // to avoid stacking a second round of compression on top. AVIF first, WebP as fallback.
-  images: { qualities: [75, 85], formats: ["image/avif", "image/webp"] },
+  images: { qualities: [75, 80, 85], formats: ["image/avif", "image/webp"] },
 };
 
 export default nextConfig;

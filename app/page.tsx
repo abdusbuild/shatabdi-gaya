@@ -14,6 +14,7 @@ export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: {
 
 const heroSlides: Slide[] = [
   { src: "/hero/building1.jpeg", alt: "School buildings around the brick-paved courtyard, with school buses under the trees", position: "50% 55%" },
+  { src: "/hero/shatabdi-assembly.jpeg", alt: "Students in rows taking the pledge with teachers at the morning assembly in the school courtyard", position: "50% 60%" },
   { src: "/hero/students-school-hall.webp", alt: "Senior students in school blazers seated in the school hall", position: "50% 55%" },
   { src: "/hero/excursion-group-gate.webp", alt: "Students and a teacher at the gate of Rajdhani Vatika on a study tour", position: "50% 45%" },
   { src: "/hero/excursion-teachers.webp", alt: "Teachers at the gate of Rajdhani Vatika on a study tour", position: "50% 40%" },
