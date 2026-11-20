@@ -90,7 +90,10 @@ p { margin: 0 0 1em; }
 .topbar a:hover { opacity: 1; color: var(--accent-light); }
 .topbar__links { display: flex; gap: 20px; }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: #ff4d52; box-shadow: 0 0 0 0 rgba(255, 77, 82, .6); display: inline-block; margin-right: 8px; }
-@media (max-width: 760px) { .topbar__links { display: none; } .topbar .wrap { justify-content: center; text-align: center; padding-block: 6px; } }
+@media (max-width: 760px) { .topbar__links { display: none; } .topbar .wrap { justify-content: center; text-align: center; padding-block: 0; } }
+/* Admissions banner link: a 44px-tall tap area (WCAG 2.5.5) across the bar */
+.topbar .topbar__cta { opacity: 1; gap: 0; min-height: 44px; padding-block: 4px; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .2s, color .2s; }
+.topbar .topbar__cta:hover { color: #fff; text-decoration-color: currentColor; }
 
 /* Nav */
 :root { --nav-h: 96px; }

@@ -132,7 +132,11 @@ export default function Header() {
       <a className="skip-link" href="#main">Skip to main content</a>
       <div className="topbar">
         <div className="wrap">
-          <p><span className="pulse" />Admissions open · Std I – IX entrance test in December</p>
+          {/* The whole banner is a link to the admission enquiry form, so phones have an enquiry entry on the first screen */}
+          <Link className="topbar__cta" href="/admissions#enquiry">
+            <span className="pulse" aria-hidden="true" />
+            <span>Admissions open · Std I – IX entrance test in December<span className="sr-only">. Send an admission enquiry</span></span>
+          </Link>
           <div className="topbar__links">
             <a href={`tel:${SCHOOL.phone}`}><Phone width={14} height={14} />{SCHOOL.phoneLabel}</a>
             <a href={`mailto:${SCHOOL.email}`}><Mail width={14} height={14} />{SCHOOL.email}</a>
