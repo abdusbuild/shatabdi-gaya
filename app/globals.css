@@ -1197,6 +1197,8 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 
 /* Hero controls: chevrons, dots and a pause button at every width; phones can also swipe */
 .hero-slider__arrow { z-index: 2; }
+/* Vertical drags scroll the page; horizontal swipes go to the slider instead of the browser's back/forward gesture */
+.hero-slider { touch-action: pan-y; overscroll-behavior-x: contain; }
 .hero-slider__bar { position: absolute; z-index: 2; right: clamp(16px, 4vw, 40px); bottom: clamp(18px, 3vw, 32px); display: flex; align-items: center; gap: 6px; padding: 4px 4px 4px 10px; border-radius: 999px; background: rgba(12, 18, 45, .4); border: 1px solid rgba(255, 255, 255, .25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .hero-slider__dots { display: flex; }
 .hero-slider__dot { position: relative; width: 24px; height: 32px; padding: 0; border: 0; background: none; }
