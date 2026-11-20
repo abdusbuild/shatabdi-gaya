@@ -80,7 +80,7 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <HeroSlider slides={heroSlides} sound="/audio/hero.mp3">
+        <HeroSlider slides={heroSlides}>
           <div className="hero__text">
             <h1 className="hero__title">Shatabdi Public School <span>Gaya Ji</span></h1>
             <span className="rule rule--hero" />

@@ -46,7 +46,7 @@ const FILTERS = {
 // Empty required fields are left to the browser's own "Please fill in this field".
 const PROBLEMS = {
   name: (v: string) => (v && (v.match(/\p{L}/gu)?.length ?? 0) < 2 ? "Please enter a name with at least 2 letters." : ""),
-  phone: (v: string) => (v && v.length !== 10 ? "Please enter a 10-digit mobile number." : ""),
+  phone: (v: string) => (!v ? "" : v.length !== 10 ? "Please enter a 10-digit mobile number." : /^[6-9]/.test(v) ? "" : "Please enter a valid mobile number starting with 6, 7, 8 or 9."),
 };
 
 type FieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
@@ -56,7 +56,8 @@ export function NameInput(props: FieldProps) {
   return <input {...props} type="text" data-filter="name" autoComplete={props.autoComplete ?? "name"} autoCapitalize="words" spellCheck={false} maxLength={60} title="Please use letters only, e.g. Asha Khan" />;
 }
 
-// Phone input: exactly 10 digits; a +91 / 91 / 0 prefix is clipped off. Opens the phone keypad.
+// Phone input: a 10-digit Indian mobile number (first digit 6-9); a +91 / 91 / 0 prefix is clipped
+// off. Opens the phone keypad.
 // No maxLength: it would cut a pasted "+91 98765 43210" short before the prefix could be removed.
 export function PhoneInput(props: FieldProps) {
   return (
@@ -67,7 +68,7 @@ export function PhoneInput(props: FieldProps) {
       inputMode="tel"
       autoComplete={props.autoComplete ?? "tel-national"}
       placeholder={props.placeholder ?? "10-digit mobile number"}
-      pattern="[0-9]{10}"
+      pattern="[6-9][0-9]{9}"
       title="Please enter a 10-digit mobile number, e.g. 9876543210"
     />
   );

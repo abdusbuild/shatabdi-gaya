@@ -1442,3 +1442,15 @@ html, body { overflow-x: clip; }
   .footer__legal a { padding-block: 10px; }
   .mobile-menu__contacts a { padding-block: 8px; }
 }
+
+/* Print: just the page content (fee tables, disclosure), without site furniture */
+@media print {
+  .skip-link, .topbar, .nav, .mobile-menu, .footer, .enquire, .enq-pop, .preloader, .ticker,
+  .hero-slider__arrow, .hero-slider__bar, .lightbox, .map, iframe { display: none !important; }
+  html, body { background: #fff !important; color: #000 !important; }
+  .page-hero, .page-hero * { background: none !important; color: #000 !important; }
+  .page-hero__img { display: none !important; }
+  .rv :is(.reveal, .slide-title, .img-reveal, .pill) { transform: none !important; animation: none !important; }
+  table, tr, .card { break-inside: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 11px; }
+}
