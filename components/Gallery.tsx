@@ -15,7 +15,9 @@ export default function Gallery({ items, className = "" }: { items: Item[]; clas
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
-  const [zoomed, setZoomed] = useState(false);
+  // The photo that is zoomed in, if any. Zoom ends by itself on moving to another photo or closing.
+  const [zoomedAt, setZoomedAt] = useState<number | null>(null);
+  const zoomed = open && zoomedAt === index;
 
   // Product-page style zoom: the photo scales up around the cursor and follows it.
   const follow = (e: MouseEvent<HTMLElement>) => {
@@ -24,9 +26,6 @@ export default function Gallery({ items, className = "" }: { items: Item[]; clas
     el.style.setProperty("--zx", `${((e.clientX - r.left) / r.width) * 100}%`);
     el.style.setProperty("--zy", `${((e.clientY - r.top) / r.height) * 100}%`);
   };
-
-  // Leave zoom when moving to another photo or closing the viewer
-  useEffect(() => setZoomed(false), [index, open]);
 
   const show = (i: number) => {
     setIndex(i);
@@ -72,13 +71,13 @@ export default function Gallery({ items, className = "" }: { items: Item[]; clas
         ))}
       </div>
 
-      <dialog ref={dialog} className="lightbox" aria-label="Photo viewer" onClose={() => setOpen(false)}>
+      <dialog ref={dialog} className="lightbox" aria-label="Photo viewer" onClose={() => { setOpen(false); setZoomedAt(null); }}>
         <div className="lightbox__track" ref={track}>
           {items.map(([src, label], i) => (
             <figure className="lightbox__slide" key={src} aria-hidden={i !== index}>
               <div
                 className={`lightbox__frame${zoomed && i === index ? " is-zoomed" : ""}`}
-                onClick={(e) => { if (i === index) { follow(e); setZoomed((z) => !z); } }}
+                onClick={(e) => { if (i === index) { follow(e); setZoomedAt(zoomed ? null : i); } }}
                 onMouseMove={zoomed && i === index ? follow : undefined}
               >
                 {/* Only the open photo and its neighbours are fetched */}

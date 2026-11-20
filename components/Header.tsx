@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SCHOOL } from "@/lib/site";
 import { Facebook, Instagram, Mail, Moon, Phone, Pin, Sun, WhatsApp, YouTube } from "./Icons";
 
@@ -39,17 +39,22 @@ const MENU_PLAIN: { href: string; label: string; external?: boolean }[] = [
   { href: SCHOOL.cbseRecord, label: "CBSE Affiliation", external: true },
 ];
 
-function ThemeSwitch() {
-  const [dark, setDark] = useState(false);
+// The theme lives in data-theme on <html> (set before paint by the inline script in layout.tsx);
+// the switch reads it from there and re-renders whenever it changes.
+function subscribeTheme(onChange: () => void) {
+  const mo = new MutationObserver(onChange);
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => mo.disconnect();
+}
+const isDark = () => document.documentElement.getAttribute("data-theme") === "dark";
 
-  // The inline script in layout.tsx sets data-theme before paint; mirror it here.
-  useEffect(() => setDark(document.documentElement.getAttribute("data-theme") === "dark"), []);
+function ThemeSwitch() {
+  const dark = useSyncExternalStore(subscribeTheme, isDark, () => false);
 
   const toggle = () => {
     const next = dark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("sps-theme", next); } catch {}
-    setDark(!dark);
   };
 
   return (
@@ -74,8 +79,12 @@ export default function Header() {
   const wasOpen = useRef(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close the drawer after navigating
-  useEffect(() => setOpen(false), [pathname]);
+  // Close the drawer after navigating (adjusting state during render, not in an effect)
+  const [shownPath, setShownPath] = useState(pathname);
+  if (pathname !== shownPath) {
+    setShownPath(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     // Move focus into the menu when it opens, and back to the hamburger when it closes

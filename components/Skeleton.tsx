@@ -8,7 +8,7 @@ import { useEffect, useState, type IframeHTMLAttributes } from "react";
 export function SkeletonImage({ className = "", ...props }: ImageProps) {
   const [loaded, setLoaded] = useState(false);
   const done = () => setLoaded(true);
-  return <Image quality={85} {...props} className={`skeleton-img${loaded ? " is-loaded" : ""} ${className}`.trim()} onLoad={done} onError={done} />;
+  return <Image quality={85} {...props} alt={props.alt} className={`skeleton-img${loaded ? " is-loaded" : ""} ${className}`.trim()} onLoad={done} onError={done} />;
 }
 
 // Embedded map or video with a shimmer behind it until the frame has loaded.
