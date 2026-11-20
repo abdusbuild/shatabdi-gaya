@@ -1053,7 +1053,7 @@ section.hero { margin-top: calc(-1 * var(--nav-h)); }
 @keyframes hero-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
 @media (max-width: 700px) {
   .hero-slider { min-height: min(78svh, 640px); }
-  .hero-slider__content { padding-bottom: 44px; }
+  .hero-slider__content { padding-bottom: 64px; } /* clears the carousel control bar */
   .hero-slider__shade { background:
     linear-gradient(180deg, rgba(12, 18, 45, .7) 0%, rgba(12, 18, 45, 0) calc(var(--nav-h) + 60px)),
     linear-gradient(0deg, #16204d 0%, rgba(22, 32, 77, .85) 22%, rgba(22, 32, 77, 0) 60%); }
