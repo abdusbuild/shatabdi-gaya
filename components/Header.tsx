@@ -72,6 +72,7 @@ export default function Header() {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   // Close the drawer after navigating
   useEffect(() => setOpen(false), [pathname]);
@@ -81,10 +82,19 @@ export default function Header() {
     if (open) closeRef.current?.focus();
     else if (wasOpen.current) burgerRef.current?.focus();
     wasOpen.current = open;
+    // Keep Tab inside the open menu: everything else on the page is made inert until it closes.
+    const behind = open ? [...document.body.children].filter((el) => el !== menuRef.current && !el.hasAttribute("inert")) : [];
+    behind.forEach((el) => el.setAttribute("inert", ""));
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      behind.forEach((el) => el.removeAttribute("inert"));
+    };
   }, [open]);
+
+  // aria-current for the menu link of the page being shown (in-page #section links are not pages)
+  const current = (href: string) => (href === pathname ? "page" : undefined);
 
   useEffect(() => {
     // Hide the bar while scrolling down, bring it back as soon as the page scrolls up
@@ -151,7 +161,7 @@ export default function Header() {
         <span className="nav__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
       </header>
 
-      <div className={`mobile-menu${open ? " is-open" : ""}`} id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden={!open} inert={!open} onClick={(e) => { if ((e.target as HTMLElement).closest("a")) setOpen(false); }}>
+      <div className={`mobile-menu${open ? " is-open" : ""}`} id="mobile-menu" ref={menuRef} role="dialog" aria-modal="true" aria-label="Menu" aria-hidden={!open} inert={!open} onClick={(e) => { if ((e.target as HTMLElement).closest("a")) setOpen(false); }}>
         <div className="mobile-menu__top">
           <Link className="brand mobile-menu__brand" href="/">
             <img src="/logo-nav.webp" alt="" width={54} height={64} />
@@ -173,10 +183,10 @@ export default function Header() {
               <div className="mobile-menu__col" key={i}>
                 {col.map((g) => (
                   <div className="mobile-menu__group" key={g.title}>
-                    <Link className="mobile-menu__head" href={g.href}>{g.title}</Link>
+                    <Link className="mobile-menu__head" href={g.href} aria-current={current(g.href)}>{g.title}</Link>
                     <ul>
                       {g.links.map((l) => (
-                        <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+                        <li key={l.href}><Link href={l.href} aria-current={current(l.href)}>{l.label}</Link></li>
                       ))}
                     </ul>
                   </div>
@@ -188,7 +198,7 @@ export default function Header() {
                 l.external ? (
                   <a key={l.href} className="mobile-menu__head" href={l.href} target="_blank" rel="noopener">{l.label}</a>
                 ) : (
-                  <Link key={l.href} className="mobile-menu__head" href={l.href}>{l.label}</Link>
+                  <Link key={l.href} className="mobile-menu__head" href={l.href} aria-current={current(l.href)}>{l.label}</Link>
                 ),
               )}
               <a className="navpill navpill--gold mobile-menu__erp" href={SCHOOL.erp} target="_blank" rel="noopener" aria-label="School ERP login (opens in a new tab)">
