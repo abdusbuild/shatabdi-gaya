@@ -74,8 +74,11 @@ export function PhoneInput(props: FieldProps) {
   );
 }
 
+const HONEYPOT = "website";
+
 // Sends the form contents to the school office: through the visitor's email app by default,
-// or as a ready-to-send WhatsApp message to the office mobile with via="whatsapp".
+// or as a ready-to-send WhatsApp message to the office mobile with via="whatsapp". A copy also goes
+// to /api/enquiry so the school has a record even if the visitor never presses send.
 export default function EnquiryForm({ subject, children, submitLabel, via = "email", className = "card form reveal" }: { subject: string; children: ReactNode; submitLabel: string; via?: "email" | "whatsapp"; className?: string }) {
   const onInput = (e: FormEvent<HTMLFormElement>) => {
     const el = e.target as HTMLInputElement;
@@ -105,11 +108,14 @@ export default function EnquiryForm({ subject, children, submitLabel, via = "ema
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const lines = [...new FormData(e.currentTarget).entries()]
-      .map(([k, v]) => [k, String(v).trim()] as const)
-      .filter(([, v]) => v)
-      .map(([k, v]) => (via === "whatsapp" ? `*${k}:* ${v}` : `${k}: ${v}`))
-      .join("\n");
+    const data = new FormData(e.currentTarget);
+    const honeypot = String(data.get(HONEYPOT) ?? "");
+    data.delete(HONEYPOT);
+    const entries = [...data.entries()].map(([k, v]) => [k, String(v).trim()] as const).filter(([, v]) => v);
+    const lines = entries.map(([k, v]) => (via === "whatsapp" ? `*${k}:* ${v}` : `${k}: ${v}`)).join("\n");
+
+    // The WhatsApp / email handoff must open inside this click handler, before anything async,
+    // or iOS Safari blocks it as a popup.
     if (via === "whatsapp") {
       const text = `*${subject}*\n\n${lines}`;
       const url = `https://wa.me/${SCHOOL.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -118,14 +124,29 @@ export default function EnquiryForm({ subject, children, submitLabel, via = "ema
       if (win) win.opener = null;
       else window.location.href = url;
       setSent(text);
-      return;
+    } else {
+      window.location.href = `mailto:${SCHOOL.email}?cc=${SCHOOL.emailBackup}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+      setSent(`${subject}\n\n${lines}`);
     }
-    window.location.href = `mailto:${SCHOOL.email}?cc=${SCHOOL.emailBackup}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
-    setSent(`${subject}\n\n${lines}`);
+
+    // In parallel, keep a copy on the school's side (/api/enquiry -> Google Sheet + office email).
+    // Fire and forget: keepalive lets it finish if the page is left, and any failure is ignored
+    // because the visitor's handoff above has already happened.
+    try {
+      fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ form: subject, page: window.location.pathname, fields: Object.fromEntries(entries), website: honeypot }),
+        keepalive: true,
+        signal: AbortSignal.timeout(3000),
+      }).catch(() => {});
+    } catch {}
   };
 
   return (
     <form className={className} onInput={onInput} onBlur={onBlur} onSubmit={onSubmit}>
+      {/* Honeypot for bots: hidden from people and screen readers, skipped by Tab */}
+      <input className="hp-field" type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden="true" />
       {children}
       <button className="btn btn--gold btn-start" type="submit">{submitLabel}</button>
       <div className="form-status" role="status">
